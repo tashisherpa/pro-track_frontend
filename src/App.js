@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
-import { Assignments, Dashboard, Resources} from "./pages";
+import { Assignments, Dashboard, Resources, Lectures} from "./pages";
 import PrivateRoute from "./Utils/Auth";
 
 function App() {
