@@ -16,13 +16,13 @@ function App() {
           element={<Signup name="signup" displayName="Sign Up" />}
         />
        <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/resources" element={<Resources/>}/>
-          <Route path="/lectures" element={<Lectures/>}/>
-          <Route path="/assignments" element={<Assignments/>}/>
-          <Route path="/helprequests" element={<HelpRequests/>}/>
-          <Route path="/users" element={<Users/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/> {/**tashi */}
+          <Route path="/resources" element={<Resources/>}/>{/**Sabina */}
+          <Route path="/lectures" element={<Lectures/>}/>{/**Sabina */}
+          <Route path="/assignments" element={<Assignments/>}/>{/**tashi */}
+          <Route path="/helprequests" element={<HelpRequests/>}/>{/**tashi */}
+          <Route path="/users" element={<Users/>}/> {/**WIP */}
+          <Route path="/profile" element={<Profile/>}/>{/**Sabina */}
         </Route>
       </Routes>
     </Router>
