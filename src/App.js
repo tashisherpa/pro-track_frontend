@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
+import LoginNavbar from "./components/LoginNavbar";
 
 function App() {
   return (

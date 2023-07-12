@@ -3,6 +3,8 @@ import React from "react";
 import PropTypes from "prop-types";
 // import { auth } from "../redux/store";
 // import { useNavigate } from "react-router-dom";
+import LoginNavbar from "./LoginNavbar";
+
 
 /**
  * COMPONENT
@@ -23,6 +25,8 @@ const AuthForm = ({ name, displayName }) => {
 //   };
 
   return (
+    <div>
+        <LoginNavbar />
     <div className="flex flex-col h-screen items-center justify-center">
       <h1>{name}</h1>
         <div className="w-full max-w-xs">
@@ -63,6 +67,7 @@ const AuthForm = ({ name, displayName }) => {
           <button type="submit">{displayName}</button>
         </div>
       </form> */}
+    </div>
     </div>
   );
 };
