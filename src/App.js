@@ -18,6 +18,7 @@ function App() {
        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/resources" element={<Resources/>}/>
+          <Route path="/lectures" element={<Lectures/>}/>
           <Route path="/assignments" element={<Assignments/>}/>
         </Route>
       </Routes>
