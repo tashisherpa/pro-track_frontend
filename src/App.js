@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
-import SideNavBar from "./components/SideNavBar";
-import { Home } from "./pages";
+import { LandingPage, Dashboard} from "./pages";
 import PrivateRoute from "./Utils/Auth";
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
           element={<Signup name="signup" displayName="Sign Up" />}
         />
        <Route element={<PrivateRoute />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard/>}/>
         </Route>
       </Routes>
     </Router>
