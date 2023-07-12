@@ -5,3 +5,5 @@ export {default as Assignments} from "./Assignments";
 export {default as HelpRequests} from "./HelpRequests";
 export {default as Lectures} from "./Lectures";
 export {default as Users} from "./Users";
+export {default as Profile} from "./Profile";
+ 
