@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
-import LoginNavbar from "./components/LoginNavbar";
+import { Home } from "./pages";
+import PrivateRoute from "./Utils/Auth";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
           path="/signup"
           element={<Signup name="signup" displayName="Sign Up" />}
         />
-        
+       <Route element={<PrivateRoute />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
       </Routes>
     </Router>
   );
