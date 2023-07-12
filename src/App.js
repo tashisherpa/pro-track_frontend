@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
-import { Assignments, Dashboard, HelpRequests, Resources, Lectures, Users} from "./pages";
+import { Assignments, Dashboard, HelpRequests, Resources, Lectures, Users, Profile} from "./pages";
 import PrivateRoute from "./Utils/Auth";
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
           <Route path="/assignments" element={<Assignments/>}/>
           <Route path="/helprequests" element={<HelpRequests/>}/>
           <Route path="/users" element={<Users/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Route>
       </Routes>
     </Router>
