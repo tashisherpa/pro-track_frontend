@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
+import SideNavBar from "./components/SideNavBar";
 import { Home } from "./pages";
 import PrivateRoute from "./Utils/Auth";
 
