@@ -1,1 +1,2 @@
-export {default as Home} from  "./LandingPage";
+//barrel file
+export {default as Dashboard} from "./Dashboard";
