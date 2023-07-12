@@ -36,9 +36,9 @@ function SideNavBar() {
               </a>
             </li>
             <li>
-              <a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <Link to="/helprequests" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <span className="flex-1 ml-3 whitespace-nowrap">Help Requests</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
