@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
-import { LandingPage, Dashboard} from "./pages";
+import { Dashboard, Resources} from "./pages";
 import PrivateRoute from "./Utils/Auth";
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
         />
        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/resources" element={<Resources/>}/>
         </Route>
       </Routes>
     </Router>
