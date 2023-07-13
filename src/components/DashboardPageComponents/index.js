@@ -1,2 +1,3 @@
 export {default as DashboardStudentView} from "./DashboardStudentView";
-export {default as DashboardAdminView} from "./DashboardAdminView";
+export {default as PostAnnouncement} from "./PostAnnouncement";
+export {default as ZoomInfo} from "./ZoomInfo";

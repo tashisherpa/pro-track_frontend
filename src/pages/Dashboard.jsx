@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import SideNavBar from "../components/SideNavBar";
-import { DashboardAdminView, DashboardStudentView } from "../components/DashboardPageComponents";
+import {
+  PostAnnouncement,
+  DashboardStudentView,
+  ZoomInfo,
+} from "../components/DashboardPageComponents";
 function Dashboard() {
+
+  //states
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [showAddAnnouncement, setShowAddAnnouncement] = useState(false);
+
+  const handleAddAnouncement = () => {
+    setShowAddAnnouncement(true);
+  };
+
   return (
     <div>
       <SideNavBar />
-      <div class="p-4 sm:ml-64">
-        <DashboardAdminView/>
-        <DashboardStudentView/>
+      <div className="p-4 sm:ml-64">
+        <ZoomInfo />
+        {
+          /**If the user is not admin they wont be able to se the Add Announcement button
+           * which allows them to add new annoucements that will be shown in the
+           * dashboard
+           */
+          isAdmin ? (
+            <button className="bg-blue-500 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={handleAddAnouncement}>Add Announcement</button>
+          ) : (null
+          )
+        }
+        {
+          /*when the showAddAnnoucement is set to true then the PostAnnouncement component will show
+            this code will only execute if the user is an admin
+
+            using the logical AND operator
+            if the first statement is false the second statement is never checked
+            in this case if showAddAnnoucement is false the component never renders
+          */
+          showAddAnnouncement && <PostAnnouncement />
+        }
+
+        <DashboardStudentView />
       </div>
     </div>
   );
