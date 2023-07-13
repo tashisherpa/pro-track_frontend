@@ -8,13 +8,16 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/login"
+          path="/"
           element={<Login name="login" displayName="Log In" />}
         />
         <Route
           path="/signup"
           element={<Signup name="signup" displayName="Sign Up" />}
         />
+        {/*Protected Route:
+            - has all the routes that shouldn't be access by someone who isn't a user/logged in
+        */}
        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard/>}/> {/**tashi */}
           <Route path="/resources" element={<Resources/>}/>{/**Sabina */}
