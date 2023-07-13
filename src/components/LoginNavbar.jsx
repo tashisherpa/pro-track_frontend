@@ -12,7 +12,7 @@ function LoginNavbar() {
   return (
     <div>
         <nav>
-            <LinkButton to="/login">Login</LinkButton>
+            <LinkButton to="/">Login</LinkButton>
             <LinkButton to="/signup">Sign Up</LinkButton>
         </nav>
     </div>
