@@ -135,19 +135,19 @@ export const editUserThunk = (user) => {
     };
 };
 
-export const auth = (email, password, method) => async (dispatch) => {
+export const auth = (email, password) => async (dispatch) => {
   let res;
   try {
-    res = await axios.post(`${process.env.REACT_APP_USERS}${method}`, {
+    res = await axios.post(`${process.env.REACT_APP_USERS}`, {
       email,
       password,
     });
   } catch (authError) {
-    return dispatch(fetchSingleUser({ error: authError }));
+    return dispatch(fetchSingleUserThunk({ error: authError }));
   }
 
   try {
-    dispatch(fetchSingleUser(res.data));
+    dispatch(fetchSingleUserThunk(email));
     // history.push("/home");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
