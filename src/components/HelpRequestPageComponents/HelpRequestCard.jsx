@@ -12,7 +12,7 @@ function HelpRequestCard() {
   const [backgroundColor, setBackGroundColor] = useState("bg-red-300");
 
   //card styling
-  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl`;
+  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
 
   const handleButtonClick = () => {
     /**
