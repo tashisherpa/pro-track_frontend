@@ -29,7 +29,7 @@ export const fetchAllUsersThunk = () => {
 
 //stores an object with the type single user and adds user's info to the payload
 //returns the object with the single user info
-export const fetchSingleStudent = (payload) => {
+export const fetchSingleUser = (payload) => {
     console.log("FETCH SINGLE USER ACTION");
     return {
       type: UserActionType.FETCH_SINGLE_USER,
@@ -71,7 +71,7 @@ export const deleteUserThunk = (useremail) => {
     return async (dispatch) => {
       try {
         console.log("FETCHDELETEUSERTHUNK IS FIRING");
-        await axios.delete(`${process.env.REACT_APP_USER}${useremail}`);
+        await axios.delete(`${process.env.REACT_APP_USERS}${useremail}`);
         console.log("FETECHDELETEUSERTHUNK COMPLETED");
         dispatch(deleteUser(useremail));
       } catch (error) {
@@ -123,7 +123,7 @@ export const editUserThunk = (user) => {
       try {
         console.log("EDITUSERTHUNK IS FIRING");
         const response = await axios.put(
-          `${process.env.REACT_APP_USER}${user.email}`,
+          `${process.env.REACT_APP_USERS}${user.email}`,
           user
         );
         console.log("EDITUSERTHUNK COMPLETED");
@@ -133,4 +133,23 @@ export const editUserThunk = (user) => {
         console.error(error);
       }
     };
+};
+
+export const auth = (email, password, method) => async (dispatch) => {
+  let res;
+  try {
+    res = await axios.post(`${process.env.REACT_APP_USERS}${method}`, {
+      email,
+      password,
+    });
+  } catch (authError) {
+    return dispatch(fetchSingleUser({ error: authError }));
+  }
+
+  try {
+    dispatch(fetchSingleUser(res.data));
+    // history.push("/home");
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr);
+  }
 };

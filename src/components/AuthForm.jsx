@@ -1,27 +1,26 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
-// import { auth } from "../redux/store";
-// import { useNavigate } from "react-router-dom";
+import { auth } from "../redux/users/users.action";
+import { useNavigate } from "react-router-dom";
 import LoginNavbar from "./LoginNavbar";
 
 /**
  * COMPONENT
  */
 const AuthForm = ({ name, displayName }) => {
-  //   const navigate = useNavigate();
-  //   const dispatch = useDispatch();
-  //   const error = useSelector((state) => state.user.error);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-  //     const handleSubmit = (evt) => {
-  //      evt.preventDefault();
-  //      const formName = name;
-  //      const email = evt.target.email.value;
-  //      const password = evt.target.password.value;
-  //      dispatch(auth(email, password, formName));
+      const handleSubmit = (evt) => {
+       evt.preventDefault();
+       const formName = name;
+       const email = evt.target.email.value;
+       const password = evt.target.password.value;
+       dispatch(auth(email, password, formName));
 
-  //     navigate("/home");
-  //   };
+      navigate("/home");
+    };
 
   return (
     <div>
@@ -35,13 +34,12 @@ const AuthForm = ({ name, displayName }) => {
                 className="block text-gray-700 text-sm font-bold mb-2"
                 for="username"
               >
-                Username
+                Email
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
-                placeholder="Username"
+                type="email"
+                placeholder="Email"
               />
             </div>
             <div className="mb-6">
@@ -62,6 +60,7 @@ const AuthForm = ({ name, displayName }) => {
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onSubmit={handleSubmit}
               >
                 {displayName}
               </button>
