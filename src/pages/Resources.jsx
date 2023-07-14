@@ -1,5 +1,5 @@
 import React from 'react'
-import ResourcesStudentView from '../components/ResourcesPageComponents/ResourcesStudentView'
+import ResourceCard from '../components/ResourcesPageComponents/ResourceCard'
 import SideNavBar from '../components/SideNavBar'
 
 function Resources() {
@@ -7,7 +7,7 @@ function Resources() {
     <div>
         <SideNavBar />
         <div class="p-4 sm:ml-64">
-            <ResourcesStudentView />
+            <ResourceCard />
         </div>
     </div>
   )

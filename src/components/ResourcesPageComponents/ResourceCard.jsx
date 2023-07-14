@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ResourcesStudentView() {
+function ResourceCard() {
   return (
     <div class="max-w-sm rounded-lg overflow-hidden shadow-xl">
         <div class="px-6 py-4">
@@ -18,4 +18,4 @@ function ResourcesStudentView() {
   )
 }
 
-export default ResourcesStudentView
+export default ResourceCard
