@@ -5,7 +5,7 @@ function Users() {
   return (
     <div>
         <SideNavBar />
-        <div class="p-4 sm:ml-64">
+        <div className="p-4 sm:ml-64">
             <h1>Users</h1>
         </div>
     </div>
