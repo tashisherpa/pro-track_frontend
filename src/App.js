@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import { Assignments, Dashboard, HelpRequests, Resources, Lectures, Users, Profile} from "./pages";
 import PrivateRoute from "./Utils/Auth";
+import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpRequest";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/lectures" element={<Lectures/>}/>{/**Sabina */}
           <Route path="/assignments" element={<Assignments/>}/>{/**tashi */}
           <Route path="/helprequests" element={<HelpRequests/>}/>{/**tashi */}
+          <Route path="/helprequests/addRequest" element={<AddHelpRequest/>}/>
           <Route path="/users" element={<Users/>}/> {/**WIP */}
           <Route path="/profile" element={<Profile/>}/>{/**Sabina */}
         </Route>
