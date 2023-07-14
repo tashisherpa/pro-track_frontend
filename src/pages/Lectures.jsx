@@ -1,5 +1,5 @@
 import React from 'react'
-import LecturesStudentView from '../components/LecturesPageComponents/LecturesStudentView'
+import LectureCard from '../components/LecturesPageComponents/LectureCard'
 import SideNavBar from '../components/SideNavBar'
 
 function Lectures() {
@@ -7,7 +7,7 @@ function Lectures() {
     <div>
         <SideNavBar />
         <div class="p-4 sm:ml-64">
-            <LecturesStudentView />
+            <LectureCard />
         </div>
     </div>
   )
