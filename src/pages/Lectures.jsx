@@ -6,7 +6,7 @@ function Lectures() {
   return (
     <div>
         <SideNavBar />
-        <div class="p-4 sm:ml-64">
+        <div className="p-4 sm:ml-64">
             <LectureCard />
         </div>
     </div>

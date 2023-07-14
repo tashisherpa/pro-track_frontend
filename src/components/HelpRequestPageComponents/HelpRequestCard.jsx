@@ -12,7 +12,7 @@ function HelpRequestCard() {
   const [backgroundColor, setBackGroundColor] = useState("bg-red-300");
 
   //card styling
-  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl`;
+  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
 
   const handleButtonClick = () => {
     /**
@@ -38,9 +38,9 @@ function HelpRequestCard() {
 
   return (
     <div className={cardStyling}>
-      <div class="px-6 py-4">
-        <div class="font-bold text-2xl mb-2">Issue</div>
-        <h3 class="text-xs">Status: {status}</h3>
+      <div className="px-6 py-4">
+        <div className="font-bold text-2xl mb-2">Issue</div>
+        <h3 className="text-xs">Status: {status}</h3>
         <p>
           Hello! can we get help in room 12? We are having issues with
           connecting to the back-end with the Redux files. We tried to do it in

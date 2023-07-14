@@ -6,7 +6,7 @@ function Profile() {
   return (
     <div>
         <SideNavBar />
-        <div class="p-4 sm:ml-64 content-center">
+        <div className="p-4 sm:ml-64 content-center">
             <ProfileCard />
         </div>
     </div>
