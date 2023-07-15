@@ -8,7 +8,7 @@ import {
 function Dashboard() {
 
   //states
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [showAddAnnouncement, setShowAddAnnouncement] = useState(false);
 
   const handleAddAnouncement = () => {

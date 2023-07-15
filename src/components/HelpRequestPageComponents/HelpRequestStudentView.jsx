@@ -1,9 +1,15 @@
 import React from 'react'
+import AddHelpRequest from './AddHelpRequest'
+import { Link } from 'react-router-dom'
 
 function HelpRequestStudentView() {
+  const handleAddRequest=()=>{
+    <Link to="/helprequests/addrequest"></Link>
+  }
+
   return (
     <div className='flex justify-end mb-10'>
-      <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Add new request</button>
+       <Link to="/helprequests/addrequest">Add new request</Link>
     </div>
   )
 }

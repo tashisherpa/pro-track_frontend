@@ -10,6 +10,7 @@ import {
   Profile,
 } from "./pages";
 import PrivateRoute from "./Utils/Auth";
+import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpRequest";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           {/**tashi */}
           <Route path="/helprequests" element={<HelpRequests />} />
           {/**tashi */}
+          <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
           <Route path="/users" element={<Users />} /> {/**WIP */}
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
