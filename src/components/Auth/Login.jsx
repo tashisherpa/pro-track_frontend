@@ -70,6 +70,12 @@ const Login = ({ name, displayName }) => {
               >
                 Sign Up
               </Link>
+              <a
+                class="button google"
+                href="http://localhost:8080/auth/google/"
+              >
+                Sign in with Google
+              </a>
             </div>
           </form>
         </div>
