@@ -67,13 +67,13 @@ export const deleteUser = (payload) => {
 
 //calls delete in backend with appropriate endpoint and dispatches the deleteUser func
 //which returns the info of the users to be deleted in the object payload and returns the obj
-export const deleteUserThunk = (useremail) => {
+export const deleteUserThunk = (userid) => {
   return async (dispatch) => {
     try {
       console.log("FETCHDELETEUSERTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_USERS}${useremail}`);
+      await axios.delete(`${process.env.REACT_APP_USERS}${userid}`);
       console.log("FETECHDELETEUSERTHUNK COMPLETED");
-      dispatch(deleteUser(useremail));
+      dispatch(deleteUser(userid));
     } catch (error) {
       console.error(error);
     }
@@ -120,7 +120,7 @@ export const editUserThunk = (user) => {
     try {
       console.log("EDITUSERTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_USERS}${user.email}`,
+        `${process.env.REACT_APP_USERS}${user.id}`,
         user
       );
       console.log("EDITUSERTHUNK COMPLETED");
