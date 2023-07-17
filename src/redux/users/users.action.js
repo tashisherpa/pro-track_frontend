@@ -18,7 +18,7 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCHALLUSERSTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_USERS}`);
+      const response = await axios.get(`${process.env.REACT_APP_USERS}all`);
       console.log("FETCHALLUSERSTHUNK COMPLETED");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
