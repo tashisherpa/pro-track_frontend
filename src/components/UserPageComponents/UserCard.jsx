@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteUserThunk } from "../../redux/users/users.action";
+import EditUser from "./EditUser";
+import { Link } from "react-router-dom";
 
 function UserCard({ user }) {
   const dispatch = useDispatch();
@@ -23,9 +25,11 @@ function UserCard({ user }) {
         </div>
       </div>
       <div>
-        <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-          Edit
-        </button>
+        <Link to={`/users/editUser/${user.id}`}>
+          <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            Edit
+          </button>
+        </Link>
         <button
           className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
           onClick={handleDelete}

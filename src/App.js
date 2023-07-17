@@ -11,6 +11,7 @@ import {
 } from "./pages";
 import PrivateRoute from "./Utils/Auth";
 import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpRequest";
+import EditUser from "./components/UserPageComponents/EditUser";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             - has all the routes that shouldn't be access by someone who isn't a user/logged in
         */}
         <Route element={<PrivateRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} /> {/**tashi */}
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/resources" element={<Resources />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
@@ -35,7 +36,8 @@ function App() {
           <Route path="/helprequests" element={<HelpRequests />} />
           {/**tashi */}
           <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
-          <Route path="/users" element={<Users />} /> {/**WIP */}
+          <Route path="/users" element={<Users />} /> 
+          <Route path="/users/editUser/:id" element={<EditUser />} />
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
         </Route>
