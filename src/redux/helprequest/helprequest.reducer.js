@@ -1,4 +1,4 @@
-import HelpRequestActionType from "./HELP_REQUESTs.types";
+import HelpRequestActionType from "./helprequest.types";
 
 //define the initial state for all HELP_REQUESTs array and single HELP_REQUEST object
 export const INITIAL_HELP_REQUEST_STATE = {

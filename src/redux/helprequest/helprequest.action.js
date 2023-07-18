@@ -1,7 +1,7 @@
 import axios from "axios";
 import HelpRequestActionType from "./helprequest.types";
 
-export const fethcAllHelpRequests = (payload) => {
+export const fetchAllHelpRequests = (payload) => {
   console.log("FETCH ALL HELP REQUESTS ACTION");
   return {
     type: HelpRequestActionType.FETCH_ALL_HELP_REQUESTS,
@@ -9,7 +9,7 @@ export const fethcAllHelpRequests = (payload) => {
   };
 };
 
-export const fethcAllHelpRequestsThunk = () => {
+export const fetchAllHelpRequestsThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCHALLHELPREQUESTSTHUNK IS FIRING");
@@ -17,7 +17,7 @@ export const fethcAllHelpRequestsThunk = () => {
         `${process.env.REACT_APP_HELP_REQUESTS}all`
       );
       console.log("FETCHALLHELPREQUESTSTHUNK COMPLETED");
-      dispatch(fethcAllHelpRequests(response.data));
+      dispatch(fetchAllHelpRequests(response.data));
     } catch (error) {
       console.error(error);
     }
