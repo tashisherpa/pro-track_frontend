@@ -18,7 +18,7 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       console.log("FETCHALLUSERSTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_USERS}`);
+      const response = await axios.get(`${process.env.REACT_APP_USERS}all`);
       console.log("FETCHALLUSERSTHUNK COMPLETED");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
@@ -40,13 +40,11 @@ export const fetchSingleUser = (payload) => {
 //gets the single user info from database in response const
 //and response const data is dispatched to the fetchSingleUser func
 //which stores the user's info in the object payload and returns the object
-export const fetchSingleUserThunk = (useremail) => {
+export const fetchSingleUserThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
-      const response = await axios.get(
-        `${process.env.REACT_APP_USERS}${useremail}`
-      );
+      const response = await axios.get(`${process.env.REACT_APP_USERS}${id}`);
       console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
       dispatch(fetchSingleUser(response.data));
     } catch (error) {
