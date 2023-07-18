@@ -43,6 +43,7 @@ export const fetchSingleUser = (payload) => {
 //which stores the user's info in the object payload and returns the object
 export const fetchSingleUserThunk = (id) => {
   return async (dispatch) => {
+    console.log(id);
     try {
       console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
       console.log(id);
@@ -54,7 +55,7 @@ export const fetchSingleUserThunk = (id) => {
         console.log("No User found");
       }
       console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
-      dispatch(fetchSingleUser(response.data));
+      dispatch(fetchSingleUser(response.data.id));
     } catch (error) {
       console.error(error);
     }
@@ -144,7 +145,7 @@ export const editUserThunk = (user) => {
 export const me = () => async (dispatch) => {
   try {
     const res = await axios.get(`${process.env.REACT_APP_AUTH}me`);
-    dispatch(fetchSingleUserThunk(res.data || UserActionType.singleUser));
+    dispatch(fetchSingleUserThunk(res.data.id || UserActionType.singleUser.id));
   } catch (err) {
     console.error(err);
   }
@@ -188,7 +189,7 @@ export const signupAuth =
       return dispatch(fetchSingleUserThunk({ error: authError }));
     }
     try {
-      dispatch(fetchSingleUserThunk(res.data));
+      dispatch(fetchSingleUserThunk(res.data.id));
       // history.push("/dashboard");
     } catch (dispatchOrHistoryErr) {
       console.error(dispatchOrHistoryErr);
