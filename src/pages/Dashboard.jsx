@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SideNavBar from "../components/SideNavBar";
 import {
   PostAnnouncement,
   DashboardStudentView,
   ZoomInfo,
 } from "../components/DashboardPageComponents";
+import { fetchAllFeedThunk } from "../redux/feed/feed.action";
+import { useDispatch, useSelector } from "react-redux";
+
 function Dashboard() {
 
   //states
   const [isAdmin, setIsAdmin] = useState(false);
   const [showAddAnnouncement, setShowAddAnnouncement] = useState(false);
+
+  const dispatch = useDispatch();
+  const allFeed = useSelector((state) => state.feed.allFeed);
+
+  useEffect(() => {
+    console.log("FETCH ALL FEED FIRING IN USE EFFECT");
+
+    const fetchAllFeed = () => {
+      console.log("RUNNING DISPATCH FROM FETCHALLFEED");
+      return dispatch(fetchAllFeedThunk());
+    };
+    fetchAllFeed();
+  }, [dispatch]);
+  console.log("All Feed", allFeed);
 
   const handleAddAnouncement = () => {
     setShowAddAnnouncement(true);
