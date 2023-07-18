@@ -1,0 +1,9 @@
+const LectureActionType = {
+    FETCH_ALL_LECTURES: "FETCH_ALL_LECTURES",
+    FETCH_SINGLE_LECTURE: "FETCH_SINGLE_LECTURE",
+    DELETE_LECTURE: "DELETE_LECTURE",
+    EDIT_LECTURE: "EDIT_LECTURE",
+    ADD_LECTURE: "ADD_LECTURE",
+  };
+  
+  export default LectureActionType;
