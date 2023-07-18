@@ -3,6 +3,7 @@ import users from "./users/users.reducer";
 import resources from "./resources/resources.reducer";
 import lectures from "./lectures/lectures.reducer";
 import helpRequests from "./helprequest/helprequest.reducer";
+import assignments from "./assignment/assignments.reducer";
 
 //use to manage the overall state of the application
 //users each manage specific parts of the state
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   resources: resources,
   lectures: lectures,
   helpRequests: helpRequests,
+  assignments: assignments,
 });
 
 export default rootReducer;
