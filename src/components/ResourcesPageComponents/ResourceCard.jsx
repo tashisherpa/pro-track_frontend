@@ -22,9 +22,9 @@ function ResourceCard() {
         {
           /*Only visible to TA/Admins */
           isAdmin ? (
-              <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-                Edit
-              </button>
+            <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+              Edit
+            </button>
           ) : null
         }
       </div>
