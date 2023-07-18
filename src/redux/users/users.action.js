@@ -19,6 +19,7 @@ export const fetchAllUsersThunk = () => {
     try {
       console.log("FETCHALLUSERSTHUNK IS FIRING");
       const response = await axios.get(`${process.env.REACT_APP_USERS}all`);
+      console.log(response.data);
       console.log("FETCHALLUSERSTHUNK COMPLETED");
       dispatch(fetchAllUsers(response.data));
     } catch (error) {
@@ -45,6 +46,9 @@ export const fetchSingleUserThunk = (id) => {
     try {
       console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
       const response = await axios.get(`${process.env.REACT_APP_USERS}${id}`);
+      if (!response.data) {
+        console.log("No User found");
+      }
       console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
       dispatch(fetchSingleUser(response.data));
     } catch (error) {
@@ -130,9 +134,34 @@ export const editUserThunk = (user) => {
   };
 };
 
-export const loginAuth = (email, password) => async (dispatch) => {
+/**
+ * THUNK CREATORS
+ */
+export const me = () => async (dispatch) => {
   try {
-    dispatch(fetchSingleUserThunk(email));
+    const res = await axios.get(`${process.env.REACT_APP_AUTH}me`);
+    dispatch(fetchSingleUserThunk(res.data || UserActionType.singleUser));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const loginAuth = (email, password) => async (dispatch) => {
+  let res;
+  console.log("Login Auth is Running");
+  try {
+    res = await axios.post(`${process.env.REACT_APP_AUTH}login`, {
+      email,
+      password,
+    });
+    if (!res.data) {
+      console.log("NO USER");
+    }
+  } catch (authError) {
+    return dispatch(fetchSingleUserThunk({ error: authError }));
+  }
+  try {
+    dispatch(fetchSingleUserThunk(res.data.id));
     // history.push("/dashboard");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
@@ -142,14 +171,22 @@ export const loginAuth = (email, password) => async (dispatch) => {
 export const signupAuth =
   (firstName, lastName, email, password) => async (dispatch) => {
     let res;
+    console.log("Sign Auth is Running");
     try {
-      res = await axios.post(`${process.env.REACT_APP_USERS}`, {
+      res = await axios.post(`${process.env.REACT_APP_AUTH}signup`, {
         firstName,
         lastName,
         email,
         password,
       });
+      console.log("Signed up user info:", res.data);
     } catch (authError) {
       return dispatch(fetchSingleUserThunk({ error: authError }));
+    }
+    try {
+      dispatch(fetchSingleUserThunk(res.data));
+      // history.push("/dashboard");
+    } catch (dispatchOrHistoryErr) {
+      console.error(dispatchOrHistoryErr);
     }
   };

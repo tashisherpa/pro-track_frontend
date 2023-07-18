@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
  * COMPONENT
  */
 const Login = ({ name, displayName }) => {
-  const user = useSelector((state) => state.users.singleUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -71,7 +70,7 @@ const Login = ({ name, displayName }) => {
                 Sign Up
               </Link>
               <a
-                class="button google"
+                className="button google"
                 href="http://localhost:8080/auth/google/"
               >
                 Sign in with Google
