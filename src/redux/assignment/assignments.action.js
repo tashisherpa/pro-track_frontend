@@ -2,7 +2,7 @@ import axios from "axios";
 import AssignmentActionType from "./assignments.types";
 
 export const fetchAllAssignments = (payload) => {
-  console.log("FETCH ALL RESOURCES ACTION");
+  console.log("FETCH ALL ASSIGNMENTS ACTION");
   return {
     type: AssignmentActionType.FETCH_ALL_ASSIGNMENTS,
     payload: payload,
@@ -14,7 +14,7 @@ export const fetchAllAssignmentsThunk = () => {
     try {
       console.log("FETCHALLASSIGNMENTSTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_HELP_ASSIGNMENTS}all`
+        `${process.env.REACT_APP_ASSIGNMENTS}all`
       );
       console.log("FETCHALLASSIGNMENTSTHUNK COMPLETED");
       dispatch(fetchAllAssignments(response.data));
@@ -25,7 +25,7 @@ export const fetchAllAssignmentsThunk = () => {
 };
 
 export const fetchSingleAssignment = (payload) => {
-  console.log("FETCH SINGLE RESOURCE ACTION");
+  console.log("FETCH SINGLE ASSIGNMENT ACTION");
   return {
     type: AssignmentActionType.FETCH_SINGLE_ASSIGNMENT,
     payload: payload,
@@ -37,7 +37,7 @@ export const fetchSingleAssignmentThunk = (id) => {
     try {
       console.log("FETCHSINGLEASSIGNMENTTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_HELP_ASSIGNMENTS}${id}`
+        `${process.env.REACT_APP_ASSIGNMENTS}${id}`
       );
       console.log("FETCHSINGLEASSIGNMENTTHUNK COMPLETED");
       dispatch(fetchSingleAssignment(response.data));
@@ -50,7 +50,7 @@ export const fetchSingleAssignmentThunk = (id) => {
 export const deleteAssignment = (payload) => {
   console.log("DELETE ASSIGNMENT ACTION ACTIVE");
   return {
-    type: AssignmentActionType.DELETE_RESOURCE,
+    type: AssignmentActionType.DELETE_ASSIGNMENT,
     payload: payload,
   };
 };
@@ -59,7 +59,7 @@ export const deleteAssignmentThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCHDELETEASSIGNMENTTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_HELP_ASSIGNMENTS}${id}`);
+      await axios.delete(`${process.env.REACT_APP_ASSIGNMENTS}${id}`);
       console.log("FETCHDELETEASSIGNMENTTHUNK COMPLETED");
       dispatch(deleteAssignment(id));
     } catch (error) {
@@ -71,7 +71,7 @@ export const deleteAssignmentThunk = (id) => {
 export const addAssignment = (payload) => {
   console.log("ADD ASSIGNMENT ACTIVE");
   return {
-    type: AssignmentActionType.ADD_RESOURCE,
+    type: AssignmentActionType.ADD_ASSIGNMENT,
     payload: payload,
   };
 };
@@ -81,7 +81,7 @@ export const addAssignmentThunk = (newAssignment) => {
     try {
       console.log("ADDASSIGNMENTTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_HELP_ASSIGNMENTS,
+        process.env.REACT_APP_ASSIGNMENTS,
         newAssignment
       );
       console.log("ADDASSIGNMENTTHUNK COMPLETED");
@@ -95,7 +95,7 @@ export const addAssignmentThunk = (newAssignment) => {
 export const editAssignment = (payload) => {
   console.log("EDIT ASSIGNMENT ACTION ACTIVE");
   return {
-    type: AssignmentActionType.EDIT_RESOURCE,
+    type: AssignmentActionType.EDIT_ASSIGNMENT,
     payload: payload,
   };
 };
@@ -105,7 +105,7 @@ export const editAssignmentThunk = (assignment) => {
     try {
       console.log("EDITASSIGNMENTTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_HELP_ASSIGNMENTS}${assignment.id}`,
+        `${process.env.REACT_APP_ASSIGNMENTS}${assignment.id}`,
         assignment
       );
       console.log("EDITASSIGNMENTTHUNK COMPLETED");
