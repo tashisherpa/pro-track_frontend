@@ -45,6 +45,10 @@ export const fetchSingleUserThunk = (id) => {
   return async (dispatch) => {
     try {
       console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
+      console.log(id);
+      if (typeof id !=="number") {
+        return;
+      }
       const response = await axios.get(`${process.env.REACT_APP_USERS}${id}`);
       if (!response.data) {
         console.log("No User found");
