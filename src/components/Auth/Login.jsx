@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 /**
  * COMPONENT
@@ -10,6 +11,17 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = ({ name, displayName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useAuth();
+
+  useEffect(() => {
+    console.log("useEffectCalled: ", user);
+    if(user.email){
+      navigate("/dashboard");
+    }
+    else{
+      navigate("/");
+    }
+  }, [user]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -17,7 +29,6 @@ const Login = ({ name, displayName }) => {
     console.log("email: ", email);
     const password = evt.target.password.value;
     dispatch(loginAuth(email, password));
-    navigate("/dashboard");
   };
 
   return (
