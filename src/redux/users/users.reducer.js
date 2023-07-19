@@ -4,11 +4,12 @@ import UserActionType from "./users.types";
 export const INITIAL_USER_STATE = {
   allUsers: [],
   singleUser: {},
+  authUser:{},
 };
 
 //handle the action type
 const users = (state = INITIAL_USER_STATE, action) => {
-  console.log("USERREDUCER IS HANDLING FETCH ALL USER ACTION");
+  //console.log("USERREDUCER IS HANDLING FETCH ALL USER ACTION");
   switch (action.type) {
     case UserActionType.FETCH_ALL_USERS:
       return { ...state, allUsers: action.payload };
@@ -16,6 +17,11 @@ const users = (state = INITIAL_USER_STATE, action) => {
       return {
         ...state,
         singleUser: action.payload,
+      };
+    case UserActionType.AUTH_USER:
+      return {
+        ...state,
+        authUser: action.payload,
       };
     case UserActionType.DELETE_USER:
       return {

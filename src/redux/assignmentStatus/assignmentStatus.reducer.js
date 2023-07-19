@@ -8,7 +8,7 @@ export const INITIAL_ASSIGNMENTS_STATUS_STATE = {
 
 //handle the action type
 const assignmentsStatus = (state = INITIAL_ASSIGNMENTS_STATUS_STATE, action) => {
-  console.log("ASSIGNMENTSSTATUSREDUCER IS HANDLING FETCH ALL ASSIGNMNETSSTATUS ACTION");
+  //console.log("ASSIGNMENTSSTATUSREDUCER IS HANDLING FETCH ALL ASSIGNMNETSSTATUS ACTION");
   switch (action.type) {
     case AssignmentsStatusActionType.FETCH_ALL_ASSIGNMENTS_STATUS:
       return { ...state, allAssignmentsStatus: action.payload };

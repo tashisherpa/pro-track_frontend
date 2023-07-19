@@ -1,9 +1,10 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector} from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate } from "react-router-dom";
 import {fetchAuthUserThunk} from "../../redux/users/users.action";
+import useAuth from "../../hooks/useAuth";
 
 /**
  * COMPONENT
@@ -11,6 +12,17 @@ import {fetchAuthUserThunk} from "../../redux/users/users.action";
 const Login = ({ name, displayName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state)=> state.users.authUser);
+
+  useEffect(() => {
+    console.log("User: ", user);
+    if(user.email){
+      navigate("/dashboard");
+    }
+    else{
+      navigate("/");
+    }
+  }, [user]);
 
   useEffect(() => {
     const fetchAuthUser = () => {
@@ -22,10 +34,9 @@ const Login = ({ name, displayName }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const email = evt.target.email.value;
-    console.log("email: ", email);
+    //console.log("email: ", email);
     const password = evt.target.password.value;
     dispatch(loginAuth(email, password));
-    navigate("/dashboard");
   };
 
   return (

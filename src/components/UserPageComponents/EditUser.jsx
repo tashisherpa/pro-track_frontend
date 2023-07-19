@@ -21,7 +21,7 @@ function EditUser() {
 
   //sets the editForm state to the single user information object
   useEffect(() => {
-    console.log("EDIT CAMPUS FIRING IN USE EFFECT");
+    //console.log("EDIT CAMPUS FIRING IN USE EFFECT");
     setEditForm(user);
   }, [user]);
 
@@ -40,12 +40,12 @@ function EditUser() {
       ...editForm,
       [event.target.name]: event.target.value,
     });
-    console.log("editForm: ", editForm);
+    //console.log("editForm: ", editForm);
   };
 
   const handleEditSubmit = (event) => {
     event.preventDefault();
-    console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
+    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
     dispatch(editUserThunk(editForm)).then(() => {
       navigate(`/users`);
