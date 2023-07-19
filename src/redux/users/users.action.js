@@ -224,6 +224,7 @@ export const fetchAuthUserThunk = () => {
       //console.log("FETCHAUTHUSERTHUNK IS FIRING");
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/me`
+        // `${process.env.REACT_APP_BACKEND_URL}/auth/me`
       );
       if (!response.data) {
         //console.log("No User found");
