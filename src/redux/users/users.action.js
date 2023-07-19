@@ -60,7 +60,7 @@ export const fetchSingleUserThunk = (id) => {
         //console.log("No User found");
       }
       //console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
-      dispatch(fetchSingleUser(response.data.id));
+      dispatch(fetchSingleUser(response.data));
     } catch (error) {
       console.error(error);
     }
