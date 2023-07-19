@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate } from "react-router-dom";
+import {fetchAuthUserThunk} from "../../redux/users/users.action";
 
 /**
  * COMPONENT
@@ -10,6 +11,13 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = ({ name, displayName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchAuthUser = () => {
+      return dispatch(fetchAuthUserThunk());
+    };
+    fetchAuthUser();
+  }, [dispatch]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
