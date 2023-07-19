@@ -12,6 +12,7 @@ import {
 import PrivateRoute from "./Utils/Auth";
 import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpRequest";
 import EditUser from "./components/UserPageComponents/EditUser";
+import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/resources" element={<Resources />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
+          <Route path="/lectures/add" element={<AddLectureForm />} />
           {/**Sabina */}
           <Route path="/assignments" element={<Assignments />} />
           {/**tashi */}

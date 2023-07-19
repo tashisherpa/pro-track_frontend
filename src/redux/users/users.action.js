@@ -236,3 +236,4 @@ export const fetchAuthUserThunk = () => {
     }
   };
 };
+
