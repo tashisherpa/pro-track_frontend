@@ -12,11 +12,11 @@ export const fetchAllHelpRequests = (payload) => {
 export const fetchAllHelpRequestsThunk = () => {
   return async (dispatch) => {
     try {
-      //console.log("FETCHALLHELPREQUESTSTHUNK IS FIRING");
+      console.log("FETCHALLHELPREQUESTSTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_HELP_REQUESTS}all`
+        `${process.env.REACT_APP_HELP_REQUESTS}`
       );
-      //console.log("FETCHALLHELPREQUESTSTHUNK COMPLETED");
+      console.log("FETCHALLHELPREQUESTSTHUNK COMPLETED");
       dispatch(fetchAllHelpRequests(response.data));
     } catch (error) {
       console.error(error);
