@@ -8,7 +8,7 @@ export const INITIAL_LECTURE_STATE = {
 
 //handle the action type
 const lectures = (state = INITIAL_LECTURE_STATE, action) => {
-  console.log("LECTURESREDUCER IS HANDLING FETCH ALL LECTURES ACTION");
+  //console.log("LECTURESREDUCER IS HANDLING FETCH ALL LECTURES ACTION");
   switch (action.type) {
     case LectureActionType.FETCH_ALL_LECTURES:
       return { ...state, allLectures: action.payload };

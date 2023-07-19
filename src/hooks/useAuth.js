@@ -9,7 +9,7 @@ export default function useAuth() {
   useEffect(() =>{
     async function getUser() {
         const response = await axios.get(`${process.env.REACT_APP_AUTH}me`);
-        console.log("User: ", response.data);
+        //console.log("User: ", response.data);
         setUser(response.data);
     }
     getUser();

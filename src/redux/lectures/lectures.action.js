@@ -2,7 +2,7 @@ import axios from "axios";
 import LectureActionType from "./lectures.types";
 
 export const fetchAllLectures = (payload) => {
-  console.log("FETCH ALL LECTURES ACTION");
+  //console.log("FETCH ALL LECTURES ACTION");
   return {
     type: LectureActionType.FETCH_ALL_LECTURES,
     payload: payload,
@@ -12,9 +12,9 @@ export const fetchAllLectures = (payload) => {
 export const fetchAllLecturesThunk = () => {
   return async (dispatch) => {
     try {
-      console.log("FETCHALLLECTURESTHUNK IS FIRING");
+      //console.log("FETCHALLLECTURESTHUNK IS FIRING");
       const response = await axios.get(`${process.env.REACT_APP_LECTURES}all`);
-      console.log("FETCHALLLECTURESTHUNK COMPLETED");
+      //console.log("FETCHALLLECTURESTHUNK COMPLETED");
       dispatch(fetchAllLectures(response.data));
     } catch (error) {
       console.error(error);
@@ -23,7 +23,7 @@ export const fetchAllLecturesThunk = () => {
 };
 
 export const deleteLecture = (payload) => {
-  console.log("DELETE LECTURE ACTION ACTIVE");
+  //console.log("DELETE LECTURE ACTION ACTIVE");
   return {
     type: LectureActionType.DELETE_LECTURE,
     payload: payload,
@@ -33,9 +33,9 @@ export const deleteLecture = (payload) => {
 export const deleteLectureThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCHDELETELECTURETHUNK IS FIRING");
+      //console.log("FETCHDELETELECTURETHUNK IS FIRING");
       await axios.delete(`${process.env.REACT_APP_LECTURES}${id}`);
-      console.log("FETCHDELETELECTURETHUNK COMPLETED");
+      //console.log("FETCHDELETELECTURETHUNK COMPLETED");
       dispatch(deleteLecture(id));
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ export const deleteLectureThunk = (id) => {
 };
 
 export const addLecture = (payload) => {
-  console.log("ADD USER LECTURE ACTIVE");
+  //console.log("ADD USER LECTURE ACTIVE");
   return {
     type: LectureActionType.ADD_LECTURE,
     payload: payload,
@@ -54,12 +54,12 @@ export const addLecture = (payload) => {
 export const addLectureThunk = (newLecture) => {
   return async (dispatch) => {
     try {
-      console.log("ADDLECTURESTHUNK IS FIRING");
+      //console.log("ADDLECTURESTHUNK IS FIRING");
       const response = await axios.post(
         process.env.REACT_APP_LECTURES,
         newLecture
       );
-      console.log("ADDLECTURESTHUNK COMPLETED");
+      //console.log("ADDLECTURESTHUNK COMPLETED");
       dispatch(addLecture(response.data));
     } catch (error) {
       console.error(error);
@@ -68,7 +68,7 @@ export const addLectureThunk = (newLecture) => {
 };
 
 export const editLecture = (payload) => {
-  console.log("EDIT LECTURE ACTION ACTIVE");
+  //console.log("EDIT LECTURE ACTION ACTIVE");
   return {
     type: LectureActionType.EDIT_LECTURE,
     payload: payload,
@@ -78,14 +78,14 @@ export const editLecture = (payload) => {
 export const editLectureThunk = (lecture) => {
   return async (dispatch) => {
     try {
-      console.log("EDITLECTURETHUNK IS FIRING");
+      //console.log("EDITLECTURETHUNK IS FIRING");
       const response = await axios.put(
         `${process.env.REACT_APP_LECTURES}${lecture.id}`,
         lecture
       );
-      console.log("EDITLECTURETHUNK COMPLETED");
+      //console.log("EDITLECTURETHUNK COMPLETED");
       dispatch(editLecture(response.data));
-      console.log("Edit Lecture Data: ", response.data);
+      //console.log("Edit Lecture Data: ", response.data);
     } catch (error) {
       console.error(error);
     }

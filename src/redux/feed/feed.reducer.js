@@ -7,7 +7,7 @@ export const INITIAL_FEED_STATE = {
 
 //handle the action type
 const feed = (state = INITIAL_FEED_STATE, action) => {
-  console.log("FEEDREDUCER IS HANDLING FETCH ALL FEED ACTION");
+  //console.log("FEEDREDUCER IS HANDLING FETCH ALL FEED ACTION");
   switch (action.type) {
     case FeedActionType.FETCH_ALL_FEED:
       return { ...state, allFeed: action.payload };

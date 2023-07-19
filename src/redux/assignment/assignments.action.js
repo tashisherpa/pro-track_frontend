@@ -2,7 +2,7 @@ import axios from "axios";
 import AssignmentActionType from "./assignments.types";
 
 export const fetchAllAssignments = (payload) => {
-  console.log("FETCH ALL ASSIGNMENTS ACTION");
+  //console.log("FETCH ALL ASSIGNMENTS ACTION");
   return {
     type: AssignmentActionType.FETCH_ALL_ASSIGNMENTS,
     payload: payload,
@@ -12,11 +12,11 @@ export const fetchAllAssignments = (payload) => {
 export const fetchAllAssignmentsThunk = () => {
   return async (dispatch) => {
     try {
-      console.log("FETCHALLASSIGNMENTSTHUNK IS FIRING");
+      //console.log("FETCHALLASSIGNMENTSTHUNK IS FIRING");
       const response = await axios.get(
         `${process.env.REACT_APP_ASSIGNMENTS}all`
       );
-      console.log("FETCHALLASSIGNMENTSTHUNK COMPLETED");
+      //console.log("FETCHALLASSIGNMENTSTHUNK COMPLETED");
       dispatch(fetchAllAssignments(response.data));
     } catch (error) {
       console.error(error);
@@ -25,7 +25,7 @@ export const fetchAllAssignmentsThunk = () => {
 };
 
 export const fetchSingleAssignment = (payload) => {
-  console.log("FETCH SINGLE ASSIGNMENT ACTION");
+  //console.log("FETCH SINGLE ASSIGNMENT ACTION");
   return {
     type: AssignmentActionType.FETCH_SINGLE_ASSIGNMENT,
     payload: payload,
@@ -35,11 +35,11 @@ export const fetchSingleAssignment = (payload) => {
 export const fetchSingleAssignmentThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCHSINGLEASSIGNMENTTHUNK IS FIRING");
+      //console.log("FETCHSINGLEASSIGNMENTTHUNK IS FIRING");
       const response = await axios.get(
         `${process.env.REACT_APP_ASSIGNMENTS}${id}`
       );
-      console.log("FETCHSINGLEASSIGNMENTTHUNK COMPLETED");
+      //console.log("FETCHSINGLEASSIGNMENTTHUNK COMPLETED");
       dispatch(fetchSingleAssignment(response.data));
     } catch (error) {
       console.error(error);
@@ -48,7 +48,7 @@ export const fetchSingleAssignmentThunk = (id) => {
 };
 
 export const deleteAssignment = (payload) => {
-  console.log("DELETE ASSIGNMENT ACTION ACTIVE");
+  //console.log("DELETE ASSIGNMENT ACTION ACTIVE");
   return {
     type: AssignmentActionType.DELETE_ASSIGNMENT,
     payload: payload,
@@ -58,9 +58,9 @@ export const deleteAssignment = (payload) => {
 export const deleteAssignmentThunk = (id) => {
   return async (dispatch) => {
     try {
-      console.log("FETCHDELETEASSIGNMENTTHUNK IS FIRING");
+      //console.log("FETCHDELETEASSIGNMENTTHUNK IS FIRING");
       await axios.delete(`${process.env.REACT_APP_ASSIGNMENTS}${id}`);
-      console.log("FETCHDELETEASSIGNMENTTHUNK COMPLETED");
+      //console.log("FETCHDELETEASSIGNMENTTHUNK COMPLETED");
       dispatch(deleteAssignment(id));
     } catch (error) {
       console.error(error);
@@ -69,7 +69,7 @@ export const deleteAssignmentThunk = (id) => {
 };
 
 export const addAssignment = (payload) => {
-  console.log("ADD ASSIGNMENT ACTIVE");
+  //console.log("ADD ASSIGNMENT ACTIVE");
   return {
     type: AssignmentActionType.ADD_ASSIGNMENT,
     payload: payload,
@@ -79,12 +79,12 @@ export const addAssignment = (payload) => {
 export const addAssignmentThunk = (newAssignment) => {
   return async (dispatch) => {
     try {
-      console.log("ADDASSIGNMENTTHUNK IS FIRING");
+      //console.log("ADDASSIGNMENTTHUNK IS FIRING");
       const response = await axios.post(
         process.env.REACT_APP_ASSIGNMENTS,
         newAssignment
       );
-      console.log("ADDASSIGNMENTTHUNK COMPLETED");
+      //console.log("ADDASSIGNMENTTHUNK COMPLETED");
       dispatch(addAssignment(response.data));
     } catch (error) {
       console.error(error);
@@ -93,7 +93,7 @@ export const addAssignmentThunk = (newAssignment) => {
 };
 
 export const editAssignment = (payload) => {
-  console.log("EDIT ASSIGNMENT ACTION ACTIVE");
+  //console.log("EDIT ASSIGNMENT ACTION ACTIVE");
   return {
     type: AssignmentActionType.EDIT_ASSIGNMENT,
     payload: payload,
@@ -103,14 +103,14 @@ export const editAssignment = (payload) => {
 export const editAssignmentThunk = (assignment) => {
   return async (dispatch) => {
     try {
-      console.log("EDITASSIGNMENTTHUNK IS FIRING");
+      //console.log("EDITASSIGNMENTTHUNK IS FIRING");
       const response = await axios.put(
         `${process.env.REACT_APP_ASSIGNMENTS}${assignment.id}`,
         assignment
       );
-      console.log("EDITASSIGNMENTTHUNK COMPLETED");
+      //console.log("EDITASSIGNMENTTHUNK COMPLETED");
       dispatch(editAssignment(response.data));
-      console.log("Edit Assignment Data: ", response.data);
+      //console.log("Edit Assignment Data: ", response.data);
     } catch (error) {
       console.error(error);
     }

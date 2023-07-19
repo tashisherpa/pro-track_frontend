@@ -8,7 +8,7 @@ export const INITIAL_RESOURCE_STATE = {
 
 //handle the action type
 const resources = (state = INITIAL_RESOURCE_STATE, action) => {
-  console.log("RESOURCESREDUCER IS HANDLING FETCH ALL RESOURCES ACTION");
+  //console.log("RESOURCESREDUCER IS HANDLING FETCH ALL RESOURCES ACTION");
   switch (action.type) {
     case ResourceActionType.FETCH_ALL_RESOURCES:
       return { ...state, allResources: action.payload };

@@ -10,10 +10,10 @@ function UserCard({ user }) {
     "https://i.pinimg.com/564x/b2/45/2b/b2452bd4499ed406e6f0dfc14138f182.jpg";
 
   const handleDelete = () => {
-    console.log("TRYING TO DELETE USER");
+    //console.log("TRYING TO DELETE USER");
     dispatch(deleteUserThunk(user.id));
-    console.log(user.id);
-    console.log("USER DELETED");
+    //console.log(user.id);
+    //console.log("USER DELETED");
   };
 
   return (

@@ -31,6 +31,6 @@ export const signInWithGoogle = () =>{
   const lastName = result.user.displayName.split(" ")[1];
   const photoURL = result.user.photoURL;
   }).catch((error)=> {
-    console.log("auth failed")
+    //console.log("auth failed")
   })
 }

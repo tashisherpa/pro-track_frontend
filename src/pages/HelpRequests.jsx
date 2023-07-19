@@ -12,15 +12,15 @@ function HelpRequests() {
     (state) => state.helpRequests.allHelpRequests
   );
   useEffect(() => {
-    console.log("FETCH ALL HELP REQUESTS FIRING IN USE EFFECT");
+    //console.log("FETCH ALL HELP REQUESTS FIRING IN USE EFFECT");
 
     const fetchAllHelpRequets = () => {
-      console.log("RUNNING DISPATCH FROM FETCHALLHELPREQUEST");
+      //console.log("RUNNING DISPATCH FROM FETCHALLHELPREQUEST");
       return dispatch(fetchAllHelpRequestsThunk());
     };
     fetchAllHelpRequets();
   }, [dispatch]);
-  console.log("All Help Requests", allHelpRequests);
+  //console.log("All Help Requests", allHelpRequests);
   const [isStudent, setIsStudent] = useState(true);
   return (
     <div>

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate } from "react-router-dom";
+import {fetchAuthUserThunk} from "../../redux/users/users.action";
 import useAuth from "../../hooks/useAuth";
 
 /**
@@ -11,10 +12,10 @@ import useAuth from "../../hooks/useAuth";
 const Login = ({ name, displayName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useAuth();
+  const user = useSelector((state)=> state.users.authUser);
 
   useEffect(() => {
-    console.log("useEffectCalled: ", user);
+    console.log("User: ", user);
     if(user.email){
       navigate("/dashboard");
     }
@@ -23,10 +24,17 @@ const Login = ({ name, displayName }) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    const fetchAuthUser = () => {
+      return dispatch(fetchAuthUserThunk());
+    };
+    fetchAuthUser();
+  }, [dispatch]);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const email = evt.target.email.value;
-    console.log("email: ", email);
+    //console.log("email: ", email);
     const password = evt.target.password.value;
     dispatch(loginAuth(email, password));
   };

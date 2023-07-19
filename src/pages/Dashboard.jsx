@@ -18,15 +18,15 @@ function Dashboard() {
   const allFeed = useSelector((state) => state.feed.allFeed);
 
   useEffect(() => {
-    console.log("FETCH ALL FEED FIRING IN USE EFFECT");
+    //console.log("FETCH ALL FEED FIRING IN USE EFFECT");
 
     const fetchAllFeed = () => {
-      console.log("RUNNING DISPATCH FROM FETCHALLFEED");
+      //console.log("RUNNING DISPATCH FROM FETCHALLFEED");
       return dispatch(fetchAllFeedThunk());
     };
     fetchAllFeed();
   }, [dispatch]);
-  console.log("All Feed", allFeed);
+  //console.log("All Feed", allFeed);
 
   const handleAddAnouncement = () => {
     setShowAddAnnouncement(true);

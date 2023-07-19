@@ -9,7 +9,7 @@ export const INITIAL_USER_STATE = {
 
 //handle the action type
 const users = (state = INITIAL_USER_STATE, action) => {
-  console.log("USERREDUCER IS HANDLING FETCH ALL USER ACTION");
+  //console.log("USERREDUCER IS HANDLING FETCH ALL USER ACTION");
   switch (action.type) {
     case UserActionType.FETCH_ALL_USERS:
       return { ...state, allUsers: action.payload };
@@ -18,7 +18,7 @@ const users = (state = INITIAL_USER_STATE, action) => {
         ...state,
         singleUser: action.payload,
       };
-      case UserActionType.AUTH_USER:
+    case UserActionType.AUTH_USER:
       return {
         ...state,
         authUser: action.payload,

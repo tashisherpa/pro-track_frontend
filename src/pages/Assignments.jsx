@@ -9,29 +9,29 @@ function Assignments() {
     (state) => state.assignments.allAssignments
   );
   useEffect(() => {
-    console.log("FETCH ALL ASSIGNMENTS FIRING IN USE EFFECT");
+    //console.log("FETCH ALL ASSIGNMENTS FIRING IN USE EFFECT");
 
     const fetchAllAssignments = () => {
-      console.log("RUNNING DISPATCH FROM FETCHALLASSIGNMENTS");
+      //console.log("RUNNING DISPATCH FROM FETCHALLASSIGNMENTS");
       return dispatch(fetchAllAssignmentsThunk());
     };
     fetchAllAssignments();
   }, [dispatch]);
-  console.log("All Assignments", allAssignments);
+  //console.log("All Assignments", allAssignments);
 
   const allAssignmentsStatus = useSelector(
     (state) => state.assignmentsStatus.allAssignmentsStatus
   );
   useEffect(() => {
-    console.log("FETCH ALL ASSIGNMENTS STATUS REQUESTS FIRING IN USE EFFECT");
+    //console.log("FETCH ALL ASSIGNMENTS STATUS REQUESTS FIRING IN USE EFFECT");
 
     const fetchAllAssignmentsStatus = () => {
-      console.log("RUNNING DISPATCH FROM FETCHALLASSIGNMENTSSTATUS");
+      //console.log("RUNNING DISPATCH FROM FETCHALLASSIGNMENTSSTATUS");
       return dispatch(fetchAllAssignmentsStatusThunk());
     };
     fetchAllAssignmentsStatus();
   }, [dispatch]);
-  console.log("All Assignments Status: ", allAssignmentsStatus);
+  //console.log("All Assignments Status: ", allAssignmentsStatus);
 
   return (
     <div>
