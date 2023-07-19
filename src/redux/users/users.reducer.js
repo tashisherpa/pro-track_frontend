@@ -4,6 +4,7 @@ import UserActionType from "./users.types";
 export const INITIAL_USER_STATE = {
   allUsers: [],
   singleUser: {},
+  authUser:{},
 };
 
 //handle the action type
@@ -16,6 +17,11 @@ const users = (state = INITIAL_USER_STATE, action) => {
       return {
         ...state,
         singleUser: action.payload,
+      };
+      case UserActionType.AUTH_USER:
+      return {
+        ...state,
+        authUser: action.payload,
       };
     case UserActionType.DELETE_USER:
       return {

@@ -46,6 +46,10 @@ export const fetchSingleUserThunk = (id) => {
     console.log(id);
     try {
       console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
+      console.log(id);
+      if (typeof id !=="number") {
+        return;
+      }
       const response = await axios.get(`${process.env.REACT_APP_USERS}${id}`);
       if (!response.data) {
         console.log("No User found");
@@ -191,3 +195,32 @@ export const signupAuth =
       console.error(dispatchOrHistoryErr);
     }
   };
+
+
+
+export const fetchAuthUser = (payload) => {
+  console.log("FETCH AUTH USER ACTION");
+  return {
+    type: UserActionType.AUTH_USER,
+    payload: payload,
+  };
+};
+
+
+export const fetchAuthUserThunk = () => {
+  return async (dispatch) => {
+    
+    try {
+      console.log("FETCHAUTHUSERTHUNK IS FIRING");
+      const response = await axios.get(`${process.env.REACT_APP_AUTH}me`);
+      if (!response.data) {
+        console.log("No User found");
+        return;
+      }
+      console.log("FETCHAUTHUSERTHUNK COMPLETED");
+      dispatch(fetchAuthUser(response.data.id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
