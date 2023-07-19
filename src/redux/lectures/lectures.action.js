@@ -58,12 +58,13 @@ export const addLecture = (payload) => {
 export const addLectureThunk = (newLecture) => {
   return async (dispatch) => {
     try {
-      //console.log("ADDLECTURESTHUNK IS FIRING");
+      console.log("ADDLECTURESTHUNK IS FIRING");
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/lecture/`,
         newLecture
       );
-      //console.log("ADDLECTURESTHUNK COMPLETED");
+      console.log("ADDLECTURESTHUNK COMPLETED");
+      console.log("lecture: ", response.data);
       dispatch(addLecture(response.data));
     } catch (error) {
       console.error(error);
