@@ -14,7 +14,7 @@ export const fetchAllAssignmentsThunk = () => {
     try {
       //console.log("FETCHALLASSIGNMENTSTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_ASSIGNMENTS}all`
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment/all`
       );
       //console.log("FETCHALLASSIGNMENTSTHUNK COMPLETED");
       dispatch(fetchAllAssignments(response.data));
@@ -37,7 +37,7 @@ export const fetchSingleAssignmentThunk = (id) => {
     try {
       //console.log("FETCHSINGLEASSIGNMENTTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_ASSIGNMENTS}${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment/${id}`
       );
       //console.log("FETCHSINGLEASSIGNMENTTHUNK COMPLETED");
       dispatch(fetchSingleAssignment(response.data));
@@ -59,7 +59,9 @@ export const deleteAssignmentThunk = (id) => {
   return async (dispatch) => {
     try {
       //console.log("FETCHDELETEASSIGNMENTTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_ASSIGNMENTS}${id}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment/${id}`
+      );
       //console.log("FETCHDELETEASSIGNMENTTHUNK COMPLETED");
       dispatch(deleteAssignment(id));
     } catch (error) {
@@ -81,7 +83,7 @@ export const addAssignmentThunk = (newAssignment) => {
     try {
       //console.log("ADDASSIGNMENTTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_ASSIGNMENTS,
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment/`,
         newAssignment
       );
       //console.log("ADDASSIGNMENTTHUNK COMPLETED");
@@ -105,7 +107,7 @@ export const editAssignmentThunk = (assignment) => {
     try {
       //console.log("EDITASSIGNMENTTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_ASSIGNMENTS}${assignment.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment/${assignment.id}`,
         assignment
       );
       //console.log("EDITASSIGNMENTTHUNK COMPLETED");

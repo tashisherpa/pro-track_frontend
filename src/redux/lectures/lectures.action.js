@@ -13,7 +13,9 @@ export const fetchAllLecturesThunk = () => {
   return async (dispatch) => {
     try {
       //console.log("FETCHALLLECTURESTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_LECTURES}all`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/lecture/all`
+      );
       //console.log("FETCHALLLECTURESTHUNK COMPLETED");
       dispatch(fetchAllLectures(response.data));
     } catch (error) {
@@ -34,7 +36,9 @@ export const deleteLectureThunk = (id) => {
   return async (dispatch) => {
     try {
       //console.log("FETCHDELETELECTURETHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_LECTURES}${id}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${id}`
+      );
       //console.log("FETCHDELETELECTURETHUNK COMPLETED");
       dispatch(deleteLecture(id));
     } catch (error) {
@@ -56,7 +60,7 @@ export const addLectureThunk = (newLecture) => {
     try {
       //console.log("ADDLECTURESTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_LECTURES,
+        `${process.env.REACT_APP_BACKEND_URL}/api/lecture/`,
         newLecture
       );
       //console.log("ADDLECTURESTHUNK COMPLETED");
@@ -80,7 +84,7 @@ export const editLectureThunk = (lecture) => {
     try {
       //console.log("EDITLECTURETHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_LECTURES}${lecture.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${lecture.id}`,
         lecture
       );
       //console.log("EDITLECTURETHUNK COMPLETED");
