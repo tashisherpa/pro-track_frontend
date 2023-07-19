@@ -18,7 +18,10 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       //console.log("FETCHALLUSERSTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_USERS}all`);
+      console.log(`${process.env.REACT_APP_BACKEND_URL}/api/user/`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/all`
+      );
       //console.log(response.data);
       //console.log("FETCHALLUSERSTHUNK COMPLETED");
       dispatch(fetchAllUsers(response.data));
@@ -47,10 +50,12 @@ export const fetchSingleUserThunk = (id) => {
     try {
       //console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
       //console.log(id);
-      if (typeof id !=="number") {
+      if (typeof id !== "number") {
         return;
       }
-      const response = await axios.get(`${process.env.REACT_APP_USERS}${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`
+      );
       if (!response.data) {
         //console.log("No User found");
       }
@@ -78,7 +83,9 @@ export const deleteUserThunk = (userid) => {
   return async (dispatch) => {
     try {
       //console.log("FETCHDELETEUSERTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_USERS}${userid}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/${userid}`
+      );
       //console.log("FETECHDELETEUSERTHUNK COMPLETED");
       dispatch(deleteUser(userid));
     } catch (error) {
@@ -103,7 +110,10 @@ export const addUserThunk = (newUser) => {
   return async (dispatch) => {
     try {
       //console.log("ADDUSERTHUNK IS FIRING");
-      const response = await axios.post(process.env.REACT_APP_USER, newUser);
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URL,
+        newUser
+      );
       //console.log("ADDUSERTHUNK COMPLETED");
       dispatch(addUser(response.data));
     } catch (error) {
@@ -127,7 +137,7 @@ export const editUserThunk = (user) => {
     try {
       //console.log("EDITUSERTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_USERS}${user.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/${user.id}`,
         user
       );
       //console.log("EDITUSERTHUNK COMPLETED");
@@ -144,7 +154,7 @@ export const editUserThunk = (user) => {
  */
 export const me = () => async (dispatch) => {
   try {
-    const res = await axios.get(`${process.env.REACT_APP_AUTH}me`);
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/me`);
     dispatch(fetchSingleUserThunk(res.data.id || UserActionType.singleUser.id));
   } catch (err) {
     console.error(err);
@@ -154,8 +164,9 @@ export const me = () => async (dispatch) => {
 export const loginAuth = (email, password) => async (dispatch) => {
   let res;
   //console.log("Login Auth is Running");
+  console.log(`${process.env.REACT_APP_BACKEND_URL}/auth/login`);
   try {
-    res = await axios.post(`${process.env.REACT_APP_AUTH}login`, {
+    res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
       email,
       password,
     });
@@ -178,12 +189,15 @@ export const signupAuth =
     let res;
     //console.log("Sign Auth is Running");
     try {
-      res = await axios.post(`${process.env.REACT_APP_AUTH}signup`, {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
+      res = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+        }
+      );
       //console.log("Signed up user info:", res.data);
     } catch (authError) {
       return dispatch(fetchSingleUserThunk({ error: authError }));
@@ -196,8 +210,6 @@ export const signupAuth =
     }
   };
 
-
-
 export const fetchAuthUser = (payload) => {
   //console.log("FETCH AUTH USER ACTION");
   return {
@@ -206,13 +218,13 @@ export const fetchAuthUser = (payload) => {
   };
 };
 
-
 export const fetchAuthUserThunk = () => {
   return async (dispatch) => {
-    
     try {
       //console.log("FETCHAUTHUSERTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_AUTH}me`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/me`
+      );
       if (!response.data) {
         //console.log("No User found");
         return;

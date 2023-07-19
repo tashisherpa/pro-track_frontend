@@ -13,7 +13,9 @@ export const fetchAllResourcesThunk = () => {
   return async (dispatch) => {
     try {
       //console.log("FETCHALLRESOURCESTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_RESOURCES}all`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/resource/all`
+      );
       //console.log("FETCHALLRESOURCESTHUNK COMPLETED");
       dispatch(fetchAllResources(response.data));
     } catch (error) {
@@ -35,7 +37,7 @@ export const fetchSingleResourceThunk = (id) => {
     try {
       //console.log("FETCHSINGLERESOURCETHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_RESOURCES}${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/resource/${id}`
       );
       //console.log("FETCHSINGLERESOURCETHUNK COMPLETED");
       dispatch(fetchSingleResource(response.data));
@@ -57,7 +59,9 @@ export const deleteResourceThunk = (id) => {
   return async (dispatch) => {
     try {
       //console.log("FETCHDELETERESOURCETHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_RESOURCES}${id}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/resource/${id}`
+      );
       //console.log("FETCHDELETERESOURCETHUNK COMPLETED");
       dispatch(deleteResource(id));
     } catch (error) {
@@ -79,7 +83,7 @@ export const addResourceThunk = (newResource) => {
     try {
       //console.log("ADDRESOURCESTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_RESOURCES,
+        `${process.env.REACT_APP_BACKEND_URL}/api/resource/`,
         newResource
       );
       //console.log("ADDRESOURCESTHUNK COMPLETED");
@@ -103,7 +107,7 @@ export const editResourceThunk = (resource) => {
     try {
       //console.log("EDITRESOURCETHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_RESOURCES}${resource.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/resource/${resource.id}`,
         resource
       );
       //console.log("EDITRESOURCETHUNK COMPLETED");

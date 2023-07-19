@@ -13,7 +13,9 @@ export const fetchAllAssignmentsStatusThunk = () => {
   return async (dispatch) => {
     try {
       //console.log("FETCHALLASSIGNMENTSSTATUSTHUNK IS FIRING");
-      const response = await axios.get(`${process.env.REACT_APP_ASSIGNMENTS_STATUS}all`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/all`
+      );
       //console.log("FETCHALLASSIGNMENTSSTATUSTHUNK COMPLETED");
       dispatch(fetchAllAssignmentsStatus(response.data));
     } catch (error) {
@@ -35,7 +37,7 @@ export const fetchSingleAssignmentsStatusThunk = (id) => {
     try {
       //console.log("FETCHSINGLEASSIGNMENTSSTATUSTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_ASSIGNMENTS_STATUS}${id}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/${id}`
       );
       //console.log("FETCHSINGLEASSIGNMENTSSTATUSTHUNK COMPLETED");
       dispatch(fetchSingleAssignmentStatus(response.data));
@@ -46,25 +48,27 @@ export const fetchSingleAssignmentsStatusThunk = (id) => {
 };
 
 export const fetchStudentAssignmentsStatus = (payload) => {
-    //console.log("FETCH STUDENT ASSIGNMENTS STATUS ACTION");
-    return {
-      type: AssignmentsStatusActionType.FETCH_STUDENT_ASSIGNMENTS_STATUS,
-      payload: payload,
-    };
+  //console.log("FETCH STUDENT ASSIGNMENTS STATUS ACTION");
+  return {
+    type: AssignmentsStatusActionType.FETCH_STUDENT_ASSIGNMENTS_STATUS,
+    payload: payload,
+  };
 };
 
 export const fetchStudentAssignmentsStatusThunk = (assignmentStatus) => {
-    return async (dispatch) => {
-      try {
-        //console.log("FETCHSTUDENTASSIGNMENTSSTATUSTHUNK IS FIRING");
-        const response = await axios.get(`${process.env.REACT_APP_ASSIGNMENTS_STATUS}${assignmentStatus.id}/${assignmentStatus.assignmentId}`);
-        //console.log("FETCHALLASSIGNMENTSSTATUSTHUNK COMPLETED");
-        dispatch(fetchStudentAssignmentsStatus(response.data));
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  return async (dispatch) => {
+    try {
+      //console.log("FETCHSTUDENTASSIGNMENTSSTATUSTHUNK IS FIRING");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/${assignmentStatus.id}/${assignmentStatus.assignmentId}`
+      );
+      //console.log("FETCHALLASSIGNMENTSSTATUSTHUNK COMPLETED");
+      dispatch(fetchStudentAssignmentsStatus(response.data));
+    } catch (error) {
+      console.error(error);
+    }
   };
+};
 
 export const addAssignmentStatus = (payload) => {
   //console.log("ADD ASSIGNMENT STATUS ACTIVE");
@@ -79,7 +83,7 @@ export const addAssignmentStatusThunk = (newAssignmentStatus) => {
     try {
       //console.log("ADDASSIGNMENTSSTATUSTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_ASSIGNMENTS_STATUS,
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/`,
         newAssignmentStatus
       );
       //console.log("ADDASSIGNMENTSSTATUSTHUNK COMPLETED");
@@ -103,7 +107,7 @@ export const editAssignmentStatusThunk = (assignmentStatus) => {
     try {
       //console.log("EDITASSIGNMENTSSTATUSTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_ASSIGNMENTS_STATUS}${assignmentStatus.id}/${assignmentStatus.assignmentId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/${assignmentStatus.id}/${assignmentStatus.assignmentId}`,
         assignmentStatus
       );
       //console.log("EDITASSIGNMENTSSTATUSTHUNK COMPLETED");

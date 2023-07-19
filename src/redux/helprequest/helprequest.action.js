@@ -14,7 +14,7 @@ export const fetchAllHelpRequestsThunk = () => {
     try {
       console.log("FETCHALLHELPREQUESTSTHUNK IS FIRING");
       const response = await axios.get(
-        `${process.env.REACT_APP_HELP_REQUESTS}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/`
       );
       console.log("FETCHALLHELPREQUESTSTHUNK COMPLETED");
       dispatch(fetchAllHelpRequests(response.data));
@@ -36,7 +36,9 @@ export const deleteHelpRequestThunk = (id) => {
   return async (dispatch) => {
     try {
       //console.log("DELETEHELPREQUESTTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_HELP_REQUESTS}${id}`);
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${id}`
+      );
       //console.log("DELETEHELPREQUESTTHUNK COMPLETED");
       dispatch(deleteHelpRequest(id));
     } catch (error) {
@@ -58,7 +60,7 @@ export const addHelpRequestThunk = (newResource) => {
     try {
       //console.log("ADDHELPREQUESTTHUNK IS FIRING");
       const response = await axios.post(
-        process.env.REACT_APP_HELP_REQUESTS,
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/`,
         newResource
       );
       //console.log("ADDHELPREQUESTTHUNK COMPLETED");
@@ -82,7 +84,7 @@ export const editHelpRequestThunk = (resource) => {
     try {
       //console.log("EDITHELPREQUESTTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_HELP_REQUESTS}${resource.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${resource.id}`,
         resource
       );
       //console.log("EDITHELPREQUESTTHUNK COMPLETED");
