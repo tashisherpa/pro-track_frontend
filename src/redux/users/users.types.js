@@ -4,6 +4,7 @@ const UserActionType = {
   DELETE_USER: "DELETE_USER",
   EDIT_USER: "EDIT_USER",
   ADD_USER: "ADD_USER",
+  AUTH_USER: "AUTH_USER",
 };
 
 export default UserActionType;
