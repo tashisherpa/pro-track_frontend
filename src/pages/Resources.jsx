@@ -21,17 +21,27 @@ function Resources() {
     };
     fetchAllResources();
   }, [dispatch]);
-  //console.log("All Resources", allResources);
-  return (
-    <div>
-      <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4">Resources</h1>
-        <AddResourceBtn />
-        <ResourceCard />
+  console.log("All Resources", allResources);
+    return (
+      <div>
+        <SideNavBar />
+        <div className="p-4 sm:ml-64">
+          <h1 className="text-2xl font-bold mb-4">Resources</h1>
+          <AddResourceBtn />
+          <div className="flex flex-wrap">
+            {allResources.length > 0 ? (
+              allResources.map((resource) => (
+                < ResourceCard key={resource.id} resource={resource} />
+              ))
+            ) : (
+              <p style={{ textAlign: "center" }}>
+                NO LECTURES FOR YOU !
+              </p>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default Resources;
