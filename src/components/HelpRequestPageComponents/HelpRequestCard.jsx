@@ -12,9 +12,17 @@ function HelpRequestCard({ helpRequest }) {
   //state
 
   const [isAdmin, setIsAdmin] = useState(true);
-  const [status, setStatus] = useState("waiting");
-  const [buttonName, setButtonName] = useState("Accept");
-  const [backgroundColor, setBackGroundColor] = useState("bg-red-300");
+  const [status, setStatus] = useState(helpRequest.status);
+  const [buttonName, setButtonName] = useState(
+    helpRequest.status === "Pending" ? "Accept" : "Resolved"
+  );
+  const [backgroundColor, setBackGroundColor] = useState(
+    helpRequest.status === "Pending"
+      ? "bg-red-300"
+      : helpRequest.status === "In Progress"
+      ? "bg-yellow-300"
+      : "bg-green-300"
+  );
 
   const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
 
@@ -25,7 +33,7 @@ function HelpRequestCard({ helpRequest }) {
     fetchAuthUser();
   }, [dispatch]);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (newStatus) => {
     /**
      * if the status when the button is clicked is waiting,
      * the status changes from waiting to in progress,
@@ -37,15 +45,25 @@ function HelpRequestCard({ helpRequest }) {
      * changing the card's background color to green to show it's been resolved
      * and the button disappears
      */
-    if (helpRequest.status === "Pending") {
-      dispatch(editHelpRequestThunk({ ...helpRequest, status: "In Progress" }));
+    if (status === "Pending") {
+      setStatus("In Progress");
       setBackGroundColor("bg-yellow-300");
       setButtonName("Resolved");
-    } else if (helpRequest.status === "In Progress") {
-      dispatch(editHelpRequestThunk({ ...helpRequest, status: "Resolved" }));
+    } else if (status === "In Progress") {
+      setStatus("Resolved");
       setBackGroundColor("bg-green-300");
     }
   };
+
+  // Use useEffect to dispatch the editHelpRequestThunk whenever the status changes
+  useEffect(() => {
+    dispatch(
+      editHelpRequestThunk({
+        ...helpRequest,
+        status: status, // Send the updated status in the editHelpRequestThunk
+      })
+    );
+  }, [dispatch, helpRequest, status]);
 
   return (
     <div className={cardStyling}>
@@ -54,7 +72,7 @@ function HelpRequestCard({ helpRequest }) {
           Requested by: {helpRequest.student.firstName}{" "}
           {helpRequest.student.lastName}
         </div>
-        <h3 className="text-xs">Status: {helpRequest.status}</h3>
+        <h3 className="text-xs">Status: {status}</h3>
         <p>{helpRequest.request}</p>
       </div>
       {

@@ -20,7 +20,7 @@ function HelpRequests() {
     };
     fetchAllHelpRequets();
   }, [dispatch]);
-  //console.log("All Help Requests", allHelpRequests);
+  console.log("All Help Requests", allHelpRequests);
   const [isStudent, setIsStudent] = useState(true);
   return (
     <div>
