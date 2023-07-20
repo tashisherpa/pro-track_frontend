@@ -56,7 +56,7 @@ function HelpRequests() {
       <div className=" p-4 sm:ml-64">
         <h1 className="text-lg font-bold mb-4">HELP REQUEST</h1>
         {/**only allow the student to add request*/}
-        {loggedInUser.userType !== "student" ? (
+        {loggedInUser.userType === "student" ? (
           <Link to="/helprequests/addrequest">Add new request</Link>
         ) : null}
         {sortedHelpRequests.length > 0 ? (
