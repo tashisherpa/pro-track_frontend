@@ -20,7 +20,7 @@ function HelpRequests() {
     };
     fetchAllHelpRequets();
   }, [dispatch]);
-  //console.log("All Help Requests", allHelpRequests);
+  console.log("All Help Requests", allHelpRequests);
   const [isStudent, setIsStudent] = useState(true);
   return (
     <div>
@@ -28,9 +28,15 @@ function HelpRequests() {
       <div className=" p-4 sm:ml-64">
         <h1 className="text-lg font-bold mb-4">HELP REQUEST</h1>
         {isStudent ? <HelpRequestCardStudentView /> : null}
-        <HelpRequestCard />
-        <HelpRequestCard />
-        <HelpRequestCard />
+        {allHelpRequests.length > 0 ? (
+          allHelpRequests.map((helpRequest) => (
+            <HelpRequestCard key={helpRequest.id} helpRequest={helpRequest} />
+          ))
+        ) : (
+          <p className="text-center">
+            There are no help request at the moment, enjoy while it lasts TAs
+          </p>
+        )}
       </div>
     </div>
   );
