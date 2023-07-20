@@ -14,6 +14,7 @@ import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpReques
 import EditUser from "./components/UserPageComponents/EditUser";
 import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 import EditLecture from "./components/LecturesPageComponents/EditLecture";
+import SingleUser from "./pages/SingleUser";
 import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
           <Route path="/users" element={<Users />} /> 
           <Route path="/users/editUser/:id" element={<EditUser />} />
+          <Route path="/users/:id" element={<SingleUser />} />
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
         </Route>
