@@ -15,6 +15,7 @@ import EditUser from "./components/UserPageComponents/EditUser";
 import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 import EditLecture from "./components/LecturesPageComponents/EditLecture";
 import SingleUser from "./pages/SingleUser";
+import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/add" element={<AddResourceForm />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/lectures/add" element={<AddLectureForm />} />

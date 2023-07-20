@@ -12,11 +12,11 @@ export const fetchAllResources = (payload) => {
 export const fetchAllResourcesThunk = () => {
   return async (dispatch) => {
     try {
-      //console.log("FETCHALLRESOURCESTHUNK IS FIRING");
+      console.log("FETCHALLRESOURCESTHUNK IS FIRING");
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/all`
       );
-      //console.log("FETCHALLRESOURCESTHUNK COMPLETED");
+      console.log("FETCHALLRESOURCESTHUNK COMPLETED");
       dispatch(fetchAllResources(response.data));
     } catch (error) {
       console.error(error);
