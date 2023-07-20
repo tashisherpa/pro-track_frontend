@@ -51,7 +51,8 @@ function HelpRequestCard({ helpRequest }) {
     <div className={cardStyling}>
       <div className="px-6 py-4">
         <div className="font-bold text-2xl mb-2">
-          Requested by: {helpRequest.User.firstName} {helpRequest.User.lastName}
+          Requested by: {helpRequest.student.firstName}{" "}
+          {helpRequest.student.lastName}
         </div>
         <h3 className="text-xs">Status: {helpRequest.status}</h3>
         <p>{helpRequest.request}</p>
