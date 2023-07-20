@@ -9,19 +9,19 @@ function Resources() {
   const dispatch = useDispatch();
   const allResources = useSelector((state) => state.resources.allResources);
   useEffect(() => {
-    //console.log("FETCH ALL RESOURCES FIRING IN USE EFFECT");
+    console.log("FETCH ALL RESOURCES FIRING IN USE EFFECT");
 
     //dispatches the fetchAllUsersThunk() from users actions which returns
     //object with the action type and payload containing the array of users
     //and sets all user state to the payload from here through the root-reducer
 
     const fetchAllResources = () => {
-      //console.log("RUNNING DISPATCH FROM FETCHALLRESOURCES");
+      console.log("RUNNING DISPATCH FROM FETCHALLRESOURCES");
       return dispatch(fetchAllResourcesThunk());
     };
     fetchAllResources();
   }, [dispatch]);
-  //console.log("All Resources", allResources);
+  console.log("All Resources", allResources);
   return (
     <div>
       <SideNavBar />
