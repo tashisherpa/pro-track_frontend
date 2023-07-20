@@ -1,18 +1,29 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { editHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
+import { fetchAuthUserThunk } from "../../redux/users/users.action";
 /**
  *
  * @returns a card component that displays the help request
  */
-function HelpRequestCard() {
+function HelpRequestCard({ helpRequest }) {
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.users.authUser);
   //state
+
   const [isAdmin, setIsAdmin] = useState(true);
   const [status, setStatus] = useState("waiting");
   const [buttonName, setButtonName] = useState("Accept");
   const [backgroundColor, setBackGroundColor] = useState("bg-red-300");
 
-  //card styling
   const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
+
+  useEffect(() => {
+    const fetchAuthUser = () => {
+      return dispatch(fetchAuthUserThunk());
+    };
+    fetchAuthUser();
+  }, [dispatch]);
 
   const handleButtonClick = () => {
     /**
@@ -26,12 +37,12 @@ function HelpRequestCard() {
      * changing the card's background color to green to show it's been resolved
      * and the button disappears
      */
-    if (status === "waiting") {
-      setStatus("In Progress");
+    if (helpRequest.status === "Pending") {
+      dispatch(editHelpRequestThunk({ ...helpRequest, status: "In Progress" }));
       setBackGroundColor("bg-yellow-300");
       setButtonName("Resolved");
-    } else if (status === "In Progress") {
-      setStatus("Resolved");
+    } else if (helpRequest.status === "In Progress") {
+      dispatch(editHelpRequestThunk({ ...helpRequest, status: "Resolved" }));
       setBackGroundColor("bg-green-300");
     }
   };
@@ -39,17 +50,12 @@ function HelpRequestCard() {
   return (
     <div className={cardStyling}>
       <div className="px-6 py-4">
-        <div className="font-bold text-2xl mb-2">Issue</div>
-        <h3 className="text-xs">Status: {status}</h3>
-        <p>
-          Hello! can we get help in room 12? We are having issues with
-          connecting to the back-end with the Redux files. We tried to do it in
-          the way we learned in class but we kept getting errors since the
-          imports we were using were deprecated. We are trying to fix it right
-          now with the imports VScode recommended but we are not sure if what we
-          are doing is working. We are using MacOs and Microsoft. @Instructional
-          Staff
-        </p>
+        <div className="font-bold text-2xl mb-2">
+          Requested by: {helpRequest.student.firstName}{" "}
+          {helpRequest.student.lastName}
+        </div>
+        <h3 className="text-xs">Status: {helpRequest.status}</h3>
+        <p>{helpRequest.request}</p>
       </div>
       {
         /*Only visible to TA/Admins */

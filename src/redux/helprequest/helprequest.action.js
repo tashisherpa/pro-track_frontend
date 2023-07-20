@@ -55,13 +55,13 @@ export const addHelpRequest = (payload) => {
   };
 };
 
-export const addHelpRequestThunk = (newResource) => {
+export const addHelpRequestThunk = (newRequest) => {
   return async (dispatch) => {
     try {
       //console.log("ADDHELPREQUESTTHUNK IS FIRING");
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/`,
-        newResource
+        newRequest
       );
       //console.log("ADDHELPREQUESTTHUNK COMPLETED");
       dispatch(addHelpRequest(response.data));
@@ -79,13 +79,13 @@ export const editHelpRequest = (payload) => {
   };
 };
 
-export const editHelpRequestThunk = (resource) => {
+export const editHelpRequestThunk = (helpRequest) => {
   return async (dispatch) => {
     try {
       //console.log("EDITHELPREQUESTTHUNK IS FIRING");
       const response = await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${resource.id}`,
-        resource
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${helpRequest.id}`,
+        helpRequest
       );
       //console.log("EDITHELPREQUESTTHUNK COMPLETED");
       dispatch(editHelpRequest(response.data));
