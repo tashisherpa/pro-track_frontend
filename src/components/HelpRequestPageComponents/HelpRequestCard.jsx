@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
-import { fetchAuthUserThunk } from "../../redux/users/users.action";
 /**
  *
  * @returns a card component that displays the help request
  */
-function HelpRequestCard({ helpRequest }) {
+function HelpRequestCard({ helpRequest, loggedInUser }) {
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state) => state.users.authUser);
   //state
 
-  const [isAdmin, setIsAdmin] = useState(true);
   const [status, setStatus] = useState(helpRequest.status);
   const [buttonName, setButtonName] = useState(
     helpRequest.status === "Pending" ? "Accept" : "Resolved"
@@ -26,25 +23,8 @@ function HelpRequestCard({ helpRequest }) {
 
   const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
 
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
-
-  const handleButtonClick = (newStatus) => {
-    /**
-     * if the status when the button is clicked is waiting,
-     * the status changes from waiting to in progress,
-     * then the card's background color changes to yellow to show it's in progress
-     * also, the button changes from accept to resolved so TA/Admin can click to show the request was resolved
-     *
-     * else if the status when the button is clicked is in progress,
-     * then, the status changes from "In Progress" to "Resolved"
-     * changing the card's background color to green to show it's been resolved
-     * and the button disappears
-     */
+  const handleButtonClick = () => {
+    //changes status, backgroundColor and ButtonName based on the helprequest.status
     if (status === "Pending") {
       setStatus("In Progress");
       setBackGroundColor("bg-yellow-300");
@@ -60,31 +40,38 @@ function HelpRequestCard({ helpRequest }) {
     dispatch(
       editHelpRequestThunk({
         ...helpRequest,
-        status: status, // Send the updated status in the editHelpRequestThunk
+        status: status,
+        taId: loggedInUser.id, // Send the updated status in the editHelpRequestThunk
       })
     );
-  }, [dispatch, helpRequest, status]);
+  }, [dispatch, status]);
 
   return (
     <div className={cardStyling}>
       <div className="px-6 py-4">
         <div className="font-bold text-2xl mb-2">
-          Requested by: {helpRequest.student.firstName}{" "}
-          {helpRequest.student.lastName}
+          {`Requested by: ${helpRequest.student.firstName}
+          ${helpRequest.student.lastName}`}
         </div>
-        <h3 className="text-xs">Status: {status}</h3>
+        <h3 className="text-xs">
+          {helpRequest.status !== "Resolved"
+            ? `Status: ${status}`
+            : `Resolved by ${helpRequest.ta.firstName} ${helpRequest.ta.lastName}`}
+        </h3>
         <p>{helpRequest.request}</p>
       </div>
       {
         /*Only visible to TA/Admins */
-        isAdmin ? (
+        loggedInUser.userType === "admin" ? (
           <div>
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-              onClick={handleButtonClick}
-            >
-              {buttonName}
-            </button>
+            {status !== "Resolved" ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                onClick={handleButtonClick}
+              >
+                {buttonName}
+              </button>
+            ) : null}
           </div>
         ) : null
       }
