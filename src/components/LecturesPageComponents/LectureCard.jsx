@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { fetchAuthUserThunk} from "../../redux/users/users.action";
+import { Link } from "react-router-dom";
 
 function LectureCard({ lecture}) {
   const user = useSelector((state) => state.users.authUser);
@@ -38,9 +39,11 @@ function LectureCard({ lecture}) {
         {
           /*Only visible to TA/Admins */
           user.userType === "admin" ? (
+            <Link to={`/lectures/edit/${lecture.id}`}>
             <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16">
               Edit
             </button>
+            </Link>
           ) : null
         }
       </div>

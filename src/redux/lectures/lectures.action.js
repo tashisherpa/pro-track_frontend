@@ -24,6 +24,27 @@ export const fetchAllLecturesThunk = () => {
   };
 };
 
+export const fetchSingleLecture = (payload) => {
+  return {
+    type: LectureActionType.FETCH_SINGLE_LECTURE,
+    payload: payload,
+  };
+};
+
+export const fetchSingleLectureThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${id}`
+      );
+      //console.log("FETCHALLLECTURESTHUNK COMPLETED");
+      dispatch(fetchSingleLecture(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
 export const deleteLecture = (payload) => {
   //console.log("DELETE LECTURE ACTION ACTIVE");
   return {
