@@ -50,9 +50,6 @@ export const fetchSingleUserThunk = (id) => {
     try {
       //console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
       //console.log(id);
-      if (typeof id !== "number") {
-        return;
-      }
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`
       );
