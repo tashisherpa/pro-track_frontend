@@ -83,6 +83,8 @@ export const editHelpRequestThunk = (helpRequest) => {
   return async (dispatch) => {
     try {
       //console.log("EDITHELPREQUESTTHUNK IS FIRING");
+      // Log the helpRequest object before making the request
+      console.log("helpRequest: ", helpRequest);
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${helpRequest.id}`,
         helpRequest
