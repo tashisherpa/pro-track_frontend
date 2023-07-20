@@ -3,7 +3,7 @@ import LectureActionType from "./lectures.types";
 //define the initial state for all lectures array and single lecture object
 export const INITIAL_LECTURE_STATE = {
   allLectures: [],
-  singleLectures: {},
+  singleLecture: {},
 };
 
 //handle the action type
@@ -12,6 +12,11 @@ const lectures = (state = INITIAL_LECTURE_STATE, action) => {
   switch (action.type) {
     case LectureActionType.FETCH_ALL_LECTURES:
       return { ...state, allLectures: action.payload };
+    case LectureActionType.FETCH_SINGLE_LECTURE:
+      return {
+        ...state,
+        singleLecture: action.payload
+      };
     case LectureActionType.DELETE_LECTURE:
       return {
         ...state,
