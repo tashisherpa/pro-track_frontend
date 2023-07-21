@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { addHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthUserThunk } from "../../redux/users/users.action";
-function AddHelpRequest({}) {
+function AddHelpRequest() {
   const [form, setForm] = useState({});
   const loggedInUser = useSelector((state) => state.users.authUser);
   const navigate = useNavigate();
