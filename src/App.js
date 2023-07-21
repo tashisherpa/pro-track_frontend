@@ -12,6 +12,10 @@ import {
 import PrivateRoute from "./Utils/Auth";
 import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpRequest";
 import EditUser from "./components/UserPageComponents/EditUser";
+import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
+import EditLecture from "./components/LecturesPageComponents/EditLecture";
+import SingleUser from "./pages/SingleUser";
+import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
 
 function App() {
   return (
@@ -28,8 +32,11 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/add" element={<AddResourceForm />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
+          <Route path="/lectures/add" element={<AddLectureForm />} />
+          <Route path="/lectures/edit/:id" element={<EditLecture />} />
           {/**Sabina */}
           <Route path="/assignments" element={<Assignments />} />
           {/**tashi */}
@@ -38,6 +45,7 @@ function App() {
           <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
           <Route path="/users" element={<Users />} /> 
           <Route path="/users/editUser/:id" element={<EditUser />} />
+          <Route path="/users/:id" element={<SingleUser />} />
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
         </Route>

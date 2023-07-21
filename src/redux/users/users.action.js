@@ -50,9 +50,6 @@ export const fetchSingleUserThunk = (id) => {
     try {
       //console.log("FETCHSINGLEUSERSTHUNK IS FIRING");
       //console.log(id);
-      if (typeof id !== "number") {
-        return;
-      }
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`
       );
@@ -60,7 +57,7 @@ export const fetchSingleUserThunk = (id) => {
         //console.log("No User found");
       }
       //console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
-      dispatch(fetchSingleUser(response.data.id));
+      dispatch(fetchSingleUser(response.data));
     } catch (error) {
       console.error(error);
     }
@@ -237,3 +234,4 @@ export const fetchAuthUserThunk = () => {
     }
   };
 };
+
