@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import SideNavBar from "../components/SideNavBar";
+// import AddAssignment from "../components/AssignmentPageComponents";
+import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";
@@ -17,9 +19,9 @@ function Assignments() {
     dispatch(fetchAllAssignmentsThunk());
   }, [dispatch]);
 
-  const allAssignmentsStatus = useSelector(
-    (state) => state.assignmentsStatus.allAssignmentsStatus
-  );
+  // const allAssignmentsStatus = useSelector(
+  //   (state) => state.assignmentsStatus.allAssignmentsStatus
+  // );
 
   useEffect(() => {
     dispatch(fetchAllAssignmentsStatusThunk());
@@ -32,9 +34,14 @@ function Assignments() {
         <h1>Assignments</h1>
         <ul>
           {allAssignments.map((assignment) => (
-            <li key={assignment.id}>{assignment.title}</li>
+             <AssignmentCard assignment = {assignment}/>
+        //    <li key={assignment.id}>
+        //    {assignment.assignmentName} {assignment.instruction}
+        //  </li>
           ))}
         </ul>
+        {/* <AddAssignment/> */}
+   
       </div>
     </div>
   );
