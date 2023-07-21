@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
+import EditHelpRequest from "./EditHelpRequest";
 /**
  *
  * @returns a card component that displays the help request
@@ -10,6 +11,7 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
   //state
 
   const [status, setStatus] = useState(helpRequest.status);
+  // const [showModal, setShowModal] = useState(false);
   const [buttonName, setButtonName] = useState(
     helpRequest.status === "Pending" ? "Accept" : "Resolved"
   );
@@ -73,6 +75,9 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
               </button>
             ) : null}
           </div>
+        ) : loggedInUser.id === helpRequest.student.id &&
+          status === "Pending" ? (
+          <EditHelpRequest helpRequest={helpRequest} />
         ) : null
       }
     </div>
