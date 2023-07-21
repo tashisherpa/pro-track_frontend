@@ -5,6 +5,8 @@ import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCar
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";
+import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
+import AddAssignmentBtn from "../components/AssignmentPageComponents/AddAssignmentBtn";
 
 
 
@@ -29,21 +31,23 @@ function Assignments() {
 
   return (
     <div>
-      <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1>Assignments</h1>
-        <ul>
-          {allAssignments.map((assignment) => (
-             <AssignmentCard assignment = {assignment}/>
-        //    <li key={assignment.id}>
-        //    {assignment.assignmentName} {assignment.instruction}
-        //  </li>
-          ))}
-        </ul>
-        {/* <AddAssignment/> */}
-   
+    <SideNavBar />
+    <div className="p-4 sm:ml-64">
+      <h1 className="text-2xl font-bold mb-4">Assignments</h1>
+      <AddAssignmentBtn />
+      <div className="flex flex-wrap">
+        {allAssignments.length > 0 ? (
+          allAssignments.map((assignment) => (
+            < AssignmentCard key={assignment.id} assignment={assignment} />
+          ))
+        ) : (
+          <p style={{ textAlign: "center" }}>
+            No Assignments
+          </p>
+        )}
       </div>
     </div>
+  </div>
   );
 }
 

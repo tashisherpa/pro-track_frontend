@@ -14,6 +14,11 @@ import AddHelpRequest from "./components/HelpRequestPageComponents/AddHelpReques
 import EditUser from "./components/UserPageComponents/EditUser";
 import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 import EditLecture from "./components/LecturesPageComponents/EditLecture";
+import SingleUser from "./pages/SingleUser";
+import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
+import EditResource from "./components/ResourcesPageComponents/EditResource"; 
+import AddAssignment from "./components/AssignmentPageComponents/AddAssignment"; 
+import EditAssignment from "./components/AssignmentPageComponents/EditAssignment"; 
 
 function App() {
   return (
@@ -29,19 +34,25 @@ function App() {
         */}
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          {/**Rahima */}
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/add" element={<AddResourceForm />} />
+          <Route path="/resources/edit/:id" element={<EditResource />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/lectures/add" element={<AddLectureForm />} />
           <Route path="/lectures/edit/:id" element={<EditLecture />} />
-          {/**Sabina */}
+          {/**Rahima */}
           <Route path="/assignments" element={<Assignments />} />
-          {/**tashi */}
+          <Route path="/assignments/add" element={<AddAssignment />} />
+          <Route path="/assignments/edit/:id" element={<EditAssignment />} />
+          {/**tashi*/}
           <Route path="/helprequests" element={<HelpRequests />} />
           {/**tashi */}
           <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
           <Route path="/users" element={<Users />} /> 
           <Route path="/users/editUser/:id" element={<EditUser />} />
+          <Route path="/users/:id" element={<SingleUser />} />
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
         </Route>
