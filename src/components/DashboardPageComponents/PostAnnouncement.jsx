@@ -23,7 +23,7 @@ function PostAnnouncement({user}) {
     //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
     dispatch(addFeedThunk({ ...form, userId: user.id })).then(() => {
-      navigate(`/dashboard`);
+      setForm({});
     });
   };
 
