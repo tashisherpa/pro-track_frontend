@@ -1,10 +1,23 @@
-import React from "react";
-import { parseISO,format} from "date-fns";
+import React, {useEffect} from "react";
+import { parseISO, format } from "date-fns";
+import { deleteFeedThunk } from "../../redux/feed/feed.action";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { fetchAuthUserThunk } from "../../redux/users/users.action";
 
-function DashboardStudentView({ post }) {
+function DashboardStudentView({ post, user}) {
   console.log(post);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const img_link =
     "https://i.pinimg.com/564x/b2/45/2b/b2452bd4499ed406e6f0dfc14138f182.jpg";
+
+  const handleDelete = () => {
+    dispatch(deleteFeedThunk(post.id));
+    console.log("id:", post.id);
+  };
+
   return (
     <div className=" rounded-lg overflow-hidden shadow-md m-2">
       <div className="px-6 py-4">
@@ -20,15 +33,24 @@ function DashboardStudentView({ post }) {
             </div>
           </div>
         </div>
-        {/* <span>
-          {post.user.firstName} {post.user.lastName}
-        </span> */}
         <div className="font-bold text-2xl mb-2">{post.title}</div>
-        <p className="text-gray-500 text-xs">{format(parseISO(post.createdAt), 'yyyy-MM-dd')}</p>
+        <p className="text-gray-500 text-xs">
+          {format(parseISO(post.createdAt), "yyyy-MM-dd")}
+        </p>
       </div>
       <div className="px-6 pt-4 pb-2">
         <p>{post.content}</p>
       </div>
+      {user.id === post.userId ? (
+        <div className="flex justify-end">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full items-center m-2 py-2 px-4 max-w-fit"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

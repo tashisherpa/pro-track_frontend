@@ -30,31 +30,22 @@ function Dashboard() {
     };
     fetchAllFeed();
   }, [dispatch]);
-  //console.log("All Feed", allFeed);
 
-  //states
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [showAddAnnouncement, setShowAddAnnouncement] = useState(true);
+  const [sortedFeed, setSortedFeed] = useState([]);
 
-  const handleAddAnouncement = () => {
-    setShowAddAnnouncement(true);
-  };
+  useEffect(() => {
+    const sortedList = [...allFeed].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    setSortedFeed(sortedList);
+  }, [allFeed]);
 
   return (
     <div>
       <SideNavBar />
       <div className="p-4 sm:ml-64">
+        <h1 className="font-semibold text-3xl">Dashboard</h1>
         <ZoomInfo />
-        {
-          /**If the user is not admin they wont be able to se the Add Announcement button
-           * which allows them to add new annoucements that will be shown in the
-           * dashboard
-           */
-          // isAdmin ? (
-          //   <button className="bg-blue-500 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={handleAddAnouncement}>Add Announcement</button>
-          // ) : (null
-          // )
-        }
         {
           /*when the showAddAnnoucement is set to true then the PostAnnouncement component will show
             this code will only execute if the user is an admin
@@ -65,8 +56,8 @@ function Dashboard() {
           */
           user.userType==="admin" && <PostAnnouncement user={user}/>
         }
-        {allFeed.length > 0 ? (
-            allFeed.map((post) => <DashboardStudentView key={post.id} post={post}/>)
+        {sortedFeed.length > 0 ? (
+            sortedFeed.map((post) => <DashboardStudentView key={post.id} post={post} user={user}/>)
           ) : (
           <p style={{ textAlign: "center" }}>
               There are no posts yet!
