@@ -1,15 +1,12 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { parseISO, format } from "date-fns";
 import { deleteFeedThunk } from "../../redux/feed/feed.action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { fetchAuthUserThunk } from "../../redux/users/users.action";
 
-function DashboardStudentView({ post, user}) {
+function DashboardStudentView({ post, user }) {
   console.log(post);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const img_link =
     "https://i.pinimg.com/564x/b2/45/2b/b2452bd4499ed406e6f0dfc14138f182.jpg";
 
