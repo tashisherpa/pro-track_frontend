@@ -6,16 +6,20 @@ import {
   ZoomInfo,
 } from "../components/DashboardPageComponents";
 import { fetchAllFeedThunk } from "../redux/feed/feed.action";
+import { fetchAuthUserThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
 
 function Dashboard() {
-
-  //states
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [showAddAnnouncement, setShowAddAnnouncement] = useState(false);
-
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users.authUser);
   const allFeed = useSelector((state) => state.feed.allFeed);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchAuthUser = () => {
+      return dispatch(fetchAuthUserThunk());
+    };
+    fetchAuthUser();
+  }, [dispatch]);
 
   useEffect(() => {
     //console.log("FETCH ALL FEED FIRING IN USE EFFECT");
@@ -26,27 +30,22 @@ function Dashboard() {
     };
     fetchAllFeed();
   }, [dispatch]);
-  //console.log("All Feed", allFeed);
 
-  const handleAddAnouncement = () => {
-    setShowAddAnnouncement(true);
-  };
+  const [sortedFeed, setSortedFeed] = useState([]);
+
+  useEffect(() => {
+    const sortedList = [...allFeed].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    setSortedFeed(sortedList);
+  }, [allFeed]);
 
   return (
     <div>
       <SideNavBar />
       <div className="p-4 sm:ml-64">
+        <h1 className="font-semibold text-3xl">Dashboard</h1>
         <ZoomInfo />
-        {
-          /**If the user is not admin they wont be able to se the Add Announcement button
-           * which allows them to add new annoucements that will be shown in the
-           * dashboard
-           */
-          isAdmin ? (
-            <button className="bg-blue-500 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={handleAddAnouncement}>Add Announcement</button>
-          ) : (null
-          )
-        }
         {
           /*when the showAddAnnoucement is set to true then the PostAnnouncement component will show
             this code will only execute if the user is an admin
@@ -55,10 +54,15 @@ function Dashboard() {
             if the first statement is false the second statement is never checked
             in this case if showAddAnnoucement is false the component never renders
           */
-          showAddAnnouncement && <PostAnnouncement />
+          user.userType==="admin" && <PostAnnouncement user={user}/>
         }
-
-        <DashboardStudentView />
+        {sortedFeed.length > 0 ? (
+            sortedFeed.map((post) => <DashboardStudentView key={post.id} post={post} user={user}/>)
+          ) : (
+          <p style={{ textAlign: "center" }}>
+              There are no posts yet!
+            </p>
+          )}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const feed = (state = INITIAL_FEED_STATE, action) => {
   switch (action.type) {
     case FeedActionType.FETCH_ALL_FEED:
       return { ...state, allFeed: action.payload };
-    case FeedActionType.DELETE_Feed:
+    case FeedActionType.DELETE_FEED:
       return {
         ...state,
         allFeed: state.allFeed.filter(
