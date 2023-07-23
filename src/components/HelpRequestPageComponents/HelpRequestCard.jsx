@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
-import EditHelpRequest from "./EditHelpRequest";
+import { Link } from "react-router-dom";
 /**
  *
  * @returns a card component that displays the help request
@@ -11,7 +11,6 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
   //state
 
   const [status, setStatus] = useState(helpRequest.status);
-  // const [showModal, setShowModal] = useState(false);
   const [buttonName, setButtonName] = useState(
     helpRequest.status === "Pending" ? "Accept" : "Resolved"
   );
@@ -31,22 +30,25 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
       setStatus("In Progress");
       setBackGroundColor("bg-yellow-300");
       setButtonName("Resolved");
+      return dispatch(
+        editHelpRequestThunk({
+          ...helpRequest,
+          status: "In Progress",
+          taId: loggedInUser.id, // Send the updated status in the editHelpRequestThunk
+        })
+      );
     } else if (status === "In Progress") {
       setStatus("Resolved");
       setBackGroundColor("bg-green-300");
+      return dispatch(
+        editHelpRequestThunk({
+          ...helpRequest,
+          status: "Resolved",
+          taId: loggedInUser.id, // Send the updated status in the editHelpRequestThunk
+        })
+      );
     }
   };
-
-  // Use useEffect to dispatch the editHelpRequestThunk whenever the status changes
-  useEffect(() => {
-    dispatch(
-      editHelpRequestThunk({
-        ...helpRequest,
-        status: status,
-        taId: loggedInUser.id, // Send the updated status in the editHelpRequestThunk
-      })
-    );
-  }, [dispatch, status]);
 
   return (
     <div className={cardStyling}>
@@ -77,7 +79,11 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
           </div>
         ) : loggedInUser.id === helpRequest.student.id &&
           status === "Pending" ? (
-          <EditHelpRequest helpRequest={helpRequest} />
+          <Link to={`/helprequests/editrequest/${helpRequest.id}`}>
+            <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1">
+              Edit
+            </button>
+          </Link>
         ) : null
       }
     </div>

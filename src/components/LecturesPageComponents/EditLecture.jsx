@@ -1,9 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleLectureThunk, editLectureThunk} from "../../redux/lectures/lectures.action";
+import {
+  fetchSingleLectureThunk,
+  editLectureThunk,
+} from "../../redux/lectures/lectures.action";
 
 function EditLecture() {
   const { id } = useParams();
@@ -14,7 +17,7 @@ function EditLecture() {
 
   useEffect(() => {
     const fetchSingleLecture = () => {
-        return dispatch(fetchSingleLectureThunk(id));
+      return dispatch(fetchSingleLectureThunk(id));
     };
     fetchSingleLecture();
   }, [dispatch]);
@@ -32,8 +35,9 @@ function EditLecture() {
     setEditForm({
       ...editForm,
       [event.target.name]: event.target.value,
+      taId: null,
     });
-    //console.log("editForm: ", editForm);
+    // console.log("editForm: ", editForm);
   };
 
   const handleSubmit = (event) => {
