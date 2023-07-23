@@ -24,6 +24,27 @@ export const fetchAllHelpRequestsThunk = () => {
   };
 };
 
+export const fetchSingleHelpRequest = (payload) => {
+  return {
+    type: HelpRequestActionType.FETCH_SINGLE_HELP_REQUEST,
+    payload: payload,
+  };
+};
+
+export const fetchSingleHelpRequestThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${id}`
+      );
+      //console.log("FETCHALLLECTURESTHUNK COMPLETED");
+      dispatch(fetchSingleHelpRequest(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
 export const deleteHelpRequest = (payload) => {
   //console.log("DELETE HELP REQUEST ACTION ACTIVE");
   return {
@@ -83,8 +104,6 @@ export const editHelpRequestThunk = (helpRequest) => {
   return async (dispatch) => {
     try {
       console.log("EDITHELPREQUESTTHUNK IS FIRING");
-      console.log("Help Request", helpRequest);
-
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${helpRequest.id}`,
         helpRequest

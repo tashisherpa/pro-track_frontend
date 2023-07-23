@@ -12,6 +12,11 @@ const helpRequests = (state = INITIAL_HELP_REQUEST_STATE, action) => {
   switch (action.type) {
     case HelpRequestActionType.FETCH_ALL_HELP_REQUESTS:
       return { ...state, allHelpRequests: action.payload };
+    case HelpRequestActionType.FETCH_SINGLE_HELP_REQUEST:
+      return {
+        ...state,
+        singleHelpRequest: action.payload,
+      };
     case HelpRequestActionType.DELETE_HELP_REQUEST:
       return {
         ...state,

@@ -23,9 +23,7 @@ function HelpRequests() {
 
   // When the allHelpRequests array changes, sort the list in lastest request on top
   useEffect(() => {
-    const sortedList = [...allHelpRequests].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    const sortedList = [...allHelpRequests].sort((a, b) => b.id - a.id);
     setSortedHelpRequests(sortedList);
   }, [allHelpRequests]);
 
