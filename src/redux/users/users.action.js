@@ -149,14 +149,14 @@ export const editUserThunk = (user) => {
 /**
  * THUNK CREATORS
  */
-export const me = () => async (dispatch) => {
-  try {
-    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/me`);
-    dispatch(fetchSingleUserThunk(res.data.id || UserActionType.singleUser.id));
-  } catch (err) {
-    console.error(err);
-  }
-};
+// export const me = () => async (dispatch) => {
+//   try {
+//     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth/me`);
+//     dispatch(fetchSingleUserThunk(res.data.id || UserActionType.singleUser.id));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 export const loginAuth = (email, password) => async (dispatch) => {
   let res;
@@ -234,4 +234,27 @@ export const fetchAuthUserThunk = () => {
     }
   };
 };
+
+export const logoutUser = () => {
+  
+  return {
+    type: UserActionType.LOGOUT_USER,
+  };
+}
+
+export const logoutUserThunk = () => {
+  return async (dispatch) => {
+    try {
+      //console.log("FETCHAUTHUSERTHUNK IS FIRING");
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/logout`
+        // `${process.env.REACT_APP_BACKEND_URL}/auth/me`
+      );
+      //console.log("FETCHAUTHUSERTHUNK COMPLETED");
+      dispatch(logoutUser());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
 

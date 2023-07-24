@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {Logout} from "./Logout";
 
 function SideNavBar() {
+  //console.log(Logout);
   return (
+  
     <div>
       <button
         data-drawer-target="default-sidebar"
@@ -96,6 +99,10 @@ function SideNavBar() {
               >
                 <span className="flex-1 ml-3 whitespace-nowrap">Profile</span>
               </Link>
+            </li>
+            <li>
+            
+              <Logout />
             </li>
           </ul>
         </div>

@@ -41,9 +41,15 @@ const users = (state = INITIAL_USER_STATE, action) => {
         ...state,
         allUsers: [...state.allUsers, action.payload],
       };
+      case UserActionType.LOGOUT_USER:
+        return {
+          ...state,
+          authUser: {},
+        };
     default:
       return state;
   }
+
 };
 
 export default users;
