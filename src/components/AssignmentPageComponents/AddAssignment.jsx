@@ -68,10 +68,11 @@ function AddAssignment() {
   };
 
   const handleSubmit = (event) => {
+   
     event.preventDefault();
-    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
+    console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
-    dispatch(addAssignmentThunk({ ...form })).then(() => {
+    dispatch(addAssignmentThunk( {...form })).then(() => {
       navigate(`/assignments`);
     });
   };

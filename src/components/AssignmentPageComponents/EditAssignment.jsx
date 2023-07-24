@@ -8,7 +8,7 @@ import { fetchSingleAssignmentThunk, editAssignmentThunk} from "../../redux/assi
 
 function EditAssignment() {
     const { id } = useParams();
-    const assignment = useSelector((state) => state.assignments.singleassignment);
+    const assignment = useSelector((state) => state.assignments.singleAssignment);
     const [editForm, setEditForm] = useState({});
     const navigate = useNavigate();
     const dispatch = useDispatch();

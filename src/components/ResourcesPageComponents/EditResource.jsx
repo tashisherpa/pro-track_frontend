@@ -7,7 +7,7 @@ import { fetchSingleResourceThunk, editResourceThunk} from "../../redux/resource
 
 function EditResource() {
     const { id } = useParams();
-    const resource = useSelector((state) => state.resources.singleresource);
+    const resource = useSelector((state) => state.resources.singleResource);
     const [editForm, setEditForm] = useState({});
     const navigate = useNavigate();
     const dispatch = useDispatch();
