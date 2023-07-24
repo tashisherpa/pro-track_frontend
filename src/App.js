@@ -19,6 +19,7 @@ import AddResourceForm from "./components/ResourcesPageComponents/AddResourceFor
 import EditResource from "./components/ResourcesPageComponents/EditResource"; 
 import AddAssignment from "./components/AssignmentPageComponents/AddAssignment"; 
 import EditAssignment from "./components/AssignmentPageComponents/EditAssignment"; 
+import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 
 function App() {
   return (
@@ -49,8 +50,12 @@ function App() {
           {/**tashi*/}
           <Route path="/helprequests" element={<HelpRequests />} />
           {/**tashi */}
-          <Route path="/helprequests/addRequest" element={<AddHelpRequest />} />
-          <Route path="/users" element={<Users />} /> 
+          <Route path="/helprequests/addrequest" element={<AddHelpRequest />} />
+          <Route
+            path="/helprequests/editrequest/:id"
+            element={<EditHelpRequest />}
+          />
+          <Route path="/users" element={<Users />} />
           <Route path="/users/editUser/:id" element={<EditUser />} />
           <Route path="/users/:id" element={<SingleUser />} />
           <Route path="/profile" element={<Profile />} />
