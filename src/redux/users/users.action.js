@@ -224,9 +224,10 @@ export const fetchAuthUserThunk = () => {
         // `${process.env.REACT_APP_BACKEND_URL}/auth/me`
       );
       if (!response.data) {
-        //console.log("No User found");
+        console.log("No User found");
         return;
       }
+      console.log("FETCHAUTHUSERTHUNK RESPONSE DATA: ", response.data);
       //console.log("FETCHAUTHUSERTHUNK COMPLETED");
       dispatch(fetchAuthUser(response.data));
     } catch (error) {
