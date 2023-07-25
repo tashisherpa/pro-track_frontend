@@ -77,14 +77,14 @@ export const addHelpRequest = (payload) => {
 };
 
 export const addHelpRequestThunk = (newRequest) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      //console.log("ADDHELPREQUESTTHUNK IS FIRING");
+      const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/`,
         newRequest
       );
-      //console.log("ADDHELPREQUESTTHUNK COMPLETED");
+      socket.emit("addNewRequest", response.data);
       dispatch(addHelpRequest(response.data));
     } catch (error) {
       console.error(error);

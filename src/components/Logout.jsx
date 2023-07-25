@@ -13,14 +13,8 @@ export const Logout = () => {
   };
 
   return (
-    <button
-      className="flex text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-      onClick={handleLogout}
-    >
-      {" "}
-      LogOut
-    </button>
-  );
+    <span className="flex-1 ml-3 whitespace-nowrap" onClick= {handleLogout}> LogOut</span>
+ );
 };
 
 //export default Logout;
