@@ -20,58 +20,6 @@ function AssignmentCard({assignment}) {
   }, [dispatch]);
   console.log("assignment card : ", assignment);
 
-<<<<<<< HEAD
-  // const handleDelete = (event) => {
-  //   event.preventDefault();
-  //   console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
-
-  //   dispatch(deleteAssignmentThunk(assignment.id)).then(() => {
-  //     console.log("assignment deleted")
-  //     // navigate(`/assignments`);
-  //   });
-  // };
-
-  return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8 mb-4">
-      <div className="px-6 py-4">
-       <div className="flex flex-row">
-        <div className="font-bold text-3xl mb-2">{assignment.assignmentName} 
-        <p className="font-bold text-sm mb-2">{assignment.due_date}</p>
-        </div>
-        </div>
-        {/* <p className="text-gray-700 text-base">{assignment.user.firstName} {assignment.user.lastName}</p> */}
-       
-        <p className="text-gray-500 text-xs">{assignment.instruction}</p>
-        <p className="text-gray-500 text-xs">{assignment.group}</p>
-        <br></br>
-
-      </div>
-      <div className="flex justify-start px-6 pt-4 pb-2">
-        {/* <a href={assignment.content} target="blank">
-          <button className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white ml-2 mr-2 mb-2">
-            Link
-          </button>
-        </a> */}
-        {
-          /*Only visible to TA/Admins */
-        //   user.userType === "admin" || "TA" ? (
-        //     <a>
-        //     <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16"
-        //     onClick={handleDelete}> DELETE
-        //     </button>
-        //   </a>
-        //   ) : null
-        // }
-        // {
-        //   /*Only visible to TA/Admins */
-        //   user.userType === "admin" ? (
-        //     <Link to={`/assignment/edit/${assignment.id}`}>
-        //     <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16">
-        //       Edit
-        //     </button>
-        //     </Link>
-        //   ) : null
-=======
   const handleDelete = (event) => {
     event.preventDefault();
     console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
@@ -115,16 +63,10 @@ function AssignmentCard({assignment}) {
             </button>
             </Link>
           ) : null
->>>>>>> ce033f299e4ecdb466c518db00b62a651abe92dd
         }
       </div>
     </div>
   );
 }
 
-<<<<<<< HEAD
-
 export default AssignmentCard;
-=======
-export default AssignmentCard;
->>>>>>> ce033f299e4ecdb466c518db00b62a651abe92dd
