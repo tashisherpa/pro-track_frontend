@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { loginAuth } from "../../redux/users/users.action";
-import { Link, useNavigate } from "react-router-dom";
-import {fetchAuthUserThunk} from "../../redux/users/users.action";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import useAuth from "../../hooks/useAuth";
 
 /**
@@ -12,21 +12,19 @@ import useAuth from "../../hooks/useAuth";
 const Login = ({ name, displayName }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state)=> state.users.authUser);
+  const location = useLocation();
+  const user = useSelector((state) => state.users.authUser);
 
   useEffect(() => {
     console.log("User: ", user);
-    if(user.id){
-      navigate("/dashboard");
-       dispatch(fetchAuthUserThunk());
-    }
-    else{
+    if (user.id !== undefined) {
+      console.log(location.pathname);
+      if (location.pathname === "/") navigate("/dashboard");
       dispatch(fetchAuthUserThunk());
-
+    } else {
+      dispatch(fetchAuthUserThunk());
     }
   }, [user, dispatch]);
-
-  
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

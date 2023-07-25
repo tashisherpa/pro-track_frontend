@@ -175,6 +175,7 @@ export const loginAuth = (email, password) => async (dispatch) => {
   }
   try {
     dispatch(fetchAuthUserThunk(res.data));
+    localStorage.setItem("isLogIn", true);
     // history.push("/dashboard");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
@@ -237,11 +238,10 @@ export const fetchAuthUserThunk = () => {
 };
 
 export const logoutUser = () => {
-  
   return {
     type: UserActionType.LOGOUT_USER,
   };
-}
+};
 
 export const logoutUserThunk = () => {
   return async (dispatch) => {
@@ -253,9 +253,9 @@ export const logoutUserThunk = () => {
       );
       //console.log("FETCHAUTHUSERTHUNK COMPLETED");
       dispatch(logoutUser());
+      localStorage.removeItem("isLogIn");
     } catch (error) {
       console.error(error);
     }
   };
-}
-
+};

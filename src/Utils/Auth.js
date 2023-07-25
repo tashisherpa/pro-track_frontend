@@ -13,7 +13,8 @@ export default function PrivateRoute() {
 
   //state to check if the user is authorized or not
   const authorizedUser = useSelector((state) => !!state.users.authUser.id);
-  console.log("authorizedUser", authorizedUser)
+  const isLogIn = localStorage.getItem("isLogIn");
+  console.log("authorizedUser", authorizedUser);
 
-  return authorizedUser ? <Outlet /> : <Navigate to="/" />;
+  return authorizedUser || isLogIn ? <Outlet /> : <Navigate to="/" />;
 }
