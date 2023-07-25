@@ -36,13 +36,13 @@ function SingleAssignmentCard({ assignment }) {
     //   navigate(`/assignmentsStatus/${assignmentStatus.id}`);
     // });
 // idk abt this?
-    event.preventDefault();
+    // event.preventDefault();
    
-    dispatch(
-      editAssignmentStatusThunk({ ...editForm, submission: assignmentStatus.submission })
-    ).then(() => {
-      navigate("/assignments");
-    });
+    // dispatch(
+    //   editAssignmentStatusThunk({ ...editForm, submission: assignmentStatus.submission })
+    // ).then(() => {
+    //   navigate("/assignments");
+    // });
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function SingleAssignmentCard({ assignment }) {
         <div className="px-6 py-4">
           <div className="font-bold text-3xl text-left mb-2">
             {assignment.assignmentName}
-            {assignmentStatus[0].status === true ? (
+            {assignmentStatus.status === true ? (
            
                <p className = "bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-2  text-sm font-semibold text-white mr-2 mb-12 ml-16   ">
                 Completed
