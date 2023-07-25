@@ -35,7 +35,9 @@ function AssignmentCard({assignment}) {
     <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
          <Link to={`./${assignment.id}`}>
       <div className="px-6 py-4">
-        <div className="font-bold text-3xl mb-2">{assignment.assignmentName}</div>
+        <div className="font-bold text-3xl mb-2">{assignment.assignmentName}
+        
+        </div>
         
        
         <p className="text-gray-500 text-xs">{assignment.instruction}</p>
