@@ -5,7 +5,7 @@ import SideNavBar from "../components/SideNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";
-//import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
+import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
 import AddAssignmentBtn from "../components/AssignmentPageComponents/AddAssignmentBtn";
 
 
