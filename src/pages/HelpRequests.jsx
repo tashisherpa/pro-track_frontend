@@ -33,6 +33,10 @@ function HelpRequests() {
       socket.on("addNewRequest", (newRequest) => {
         dispatch(fetchSocket(newRequest));
       });
+
+      socket.on("editRequest", (updatedRequest) => {
+        dispatch(fetchSocket(updatedRequest));
+      });
     }
     fetchAllHelpRequets();
   }, [socket, dispatch]);

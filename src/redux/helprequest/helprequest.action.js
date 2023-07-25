@@ -101,14 +101,14 @@ export const editHelpRequest = (payload) => {
 };
 
 export const editHelpRequestThunk = (helpRequest) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      console.log("EDITHELPREQUESTTHUNK IS FIRING");
+      const { socket } = getState().socket;
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${helpRequest.id}`,
         helpRequest
       );
-      //console.log("EDITHELPREQUESTTHUNK COMPLETED");
+      socket.emit("editRequest", response.data);
       dispatch(editHelpRequest(response.data));
       console.log("Edit Resource Data: ", response.data);
     } catch (error) {
