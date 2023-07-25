@@ -21,6 +21,7 @@ import AddAssignment from "./components/AssignmentPageComponents/AddAssignment";
 import EditAssignment from "./components/AssignmentPageComponents/EditAssignment"; 
 import SingleAssignment from "./pages/SingleAssignment";
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
+import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           {/**Rahima */}
+          <Route path="/dashboard/zoomlink" element={<EditZoomMeetingLink />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/resources/add" element={<AddResourceForm />} />
           <Route path="/resources/edit/:id" element={<EditResource />} />
