@@ -1,7 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { fetchZoomMeetingLinkThunk } from "../../redux/zoom/zoom.action";
+import { Link } from "react-router-dom";
 
 function ZoomInfo() {
   const [showModal, setShowModal] = useState(false);
+  const zoomMeetingLink = useSelector((state) => state.zoom.zoomMeetingLink);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchZoomMeetingLink = () => {
+      return dispatch(fetchZoomMeetingLinkThunk());
+    };
+    fetchZoomMeetingLink();
+  }, [dispatch]);
+
   return (
     <>
       <div className="flex justify-end">
@@ -12,7 +26,16 @@ function ZoomInfo() {
         >
           Zoom Link
         </button>
+        <Link to={`/dashboard/zoomlink`}>
+        <button
+          className="bg-blue-500 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Edit Zoom Link
+        </button>
+        </Link>
       </div>
+
       <br />
       {showModal ? (
         <>
@@ -38,55 +61,13 @@ function ZoomInfo() {
                     Join By{" "}
                     <a
                       className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full"
-                      href="https://us06web.zoom.us/j/3698593234?pwd=TkJNVmlEU20rK3FMdXI3UU9GUEhqdz09"
+                      href={zoomMeetingLink.link}
                       target="blank"
                     >
                       Zoom Meeting Link
                     </a>
                   </p>
                   <br />
-                  <p>
-                    <span className="font-bold">Meeting ID:</span> 369 859 3234{" "}
-                    <br />
-                    <span className="font-bold">Passcode:</span> 0WRe1h <br />
-                    --- <br />
-                    One tap mobile
-                    <br />
-                    +16465588656,,3698593234#,,,,322923# US (New York)
-                    <br />
-                    +16469313860,,3698593234#,,,,322923# US <br />
-                    --- <br />
-                    Dial by your location <br />
-                    • +1 646 558 8656 US (New York) <br />
-                    • +1 646 931 3860 US <br />
-                    • +1 309 205 3325 US <br />
-                    • +1 312 626 6799 US (Chicago) <br />
-                    • +1 301 715 8592 US (Washington DC) <br />
-                    • +1 305 224 1968 US <br />
-                    • +1 507 473 4847 US <br />
-                    • +1 564 217 2000 US <br />
-                    • +1 669 444 9171 US <br />
-                    • +1 689 278 1000 US <br />
-                    • +1 719 359 4580 US <br />
-                    • +1 720 707 2699 US (Denver) <br />
-                    • +1 253 205 0468 US <br />
-                    • +1 253 215 8782 US (Tacoma)
-                    <br />
-                    • +1 346 248 7799 US (Houston)
-                    <br />
-                    • +1 360 209 5623 US <br />
-                    • +1 386347 5053 US <br />
-                    <br />
-                    Meeting ID: 369 859 3234 <br />
-                    Passcode: 322923 <br />
-                    Find your local number:{" "}
-                    <a
-                      className="text-blue-500"
-                      href="https://us06web.zoom.us/u/kbqvOWyvJY"
-                    >
-                      https://us06web.zoom.us/u/kbqvOWyvJY
-                    </a>
-                  </p>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
