@@ -8,17 +8,10 @@ import {
 import { fetchAllFeedThunk } from "../redux/feed/feed.action";
 import { fetchAuthUserThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
-import { io } from "socket.io-client";
-
 function Dashboard() {
   const user = useSelector((state) => state.users.authUser);
   const allFeed = useSelector((state) => state.feed.allFeed);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const socket = io("http://localhost:5000");
-    console.log(socket);
-  }, []);
 
   useEffect(() => {
     const fetchAuthUser = () => {

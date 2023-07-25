@@ -5,6 +5,7 @@ import { fetchAllHelpRequestsThunk } from "../redux/helprequest/helprequest.acti
 import { fetchAuthUserThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { io } from "socket.io-client";
 
 function HelpRequests() {
   const dispatch = useDispatch();
@@ -36,6 +37,11 @@ function HelpRequests() {
     };
     fetchAllHelpRequets();
   }, [dispatch]);
+
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
+    console.log("Socket:", socket);
+  }, []);
   return (
     <div>
       <SideNavBar />
