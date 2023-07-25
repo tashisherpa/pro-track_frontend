@@ -3,6 +3,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { fetchAuthUserThunk} from "../../redux/users/users.action";
 import { Link } from "react-router-dom";
+
 import { deleteAssignmentThunk } from "../../redux/assignment/assignments.action";
 
 
@@ -32,6 +33,7 @@ function AssignmentCard({assignment}) {
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+         <Link to={`./${assignment.id}`}>
       <div className="px-6 py-4">
         <div className="font-bold text-3xl mb-2">{assignment.assignmentName}</div>
         
@@ -65,6 +67,7 @@ function AssignmentCard({assignment}) {
           ) : null
         }
       </div>
+      </Link>
     </div>
   );
 }

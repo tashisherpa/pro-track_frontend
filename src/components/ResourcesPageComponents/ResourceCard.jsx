@@ -59,7 +59,7 @@ function ResourceCard({resource}) {
         {
           /*Only visible to TA/Admins */
           user.userType === "admin" ? (
-            <Link to={`/resource/edit/${resource.id}`}>
+            <Link to={`/resources/edit/${resource.id}`}>
             <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16">
               Edit
             </button>

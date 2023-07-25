@@ -12,7 +12,8 @@ export default function PrivateRoute() {
    */
 
   //state to check if the user is authorized or not
-  const authorizedUser = useSelector((state) => !!state.users.singleUser);
+  const authorizedUser = useSelector((state) => !!state.users.authUser.id);
+  console.log("authorizedUser", authorizedUser)
 
   return authorizedUser ? <Outlet /> : <Navigate to="/" />;
 }

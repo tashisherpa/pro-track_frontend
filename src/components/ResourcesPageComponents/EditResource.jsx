@@ -1,49 +1,52 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleResourceThunk, editResourceThunk} from "../../redux/resources/resources.action";
+import {
+  fetchSingleResourceThunk,
+  editResourceThunk,
+} from "../../redux/resources/resources.action";
 
 function EditResource() {
-    const { id } = useParams();
-    const resource = useSelector((state) => state.resources.singleresource);
-    const [editForm, setEditForm] = useState({});
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      const fetchSingleResource = () => {
-          return dispatch(fetchSingleResourceThunk(id));
-      };
-      fetchSingleResource();
-    }, [dispatch]);
-  
-    useEffect(() => {
-      setEditForm(resource);
-    }, [resource]);
-  
-    const handleCancel = () => {
-      navigate("/resources");
+  const { id } = useParams();
+  const resource = useSelector((state) => state.resources.singleresource);
+  const [editForm, setEditForm] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchSingleResource = () => {
+      return dispatch(fetchSingleResourceThunk(id));
     };
-  
-    //change the value of the editForm, this is also used to handle the text field changes
-    const handleInputChange = (event) => {
-      setEditForm({
-        ...editForm,
-        [event.target.name]: event.target.value,
-      });
-      //console.log("editForm: ", editForm);
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
-  
-      dispatch(editResourceThunk(editForm)).then(() => {
-        navigate(`/resources`);
-      });
-    };
+    fetchSingleResource();
+  }, [dispatch]);
+
+  useEffect(() => {
+    setEditForm(resource);
+  }, [resource]);
+
+  const handleCancel = () => {
+    navigate("/resources");
+  };
+
+  //change the value of the editForm, this is also used to handle the text field changes
+  const handleInputChange = (event) => {
+    setEditForm({
+      ...editForm,
+      [event.target.name]: event.target.value,
+    });
+    //console.log("editForm: ", editForm);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
+
+    dispatch(editResourceThunk(editForm)).then(() => {
+      navigate(`/resources`);
+    });
+  };
 
   return (
     <div>
@@ -134,7 +137,6 @@ function EditResource() {
       </div>
     </div>
   );
-  
 }
 
 export default EditResource;

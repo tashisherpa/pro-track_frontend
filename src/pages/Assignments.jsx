@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import SideNavBar from "../components/SideNavBar";
 // import AddAssignment from "../components/AssignmentPageComponents";
-import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";

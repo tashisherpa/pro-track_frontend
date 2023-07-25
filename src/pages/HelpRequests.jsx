@@ -18,27 +18,12 @@ function HelpRequests() {
     fetchAuthUser();
   }, [dispatch]);
 
-  // Sorting function to compare two help request objects by their created date
-  const sortByID = (a, b) => {
-    // Sort by status first
-    if (a.status !== b.status) {
-      // Put "Resolved" status last, and others first
-      if (a.status === "Resolved") return 1;
-      if (b.status === "Resolved") return -1;
-      // Put "In Progress" status before "Pending" status
-      if (a.status === "In Progress") return -1;
-      if (b.status === "In Progress") return 1;
-    }
-    // If status is the same, sort by id
-    return a.id - b.id;
-  };
-
   // State for sorted help requests
   const [sortedHelpRequests, setSortedHelpRequests] = useState([]);
 
-  // When the allHelpRequests array changes, sort the list
+  // When the allHelpRequests array changes, sort the list in lastest request on top
   useEffect(() => {
-    const sortedList = [...allHelpRequests].sort(sortByID);
+    const sortedList = [...allHelpRequests].sort((a, b) => b.id - a.id);
     setSortedHelpRequests(sortedList);
   }, [allHelpRequests]);
 
