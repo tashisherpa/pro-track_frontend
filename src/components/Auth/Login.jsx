@@ -16,20 +16,17 @@ const Login = ({ name, displayName }) => {
 
   useEffect(() => {
     console.log("User: ", user);
-    if(user.email){
+    if(user.id){
       navigate("/dashboard");
+       dispatch(fetchAuthUserThunk());
     }
     else{
-      navigate("/");
-    }
-  }, [user]);
+      dispatch(fetchAuthUserThunk());
 
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
+    }
+  }, [user, dispatch]);
+
+  
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

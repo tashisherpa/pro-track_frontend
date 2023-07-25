@@ -3,10 +3,11 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { fetchAuthUserThunk} from "../../redux/users/users.action";
 import { Link } from "react-router-dom";
-import { deleteResourceThunk } from "../../redux/resources/resources.action";
+
+import { deleteAssignmentThunk } from "../../redux/assignment/assignments.action";
 
 
-function ResourceCard({resource}) {
+function AssignmentCard({assignment}) {
   //const [isAdmin, setIsAdmin] = useState(true);
 
   const user = useSelector((state) => state.users.authUser);
@@ -18,34 +19,33 @@ function ResourceCard({resource}) {
     };
     fetchAuthUser();
   }, [dispatch]);
-  console.log("resource card : ", resource);
+  console.log("assignment card : ", assignment);
 
   const handleDelete = (event) => {
     event.preventDefault();
     console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
-    dispatch(deleteResourceThunk(resource.id)).then(() => {
-      console.log("resource delted")
-      // navigate(`/resources`);
+    dispatch(deleteAssignmentThunk(assignment.id)).then(() => {
+      console.log("assignment deleted")
+      // navigate(`/assignments`);
     });
   };
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+         <Link to={`./${assignment.id}`}>
       <div className="px-6 py-4">
-        <div className="font-bold text-3xl mb-2">{resource.title}</div>
-        <p className="text-gray-700 text-base">{resource.user.firstName} {resource.user.lastName}</p>
+        <div className="font-bold text-3xl mb-2">{assignment.assignmentName}</div>
+        
        
-        <p className="text-gray-500 text-xs">{resource.category}</p>
-        <p className="text-gray-500 text-xs">{resource.description}</p>
+        <p className="text-gray-500 text-xs">{assignment.instruction}</p>
+        <p className="text-gray-500 text-xs">{assignment.group}</p>
+        <p className="text-gray-500 text-xs">{assignment.assignment_date}</p>
+        <p className="text-gray-500 text-xs">{assignment.due_date}</p>
         <br></br>
       </div>
       <div className="flex justify-start px-6 pt-4 pb-2">
-        <a href={resource.content} target="blank">
-          <button className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white ml-2 mr-2 mb-2">
-            Link
-          </button>
-        </a>
+      
         {
           /*Only visible to TA/Admins */
           user.userType === "admin"  ? (
@@ -59,7 +59,7 @@ function ResourceCard({resource}) {
         {
           /*Only visible to TA/Admins */
           user.userType === "admin" ? (
-            <Link to={`/resources/edit/${resource.id}`}>
+            <Link to={`/assignments/edit/${assignment.id}`}>
             <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16">
               Edit
             </button>
@@ -67,8 +67,10 @@ function ResourceCard({resource}) {
           ) : null
         }
       </div>
+      </Link>
     </div>
   );
 }
 
-export default ResourceCard;
+
+export default AssignmentCard;

@@ -15,7 +15,10 @@ import EditUser from "./components/UserPageComponents/EditUser";
 import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 import EditLecture from "./components/LecturesPageComponents/EditLecture";
 import SingleUser from "./pages/SingleUser";
-import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm";
+import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
+import EditResource from "./components/ResourcesPageComponents/EditResource"; 
+import AddAssignment from "./components/AssignmentPageComponents/AddAssignment"; 
+import EditAssignment from "./components/AssignmentPageComponents/EditAssignment"; 
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 
 function App() {
@@ -32,15 +35,19 @@ function App() {
         */}
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          {/**Rahima */}
           <Route path="/resources" element={<Resources />} />
           <Route path="/resources/add" element={<AddResourceForm />} />
+          <Route path="/resources/edit/:id" element={<EditResource />} />
           {/**Sabina */}
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/lectures/add" element={<AddLectureForm />} />
           <Route path="/lectures/edit/:id" element={<EditLecture />} />
-          {/**Sabina */}
+          {/**Rahima */}
           <Route path="/assignments" element={<Assignments />} />
-          {/**tashi */}
+          <Route path="/assignments/add" element={<AddAssignment />} />
+          <Route path="/assignments/edit/:id" element={<EditAssignment />} />
+          {/**tashi*/}
           <Route path="/helprequests" element={<HelpRequests />} />
           {/**tashi */}
           <Route path="/helprequests/addrequest" element={<AddHelpRequest />} />
