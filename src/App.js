@@ -15,13 +15,28 @@ import EditUser from "./components/UserPageComponents/EditUser";
 import AddLectureForm from "./components/LecturesPageComponents/AddLectureForm";
 import EditLecture from "./components/LecturesPageComponents/EditLecture";
 import SingleUser from "./pages/SingleUser";
-import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm"; 
-import EditResource from "./components/ResourcesPageComponents/EditResource"; 
-import AddAssignment from "./components/AssignmentPageComponents/AddAssignment"; 
-import EditAssignment from "./components/AssignmentPageComponents/EditAssignment"; 
+import AddResourceForm from "./components/ResourcesPageComponents/AddResourceForm";
+import EditResource from "./components/ResourcesPageComponents/EditResource";
+import AddAssignment from "./components/AssignmentPageComponents/AddAssignment";
+import EditAssignment from "./components/AssignmentPageComponents/EditAssignment";
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
-
+import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
+import { fetchAuthUserThunk } from "./redux/users/users.action";
+import { fetchSocket } from "./redux/socket/socket.action";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { io } from "socket.io-client";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAuthUserThunk());
+    const socket = io("http://localhost:8080", {
+      withCredentials: true,
+    });
+    dispatch(fetchSocket(socket));
+  }, [dispatch]);
+
   return (
     <Router>
       <Routes>
@@ -36,6 +51,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           {/**Rahima */}
+          <Route path="/dashboard/zoomlink" element={<EditZoomMeetingLink />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/resources/add" element={<AddResourceForm />} />
           <Route path="/resources/edit/:id" element={<EditResource />} />

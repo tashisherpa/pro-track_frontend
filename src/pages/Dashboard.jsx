@@ -8,7 +8,6 @@ import {
 import { fetchAllFeedThunk } from "../redux/feed/feed.action";
 import { fetchAuthUserThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
-
 function Dashboard() {
   const user = useSelector((state) => state.users.authUser);
   const allFeed = useSelector((state) => state.feed.allFeed);
@@ -54,15 +53,15 @@ function Dashboard() {
             if the first statement is false the second statement is never checked
             in this case if showAddAnnoucement is false the component never renders
           */
-          user.userType==="admin" && <PostAnnouncement user={user}/>
+          user.userType === "admin" && <PostAnnouncement user={user} />
         }
         {sortedFeed.length > 0 ? (
-            sortedFeed.map((post) => <DashboardStudentView key={post.id} post={post} user={user}/>)
-          ) : (
-          <p style={{ textAlign: "center" }}>
-              There are no posts yet!
-            </p>
-          )}
+          sortedFeed.map((post) => (
+            <DashboardStudentView key={post.id} post={post} user={user} />
+          ))
+        ) : (
+          <p style={{ textAlign: "center" }}>There are no posts yet!</p>
+        )}
       </div>
     </div>
   );
