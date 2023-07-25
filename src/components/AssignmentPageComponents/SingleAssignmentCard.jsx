@@ -39,7 +39,7 @@ function SingleAssignmentCard({ assignment }) {
         <div className="px-6 py-4">
           <div className="font-bold text-3xl text-left mb-2 flex w-full">
             {assignment.assignmentName} 
-            {assignmentStatus.status === true ? (
+            {assignmentStatus[0].status === true ? (
                <p className = "bg-gray-200 dark:bg-gray-700 rounded-full px-10 py-2  text-sm font-semibold text-white mr-2 mb-12 ml-16   ">
                 Completed
                </p>
@@ -63,7 +63,6 @@ function SingleAssignmentCard({ assignment }) {
              Due: {assignment.due_date}
           </div>
         </div>
-          <input></input>
         
         <div className="flex justify-start px-6 pt-4 pb-2">
         
