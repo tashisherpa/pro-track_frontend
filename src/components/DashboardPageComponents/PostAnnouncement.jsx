@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addFeedThunk } from "../../redux/feed/feed.action";
 import { fetchSingleUserThunk } from "../../redux/users/users.action";
 
-function PostAnnouncement({user}) {
+function PostAnnouncement({ user }) {
   const [form, setForm] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,21 +15,14 @@ function PostAnnouncement({user}) {
       ...form,
       [event.target.name]: event.target.value,
     });
-    //console.log("editForm: ", editForm);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
-
     dispatch(addFeedThunk({ ...form, userId: user.id })).then(() => {
       setForm({});
     });
   };
-
-  console.log(user);
-
-  console.log("form: ", form);
   return (
     <div>
       <form className="flex flex-col" onSubmit={handleSubmit}>

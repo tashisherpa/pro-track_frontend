@@ -18,7 +18,6 @@ export const fetchAllUsersThunk = () => {
   return async (dispatch) => {
     try {
       //console.log("FETCHALLUSERSTHUNK IS FIRING");
-      console.log(`${process.env.REACT_APP_BACKEND_URL}/api/user/`);
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/user/all`
       );
@@ -53,10 +52,6 @@ export const fetchSingleUserThunk = (id) => {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`
       );
-      if (!response.data) {
-        //console.log("No User found");
-      }
-      //console.log("FETCHSINGLEUSERSTHUNK COMPLETED");
       dispatch(fetchSingleUser(response.data));
     } catch (error) {
       console.error(error);
@@ -219,17 +214,13 @@ export const fetchAuthUser = (payload) => {
 export const fetchAuthUserThunk = () => {
   return async (dispatch) => {
     try {
-      //console.log("FETCHAUTHUSERTHUNK IS FIRING");
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/me`
-        // `${process.env.REACT_APP_BACKEND_URL}/auth/me`
       );
       if (!response.data) {
         console.log("No User found");
         return;
       }
-      console.log("FETCHAUTHUSERTHUNK RESPONSE DATA: ", response.data);
-      //console.log("FETCHAUTHUSERTHUNK COMPLETED");
       dispatch(fetchAuthUser(response.data));
     } catch (error) {
       console.error(error);

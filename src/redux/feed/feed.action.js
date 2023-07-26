@@ -35,9 +35,10 @@ export const deleteFeed = (payload) => {
 export const deleteFeedThunk = (id) => {
   return async (dispatch) => {
     try {
-      //console.log("FETCHDELETEFEEDTHUNK IS FIRING");
-      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/feed/${id}`);
-      //console.log("FETCHDELETEREFEEDTHUNK COMPLETED");
+      const response = await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/feed/${id}`
+      );
+
       dispatch(deleteFeed(id));
     } catch (error) {
       console.error(error);
@@ -54,14 +55,14 @@ export const addFeed = (payload) => {
 };
 
 export const addFeedThunk = (newFeed) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      //console.log("ADDFEEDTHUNK IS FIRING");
+      const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/feed/`,
         newFeed
       );
-      //console.log("ADDFEEDTHUNK COMPLETED");
+      socket.emit("addNewPost", response.data);
       dispatch(addFeed(response.data));
     } catch (error) {
       console.error(error);

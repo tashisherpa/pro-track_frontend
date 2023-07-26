@@ -3,20 +3,12 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addLectureThunk } from "../../redux/lectures/lectures.action";
-import { fetchAuthUserThunk} from "../../redux/users/users.action";
 
 function AddLectureForm() {
   const user = useSelector((state) => state.users.authUser);
   const [form, setForm] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
 
   //returns user to lectures page
   const handleCancel = () => {
@@ -34,14 +26,11 @@ function AddLectureForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
-    dispatch(addLectureThunk({...form, userId: user.id})).then(() => {
+    dispatch(addLectureThunk({ ...form, userId: user.id })).then(() => {
       navigate(`/lectures`);
     });
   };
-
-  console.log("form: ", form);
 
   return (
     <div>

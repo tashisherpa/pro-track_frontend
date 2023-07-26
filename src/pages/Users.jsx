@@ -12,19 +12,14 @@ function Users() {
   const allUsers = useSelector((state) => state.users.allUsers);
   const allStaff = allUsers.filter((user) => user.userType !== "student");
   const allStudents = allUsers.filter((user) => user.userType === "student");
-  //console.log("allStaff: ", allStaff);
-  //console.log("allStudents: ", allStudents);
 
   //gets all users with the fetchAllUsers func
   useEffect(() => {
-    //console.log("FETCH ALL STUDENTS FIRING IN USE EFFECT");
-
     //dispatches the fetchAllUsersThunk() from users actions which returns
     //object with the action type and payload containing the array of users
     //and sets all user state to the payload from here through the root-reducer
 
     const fetchAllUsers = () => {
-      //console.log("RUNNING DISPATCH FROM FETCHALLSTUDENTS");
       return dispatch(fetchAllUsersThunk());
     };
     fetchAllUsers();
