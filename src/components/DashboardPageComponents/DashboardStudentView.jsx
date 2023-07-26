@@ -5,14 +5,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function DashboardStudentView({ post, user }) {
-  console.log(post);
   const dispatch = useDispatch();
   const img_link =
     "https://i.pinimg.com/564x/b2/45/2b/b2452bd4499ed406e6f0dfc14138f182.jpg";
 
   const handleDelete = () => {
     dispatch(deleteFeedThunk(post.id));
-    console.log("id:", post.id);
   };
 
   return (

@@ -35,7 +35,6 @@ function EditZoomMeetingLink() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("EDIT FORM: ", editForm);
     dispatch(editZoomMeetingLinkThunk(editForm)).then(() => {
       navigate("/dashboard");
     });

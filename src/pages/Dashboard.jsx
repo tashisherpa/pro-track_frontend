@@ -6,19 +6,15 @@ import {
   ZoomInfo,
 } from "../components/DashboardPageComponents";
 import { fetchAllFeedThunk } from "../redux/feed/feed.action";
-import { fetchAuthUserThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchSocket } from "../redux/socket/socket.action";
+
 function Dashboard() {
   const user = useSelector((state) => state.users.authUser);
   const allFeed = useSelector((state) => state.feed.allFeed);
-  const dispatch = useDispatch();
+  const socket = useSelector((state) => state.socket.socket);
 
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //console.log("FETCH ALL FEED FIRING IN USE EFFECT");
@@ -27,8 +23,13 @@ function Dashboard() {
       //console.log("RUNNING DISPATCH FROM FETCHALLFEED");
       return dispatch(fetchAllFeedThunk());
     };
+    if (socket.on) {
+      socket.on("addNewPost", (newFeed) => {
+        dispatch(fetchSocket(newFeed));
+      });
+    }
     fetchAllFeed();
-  }, [dispatch]);
+  }, [dispatch, socket]);
 
   const [sortedFeed, setSortedFeed] = useState([]);
 

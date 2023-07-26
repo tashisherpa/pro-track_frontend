@@ -14,7 +14,6 @@ function SingleAssignmentCard({ assignment }) {
   const [editForm, setEditForm] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log("single assignment: ", assignment);
   const assignmentStatus = useSelector(
     (state) => state.assignmentsStatus.singleAssignmentStatus
   );
@@ -29,12 +28,10 @@ function SingleAssignmentCard({ assignment }) {
       ...editForm,
       [event.target.name]: event.target.value,
     });
-    //console.log("editForm: ", editForm);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
     dispatch(editAssignmentThunk(editForm)).then(() => {
       navigate(`/assignments/${assignmentStatus.assignmentId}`);
@@ -56,11 +53,6 @@ function SingleAssignmentCard({ assignment }) {
     };
     fetchSingleAssignmentStatus();
   }, [dispatch]);
-
-  console.log("ID: ", id);
-  console.log("Assignmnet status: ", assignmentStatus);
-  console.log("Logged user: ", loggedInUser);
-  console.log("Assignmnet: ", assignment);
 
   return (
     <div className="max-w-4xl rounded overflow-hidden shadow-lg mt-8 mr-8 ">

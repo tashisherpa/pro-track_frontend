@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { fetchAuthUserThunk} from "../../redux/users/users.action";
+import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import { Link } from "react-router-dom";
 import { deleteResourceThunk } from "../../redux/resources/resources.action";
 
-
 function ResourceCard({ resource }) {
-
   const user = useSelector((state) => state.users.authUser);
   const dispatch = useDispatch();
 
@@ -18,24 +16,15 @@ function ResourceCard({ resource }) {
     fetchAuthUser();
   }, [dispatch]);
 
-  console.log("resource card : ", resource);
-
   const handleDelete = (event) => {
     event.preventDefault();
-    console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
-
-    dispatch(deleteResourceThunk(resource.id)).then(() => {
-      console.log("resource deleted");
-      // navigate(`/resources`);
-    });
+    dispatch(deleteResourceThunk(resource.id));
   };
-
-
 
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <div className="px-6 py-4">
-      {resource.image && <img src={resource.image} alt="Link Preview" />}
+        {resource.image && <img src={resource.image} alt="Link Preview" />}
         <div className="font-bold text-3xl mb-2">{resource.title}</div>
         <p className="text-gray-700 text-base">
           {resource.user.firstName} {resource.user.lastName}
@@ -75,4 +64,3 @@ function ResourceCard({ resource }) {
 }
 
 export default ResourceCard;
-
