@@ -93,6 +93,7 @@ export const editResource = (payload) => {
 export const editResourceThunk = (resource) => {
   return async (dispatch) => {
     try {
+      console.log(resource);
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/${resource.id}`,
         resource
