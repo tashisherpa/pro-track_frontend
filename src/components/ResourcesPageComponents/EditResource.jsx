@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchSingleResourceThunk,
   editResourceThunk,
@@ -10,25 +8,14 @@ import {
 
 function EditResource() {
   const { id } = useParams();
-  const resource = useSelector((state) => state.resources.singleResource);
-  const [editForm, setEditForm] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchSingleResource = () => {
-      return dispatch(fetchSingleResourceThunk(id));
-    };
-    fetchSingleResource();
-  }, [dispatch]);
+  const resource = useSelector((state) => state.resources.singleResource);
+  const [editForm, setEditForm] = useState({});
 
   useEffect(() => {
     setEditForm(resource);
   }, [resource]);
-
-  const handleCancel = () => {
-    navigate("/resources");
-  };
 
   //change the value of the editForm, this is also used to handle the text field changes
   const handleInputChange = (event) => {
@@ -36,7 +23,15 @@ function EditResource() {
       ...editForm,
       [event.target.name]: event.target.value,
     });
+    console.log(event.target.name, event.target.value);
   };
+
+  useEffect(() => {
+    const fetchSingleResource = () => {
+      return dispatch(fetchSingleResourceThunk(id));
+    };
+    fetchSingleResource();
+  }, [dispatch, id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,6 +42,10 @@ function EditResource() {
     });
   };
 
+  const handleCancel = () => {
+    navigate("/resources");
+  };
+
   return (
     <div>
       <div className="w-full max-w-xs">
@@ -54,6 +53,17 @@ function EditResource() {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Category
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="category"
+            value={editForm.category || ""}
+            placeholder="category"
+            onChange={handleInputChange}
+          />
           <label className="block text-gray-700 text-sm font-bold mb-2">
             resource Link
           </label>

@@ -8,18 +8,20 @@ import { useDispatch, useSelector } from "react-redux";
 function Resources() {
   const dispatch = useDispatch();
   const allResources = useSelector((state) => state.resources.allResources);
+  const user = useSelector((state) => state.users.authUser);
   useEffect(() => {
     const fetchAllResources = () => {
       return dispatch(fetchAllResourcesThunk());
     };
     fetchAllResources();
   }, [dispatch]);
+
   return (
     <div>
       <SideNavBar />
       <div className="p-4 sm:ml-64">
         <h1 className="text-2xl font-bold mb-4">Resources</h1>
-        <AddResourceBtn />
+        {user.userType !== "student" ? <AddResourceBtn /> : null}
         <div className="flex flex-wrap">
           {allResources.length > 0 ? (
             allResources.map((resource) => (
