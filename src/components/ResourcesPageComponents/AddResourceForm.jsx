@@ -33,7 +33,7 @@ function AddResourceForm() {
   
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
     //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
@@ -51,7 +51,7 @@ function AddResourceForm() {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          {/* <label className="block text-gray-700 text-sm font-bold mb-2">
             Resource Title
           </label>
           <input
@@ -61,7 +61,7 @@ function AddResourceForm() {
             value={form.title || ""}
             placeholder="Title"
             onChange={handleInputChange}
-          />
+          /> */}
            <label className="block text-gray-700 text-sm font-bold mb-2">
             Category
           </label>
@@ -73,7 +73,7 @@ function AddResourceForm() {
             placeholder="Category"
             onChange={handleInputChange}
           />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          {/* <label className="block text-gray-700 text-sm font-bold mb-2">
             Description
           </label>
           <input
@@ -83,16 +83,16 @@ function AddResourceForm() {
             value={form.description || ""}
             placeholder="Description"
             onChange={handleInputChange}
-          />
+          /> */}
           
           <label className="block text-gray-700 text-sm font-bold mb-2">
-           Content Link
+           Link
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            name="content"
-            value={form.content || ""}
+            name="link"
+            value={form.link || ""}
             placeholder="resources Link"
             onChange={handleInputChange}
           />
