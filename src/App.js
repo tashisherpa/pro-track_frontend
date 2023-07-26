@@ -22,8 +22,22 @@ import EditAssignment from "./components/AssignmentPageComponents/EditAssignment
 import SingleAssignment from "./pages/SingleAssignment"; 
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
-
+import { fetchAuthUserThunk } from "./redux/users/users.action";
+import { fetchSocket } from "./redux/socket/socket.action";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { io } from "socket.io-client";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAuthUserThunk());
+    const socket = io("http://localhost:8080", {
+      withCredentials: true,
+    });
+    dispatch(fetchSocket(socket));
+  }, [dispatch]);
+
   return (
     <Router>
       <Routes>

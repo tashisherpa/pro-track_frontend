@@ -29,6 +29,8 @@ function Assignments() {
     dispatch(fetchAllAssignmentsStatusThunk());
   }, [dispatch]);
 
+  const userAssignmnets = allAssignments.filter((assign)=>assign.email);
+
   return (
     <div>
     <SideNavBar />

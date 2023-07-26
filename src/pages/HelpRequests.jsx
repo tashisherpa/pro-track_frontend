@@ -2,21 +2,17 @@ import React, { useEffect, useState } from "react";
 import SideNavBar from "../components/SideNavBar";
 import { HelpRequestCard } from "../components/HelpRequestPageComponents";
 import { fetchAllHelpRequestsThunk } from "../redux/helprequest/helprequest.action";
-import { fetchAuthUserThunk } from "../redux/users/users.action";
+import { fetchSocket } from "../redux/socket/socket.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 function HelpRequests() {
   const dispatch = useDispatch();
   const allHelpRequests = useSelector(
     (state) => state.helpRequests.allHelpRequests
   );
   const loggedInUser = useSelector((state) => state.users.authUser);
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
+  const socket = useSelector((state) => state.socket.socket);
 
   // State for sorted help requests
   const [sortedHelpRequests, setSortedHelpRequests] = useState([]);
@@ -33,8 +29,17 @@ function HelpRequests() {
       //console.log("RUNNING DISPATCH FROM FETCHALLHELPREQUEST");
       return dispatch(fetchAllHelpRequestsThunk());
     };
+    if (socket.on) {
+      socket.on("addNewRequest", (newRequest) => {
+        dispatch(fetchSocket(newRequest));
+      });
+
+      socket.on("editRequest", (updatedRequest) => {
+        dispatch(fetchSocket(updatedRequest));
+      });
+    }
     fetchAllHelpRequets();
-  }, [dispatch]);
+  }, [socket, dispatch]);
   return (
     <div>
       <SideNavBar />

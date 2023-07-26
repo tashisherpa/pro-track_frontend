@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAuthUserThunk } from "../../redux/users/users.action";
+
 function AddHelpRequest() {
   const [form, setForm] = useState({});
   const loggedInUser = useSelector((state) => state.users.authUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
 
   //change the value of the editForm, this is also used to handle the text field changes
   const handleInputChange = (event) => {

@@ -1,18 +1,15 @@
-import React, { createContext, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { logoutUserThunk } from '../redux/users/users.action';
-import { useNavigate } from 'react-router-dom';
-
-
+import React, { createContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutUserThunk } from "../redux/users/users.action";
+import { useNavigate } from "react-router-dom";
 
 export const Logout = () => {
-const dispatch = useDispatch();
-const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     await dispatch(logoutUserThunk());
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -21,5 +18,3 @@ const navigate = useNavigate();
 };
 
 //export default Logout;
-
-
