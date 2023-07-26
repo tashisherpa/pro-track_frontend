@@ -3,20 +3,12 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAssignmentThunk } from "../../redux/assignment/assignments.action";
-import { fetchAuthUserThunk } from "../../redux/users/users.action";
 
 function AddAssignment() {
   const user = useSelector((state) => state.users.authUser);
   const [form, setForm] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchAuthUser = () => {
-      return dispatch(fetchAuthUserThunk());
-    };
-    fetchAuthUser();
-  }, [dispatch]);
 
   //returns user to resources page
   const handleCancel = () => {
@@ -31,16 +23,13 @@ function AddAssignment() {
   };
 
   const handleSubmit = (event) => {
-   
     event.preventDefault();
     console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
-    dispatch(addAssignmentThunk( {...form })).then(() => {
+    dispatch(addAssignmentThunk({ ...form })).then(() => {
       navigate(`/assignments`);
     });
   };
-
-  console.log("form: ", form);
 
   return (
     <div>

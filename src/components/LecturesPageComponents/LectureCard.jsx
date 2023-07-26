@@ -17,11 +17,10 @@ function LectureCard({ lecture }) {
     };
     fetchAuthUser();
   }, [dispatch]);
-  console.log("lecture card : ", lecture);
 
   const handleDelete = () => {
     dispatch(deleteLectureThunk(lecture.id));
-    navigate('/lectures');
+    navigate("/lectures");
   };
 
   return (
@@ -57,7 +56,10 @@ function LectureCard({ lecture }) {
                   Edit
                 </button>
               </Link>
-              <button className=" bg-gray-200 dark:bg-gray-700 rounded-full py-1 text-sm font-semibold text-white px-2" onClick={handleDelete}>
+              <button
+                className=" bg-gray-200 dark:bg-gray-700 rounded-full py-1 text-sm font-semibold text-white px-2"
+                onClick={handleDelete}
+              >
                 Delete
               </button>
             </div>

@@ -10,7 +10,7 @@ import {
 
 function EditResource() {
   const { id } = useParams();
-  const resource = useSelector((state) => state.resources.singleresource);
+  const resource = useSelector((state) => state.resources.singleResource);
   const [editForm, setEditForm] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,7 +36,6 @@ function EditResource() {
       ...editForm,
       [event.target.name]: event.target.value,
     });
-    //console.log("editForm: ", editForm);
   };
 
   const handleSubmit = (event) => {
@@ -56,69 +55,14 @@ function EditResource() {
           onSubmit={handleSubmit}
         >
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            resource Title
+            resource Link
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            name="title"
-            value={editForm.title || ""}
-            placeholder="Title"
-            onChange={handleInputChange}
-          />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Description
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="description"
-            value={editForm.description || ""}
-            placeholder="Description"
-            onChange={handleInputChange}
-          />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            resource Slides Link
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="slides"
-            value={editForm.slides || ""}
-            placeholder="Slides Link"
-            onChange={handleInputChange}
-          />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            resource Recording Link
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="recordings"
-            value={editForm.recordings || ""}
-            placeholder="Recording Link"
-            onChange={handleInputChange}
-          />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            resource Recording Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="password"
-            value={editForm.password || ""}
-            placeholder="Recording Password"
-            onChange={handleInputChange}
-          />
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            resource Day
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="date"
-            name="resource_date"
-            value={editForm.resource_date || ""}
-            placeholder="resource Day"
+            name="link"
+            value={editForm.link || ""}
+            placeholder="link"
             onChange={handleInputChange}
           />
           <button

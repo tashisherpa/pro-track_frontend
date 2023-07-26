@@ -20,7 +20,7 @@ function EditLecture() {
       return dispatch(fetchSingleLectureThunk(id));
     };
     fetchSingleLecture();
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     setEditForm(lecture);
@@ -37,12 +37,10 @@ function EditLecture() {
       [event.target.name]: event.target.value,
       taId: null,
     });
-    // console.log("editForm: ", editForm);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
     dispatch(editLectureThunk(editForm)).then(() => {
       navigate(`/lectures`);

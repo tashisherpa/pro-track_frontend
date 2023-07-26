@@ -22,7 +22,6 @@ function Lectures() {
     };
     fetchAllLectures();
   }, [dispatch]);
-  console.log("All Lectures", allLectures);
 
   return (
     <div>

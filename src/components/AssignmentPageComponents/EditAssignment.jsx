@@ -1,50 +1,50 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleAssignmentThunk, editAssignmentThunk} from "../../redux/assignment/assignments.action";
-
+import {
+  fetchSingleAssignmentThunk,
+  editAssignmentThunk,
+} from "../../redux/assignment/assignments.action";
 
 function EditAssignment() {
-    const { id } = useParams();
-    const assignment = useSelector((state) => state.assignments.singleAssignment);
-    const [editForm, setEditForm] = useState({});
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      const fetchSingleAssignment = () => {
-          return dispatch(fetchSingleAssignmentThunk(id));
-      };
-      fetchSingleAssignment();
-    }, [dispatch]);
-  
-    useEffect(() => {
-      setEditForm(assignment);
-    }, [assignment]);
-  
-    const handleCancel = () => {
-      navigate("/assignments");
+  const { id } = useParams();
+  const assignment = useSelector((state) => state.assignments.singleAssignment);
+  const [editForm, setEditForm] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchSingleAssignment = () => {
+      return dispatch(fetchSingleAssignmentThunk(id));
     };
-  
-    //change the value of the editForm, this is also used to handle the text field changes
-    const handleInputChange = (event) => {
-      setEditForm({
-        ...editForm,
-        [event.target.name]: event.target.value,
-      });
-      //console.log("editForm: ", editForm);
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      //console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
-  
-      dispatch(editAssignmentThunk(editForm)).then(() => {
-        navigate(`/assignments`);
-      });
-    };
+    fetchSingleAssignment();
+  }, [dispatch]);
+
+  useEffect(() => {
+    setEditForm(assignment);
+  }, [assignment]);
+
+  const handleCancel = () => {
+    navigate("/assignments");
+  };
+
+  //change the value of the editForm, this is also used to handle the text field changes
+  const handleInputChange = (event) => {
+    setEditForm({
+      ...editForm,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(editAssignmentThunk(editForm)).then(() => {
+      navigate(`/assignments`);
+    });
+  };
 
   return (
     <div>
@@ -75,7 +75,7 @@ function EditAssignment() {
             placeholder="Instruction"
             onChange={handleInputChange}
           />
-         
+
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Date
           </label>
@@ -114,7 +114,6 @@ function EditAssignment() {
       </div>
     </div>
   );
-  
 }
 
 export default EditAssignment;

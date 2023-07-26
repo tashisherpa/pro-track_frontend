@@ -16,7 +16,6 @@ const Login = ({ name, displayName }) => {
   const user = useSelector((state) => state.users.authUser);
 
   useEffect(() => {
-    console.log("User: ", user);
     if (user.id !== undefined) {
       console.log(location.pathname);
       if (location.pathname === "/") navigate("/dashboard");
