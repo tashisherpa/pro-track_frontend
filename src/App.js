@@ -21,6 +21,7 @@ import AddAssignment from "./components/AssignmentPageComponents/AddAssignment";
 import EditAssignment from "./components/AssignmentPageComponents/EditAssignment";
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
+import Homepage from "./pages/Homepage";
 import { fetchAuthUserThunk } from "./redux/users/users.action";
 import { fetchSocket } from "./redux/socket/socket.action";
 import { useEffect } from "react";
@@ -40,6 +41,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* <Route path="/" element={<Homepage name="homepage" displayName="Homepage" />} /> */}
         <Route path="/" element={<Login name="login" displayName="Log In" />} />
         <Route
           path="/signup"
