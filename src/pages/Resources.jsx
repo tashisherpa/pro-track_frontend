@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
-import AddResourceBtn from "../components/ResourcesPageComponents/AddResourceBtn";
-import ResourceCard from "../components/ResourcesPageComponents/ResourceCard";
+
+import {
+  ResourceCard,
+  AddResourceBtn,
+} from "../components/ResourcesPageComponents";
 import SideNavBar from "../components/SideNavBar";
 import { fetchAllResourcesThunk } from "../redux/resources/resources.action";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,10 +22,6 @@ function Resources() {
     if (socket.on) {
       socket.on("addNewResource", (newResource) => {
         dispatch(fetchSocket(newResource));
-      });
-
-      socket.on("editResource", (updatedResource) => {
-        dispatch(fetchSocket(updatedResource));
       });
     }
     fetchAllResources();
