@@ -78,7 +78,6 @@ export const addAssignmentThunk = (newAssignment) => {
         `${process.env.REACT_APP_BACKEND_URL}/api/assignment/`,
         newAssignment
       );
-
       dispatch(addAssignment(response.data));
     } catch (error) {
       console.error(error);

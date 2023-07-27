@@ -70,12 +70,14 @@ export const addResource = (payload) => {
 };
 
 export const addResourceThunk = (newResource) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/`,
         newResource
       );
+      socket.emit("addNewResource", response.data);
       dispatch(addResource(response.data));
     } catch (error) {
       console.error(error);
@@ -91,13 +93,14 @@ export const editResource = (payload) => {
 };
 
 export const editResourceThunk = (resource) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      console.log(resource);
+      const { socket } = getState().socket;
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/${resource.id}`,
         resource
       );
+      socket.emit("editResource", response.data);
       dispatch(editResource(response.data));
     } catch (error) {
       console.error(error);

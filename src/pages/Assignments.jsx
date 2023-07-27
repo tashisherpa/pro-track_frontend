@@ -5,13 +5,19 @@ import SideNavBar from "../components/SideNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";
-import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
-import AddAssignmentBtn from "../components/AssignmentPageComponents/AddAssignmentBtn";
+import {
+  AddAssignmentBtn,
+  AssignmentCard,
+} from "../components/AssignmentPageComponents";
 
 function Assignments() {
   const dispatch = useDispatch();
   const allAssignments = useSelector(
     (state) => state.assignments.allAssignments
+  );
+  const user = useSelector((state) => state.users.authUser);
+  const allAssignmentStatus = useSelector(
+    (state) => state.assignmentsStatus.allAssignmentsStatus
   );
 
   useEffect(() => {
@@ -22,23 +28,47 @@ function Assignments() {
     dispatch(fetchAllAssignmentsStatusThunk());
   }, [dispatch]);
 
-  const userAssignmnets = allAssignments.filter((assign) => assign.email);
+  console.log(allAssignmentStatus);
+
+  const userAssignments = allAssignmentStatus.filter(
+    (assign) => assign.userId === user.id
+  );
+  console.log("users assigns: ", userAssignments);
 
   return (
     <div>
       <SideNavBar />
       <div className="p-4 sm:ml-64">
         <h1 className="text-2xl font-bold mb-4">Assignments</h1>
-        <AddAssignmentBtn />
-        <div className="flex flex-wrap">
-          {allAssignments.length > 0 ? (
-            allAssignments.map((assignment) => (
-              <AssignmentCard key={assignment.id} assignment={assignment} />
-            ))
-          ) : (
-            <p style={{ textAlign: "center" }}>No Assignments</p>
-          )}
-        </div>
+        {user.userType === "admin" ? (
+          <div>
+            <AddAssignmentBtn />
+            <div className="flex flex-wrap">
+              {allAssignments.length > 0 ? (
+                allAssignments.map((assignment) => (
+                  <AssignmentCard key={assignment.id} assignment={assignment} />
+                ))
+              ) : (
+                <p style={{ textAlign: "center" }}>No Assignments</p>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="flex flex-wrap">
+              {userAssignments.length > 0 ? (
+                userAssignments.map((assignment) => (
+                  <AssignmentCard
+                    key={assignment.id}
+                    assignment={assignment.assignment}
+                  />
+                ))
+              ) : (
+                <p style={{ textAlign: "center" }}>No Assignments</p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
