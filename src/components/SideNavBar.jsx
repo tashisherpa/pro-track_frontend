@@ -22,14 +22,16 @@ function SideNavBar() {
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >
+          
           <path
-            clipRule="evenodd"
+           clipRule="evenodd"
             fillRule="evenodd"
             d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
           ></path>
         </svg>
       </button>
 
+      {/* Sidebar content */}
       <aside
         id="default-sidebar"
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
@@ -39,12 +41,31 @@ function SideNavBar() {
           <ul className="space-y-2 font-medium">
             <li>
               <Link
+                 to="/"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                
+                <img
+                  className="w-20 mx-auto"
+                  src="./components/images/logo.png" // Replace with the actual path to your logo image
+                  alt="Logo"
+                />
+               </Link>
+            </li>
+
+         {/* Dashboard link */}
+         
+         <li>
+              <Link
                 to="/dashboard"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <span className="ml-3">Dashboard</span>
+                <span className="ml-3">Dashboard</span> 
               </Link>
             </li>
+
+
+
             <li>
               <Link
                 to="/resources"
