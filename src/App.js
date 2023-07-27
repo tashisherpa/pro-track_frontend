@@ -22,15 +22,20 @@ import EditAssignment from "./components/AssignmentPageComponents/EditAssignment
 import SingleAssignment from "./pages/SingleAssignment"; 
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
+import Homepage from "./pages/Homepage";
 import AdminSingleAssignment from "./components/AssignmentPageComponents/AdminSingleAssignmentCard";
 import { fetchAuthUserThunk } from "./redux/users/users.action";
 import { fetchSocket } from "./redux/socket/socket.action";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 function App() {
   const dispatch = useDispatch();
 
+
+     
+   
   useEffect(() => {
     dispatch(fetchAuthUserThunk());
     const socket = io("http://localhost:8080", {
@@ -42,7 +47,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login name="login" displayName="Log In" />} />
+        
+        <Route path="/" element={<Homepage /> } />
+       
+        <Route path="/login" element={<Login name="login" displayName="Log In" />} />
         <Route
           path="/signup"
           element={<Signup name="signup" displayName="Sign Up" />}

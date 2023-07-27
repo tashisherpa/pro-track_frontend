@@ -65,7 +65,7 @@ function AddAssignment() {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
+            type="boolean"
             name="group"
             value={form.group || ""}
             placeholder="group..."

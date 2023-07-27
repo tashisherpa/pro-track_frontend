@@ -5,6 +5,7 @@ import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import useAuth from "../../hooks/useAuth";
+import NavBar from "../NavBar/NavBar";
 
 /**
  * COMPONENT
@@ -35,6 +36,7 @@ const Login = ({ name, displayName }) => {
 
   return (
     <div>
+      <NavBar />
       <div className="flex flex-col h-screen items-center justify-center">
         <h1>{name}</h1>
         <div className="w-full max-w-xs">
