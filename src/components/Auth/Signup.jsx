@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { signupAuth } from "../../redux/users/users.action";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+import NavBar from "../NavBar/NavBar";
 
 const Signup = ({ name, displayName }) => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Signup = ({ name, displayName }) => {
 
   return (
     <div>
+      <NavBar />
       <div className="flex flex-col h-screen items-center justify-center">
         <h1>{name}</h1>
         <div className="w-full max-w-xs">

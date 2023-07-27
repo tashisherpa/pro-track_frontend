@@ -29,9 +29,13 @@ import { fetchSocket } from "./redux/socket/socket.action";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 function App() {
   const dispatch = useDispatch();
 
+
+     
+   
   useEffect(() => {
     dispatch(fetchAuthUserThunk());
     const socket = io("http://localhost:8080", {
@@ -43,7 +47,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage name="homepage" displayName="Homepage" />} />
+        
+        <Route path="/" element={<Homepage /> } />
+       
         <Route path="/login" element={<Login name="login" displayName="Log In" />} />
         <Route
           path="/signup"
