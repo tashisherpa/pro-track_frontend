@@ -20,6 +20,10 @@ function Resources() {
       socket.on("addNewResource", (newResource) => {
         dispatch(fetchSocket(newResource));
       });
+
+      socket.on("editResource", (updatedResource) => {
+        dispatch(fetchSocket(updatedResource));
+      });
     }
     fetchAllResources();
   }, [dispatch, socket]);
