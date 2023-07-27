@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { signupAuth } from "../../redux/users/users.action";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+import NavBar from "../NavBar/NavBar";
 
 const Signup = ({ name, displayName }) => {
   const navigate = useNavigate();
@@ -20,7 +21,8 @@ const Signup = ({ name, displayName }) => {
 
   return (
     <div>
-      <div className="flex flex-col h-screen items-center justify-center">
+      <NavBar />
+      <div className="flex flex-col bg-gray-800 text-white h-screen items-center justify-center">
         <h1>{name}</h1>
         <div className="w-full max-w-xs">
           <form
@@ -63,12 +65,12 @@ const Signup = ({ name, displayName }) => {
             </div>
 
             <div className="flex items-center justify-center space-x-10">
-              <Link
+              {/* <Link
                 to="/"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Login
-              </Link>
+              </Link> */}
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
