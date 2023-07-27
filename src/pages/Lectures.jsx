@@ -3,12 +3,12 @@ import AddLectureBtn from "../components/LecturesPageComponents/AddLectureBtn";
 import LectureCard from "../components/LecturesPageComponents/LectureCard";
 import SideNavBar from "../components/SideNavBar";
 import { fetchAllLecturesThunk } from "../redux/lectures/lectures.action";
-import { fetchAllUsersThunk } from "../redux/users/users.action";
 import { useDispatch, useSelector } from "react-redux";
-
+import { fetchSocket } from "../redux/socket/socket.action";
 function Lectures() {
   const dispatch = useDispatch();
   const allLectures = useSelector((state) => state.lectures.allLectures);
+  const socket = useSelector((state) => state.socket.socket);
   useEffect(() => {
     //console.log("FETCH ALL LECTURES FIRING IN USE EFFECT");
 
@@ -20,8 +20,17 @@ function Lectures() {
       //console.log("RUNNING DISPATCH FROM FETCHALLLECTURES");
       return dispatch(fetchAllLecturesThunk());
     };
+    if (socket.on) {
+      socket.on("addNewLecture", (newLecture) => {
+        dispatch(fetchSocket(newLecture));
+      });
+
+      socket.on("editLecture", (updatedlecture) => {
+        dispatch(fetchSocket(updatedlecture));
+      });
+    }
     fetchAllLectures();
-  }, [dispatch]);
+  }, [socket, dispatch]);
 
   return (
     <div>
