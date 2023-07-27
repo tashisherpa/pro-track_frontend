@@ -5,8 +5,10 @@ import SideNavBar from "../components/SideNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAssignmentsThunk } from "../redux/assignment/assignments.action";
 import { fetchAllAssignmentsStatusThunk } from "../redux/assignmentStatus/assignmentStatus.action";
-import AssignmentCard from "../components/AssignmentPageComponents/AssignmentCard";
-import AddAssignmentBtn from "../components/AssignmentPageComponents/AddAssignmentBtn";
+import {
+  AddAssignmentBtn,
+  AssignmentCard,
+} from "../components/AssignmentPageComponents";
 
 function Assignments() {
   const dispatch = useDispatch();
@@ -14,8 +16,9 @@ function Assignments() {
     (state) => state.assignments.allAssignments
   );
   const user = useSelector((state) => state.users.authUser);
-  const allAssignmentStatus = useSelector((state) => state.assignmentsStatus.allAssignmentsStatus)
-  console.log("logged user: ", user);
+  const allAssignmentStatus = useSelector(
+    (state) => state.assignmentsStatus.allAssignmentsStatus
+  );
 
   useEffect(() => {
     dispatch(fetchAllAssignmentsThunk());
@@ -27,7 +30,9 @@ function Assignments() {
 
   console.log(allAssignmentStatus);
 
-  const userAssignments = allAssignmentStatus.filter((assign) => assign.userId===user.id);
+  const userAssignments = allAssignmentStatus.filter(
+    (assign) => assign.userId === user.id
+  );
   console.log("users assigns: ", userAssignments);
 
   return (
@@ -48,17 +53,22 @@ function Assignments() {
               )}
             </div>
           </div>
-        ) : (<div>
-          <div className="flex flex-wrap">
-            {userAssignments.length > 0 ? (
-              userAssignments.map((assignment) => (
-                <AssignmentCard key={assignment.id} assignment={assignment.assignment} />
-              ))
-            ) : (
-              <p style={{ textAlign: "center" }}>No Assignments</p>
-            )}
+        ) : (
+          <div>
+            <div className="flex flex-wrap">
+              {userAssignments.length > 0 ? (
+                userAssignments.map((assignment) => (
+                  <AssignmentCard
+                    key={assignment.id}
+                    assignment={assignment.assignment}
+                  />
+                ))
+              ) : (
+                <p style={{ textAlign: "center" }}>No Assignments</p>
+              )}
+            </div>
           </div>
-        </div>)}
+        )}
       </div>
     </div>
   );
