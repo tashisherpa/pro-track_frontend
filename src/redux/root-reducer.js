@@ -8,6 +8,7 @@ import feed from "./feed/feed.reducer";
 import assignmentsStatus from "./assignmentStatus/assignmentStatus.reducer";
 import zoom from "./zoom/zoom.reducer";
 import socket from "./socket/socket.reducer";
+import group from "./group/group.reducer";
 //use to manage the overall state of the application
 //users each manage specific parts of the state
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   assignmentsStatus: assignmentsStatus,
   zoom: zoom,
   socket: socket,
+  group: group,
 });
 
 export default rootReducer;

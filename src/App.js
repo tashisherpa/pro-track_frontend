@@ -22,6 +22,7 @@ import EditAssignment from "./components/AssignmentPageComponents/EditAssignment
 import SingleAssignment from "./pages/SingleAssignment"; 
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
+import AdminSingleAssignment from "./components/AssignmentPageComponents/AdminSingleAssignmentCard";
 import { fetchAuthUserThunk } from "./redux/users/users.action";
 import { fetchSocket } from "./redux/socket/socket.action";
 import { useEffect } from "react";

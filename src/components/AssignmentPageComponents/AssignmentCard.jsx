@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
+import { parseISO, format } from "date-fns";
 import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import { Link } from "react-router-dom";
 
@@ -25,8 +26,10 @@ function AssignmentCard({ assignment }) {
     dispatch(deleteAssignmentThunk(assignment.id));
   };
 
+  console.log("assignment passed in: ", assignment)
+
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-md w-80 rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <Link to={`./${assignment.id}`}>
         <div className="px-6 py-4">
           <div className="font-bold text-3xl mb-2">
@@ -34,9 +37,11 @@ function AssignmentCard({ assignment }) {
           </div>
 
           <p className="text-gray-500 text-xs">{assignment.instruction}</p>
-          <p className="text-gray-500 text-xs">{assignment.group}</p>
-          <p className="text-gray-500 text-xs">{assignment.assignment_date}</p>
-          <p className="text-gray-500 text-xs">{assignment.due_date}</p>
+          <br></br>
+          <p className="text-gray-500 text-xs">{assignment.group?("Group Project"):("Solo Project")}</p>
+          <br></br>
+          <p className="text-gray-500 text-xs">Assigned Date: {format(parseISO(assignment.assignment_date), "yyyy-MM-dd")}</p>
+          <p className="text-gray-500 text-xs">Due Date: {format(parseISO(assignment.due_date), "yyyy-MM-dd")}</p>
           <br></br>
         </div>
         <div className="flex justify-start px-6 pt-4 pb-2">
