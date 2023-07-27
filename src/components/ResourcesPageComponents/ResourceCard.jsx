@@ -24,7 +24,10 @@ function ResourceCard({ resource }) {
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <div className="px-6 py-4">
-        {resource.image && <img src={resource.image} alt="Link Preview" />}
+        {resource.image !== "image-url" ? (
+          <img src={resource.image} alt="Link Preview" />
+        ) : null}
+
         <div className="font-bold text-3xl mb-2">{resource.title}</div>
         <p className="text-gray-700 text-base">
           {resource.user.firstName} {resource.user.lastName}
