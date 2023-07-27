@@ -1,11 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {Logout} from "./Logout";
+import { Logout } from "./Logout";
 
 function SideNavBar() {
-  //console.log(Logout);
+  const user = useSelector((state) => state.users.authUser);
   return (
-  
     <div>
       <button
         data-drawer-target="default-sidebar"
@@ -84,14 +84,18 @@ function SideNavBar() {
                 </span>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/users"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </Link>
-            </li>
+            {user.userType === "admin" ? (
+              <div>
+                <li>
+                  <Link
+                    to="/users"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+                  </Link>
+                </li>
+              </div>
+            ) : null}
             <li>
               <Link
                 to="/profile"
