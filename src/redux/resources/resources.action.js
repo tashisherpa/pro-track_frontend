@@ -70,12 +70,14 @@ export const addResource = (payload) => {
 };
 
 export const addResourceThunk = (newResource) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/`,
         newResource
       );
+      socket.emit("addNewResource", response.data);
       dispatch(addResource(response.data));
     } catch (error) {
       console.error(error);

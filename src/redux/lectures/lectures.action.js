@@ -54,7 +54,6 @@ export const deleteLectureThunk = (id) => {
       await axios.delete(
         `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${id}`
       );
-      dispatch(deleteLecture(id));
     } catch (error) {
       console.error(error);
     }
@@ -69,12 +68,14 @@ export const addLecture = (payload) => {
 };
 
 export const addLectureThunk = (newLecture) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/lecture/`,
         newLecture
       );
+      socket.emit("addNewLecture", response.data);
       dispatch(addLecture(response.data));
     } catch (error) {
       console.error(error);
@@ -90,12 +91,14 @@ export const editLecture = (payload) => {
 };
 
 export const editLectureThunk = (lecture) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${lecture.id}`,
         lecture
       );
+      socket.emit("editLecture", response.data);
       dispatch(editLecture(response.data));
     } catch (error) {
       console.error(error);
