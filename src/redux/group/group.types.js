@@ -1,0 +1,7 @@
+const GroupActionType = {
+    FETCH_ASSIGNMENT_GROUPS: "FETCH_ASSIGNMENT_GROUPS",
+    ADD_GROUP: "ADD_GROUP",
+    REMOVE_GROUP_MEMBER: "REMOVE_GROUP_MEMBER"
+};
+  
+export default GroupActionType;
