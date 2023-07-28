@@ -25,7 +25,7 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
       : "bg-green-300"
   );
 
-  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
+  const cardStyling = `${backgroundColor} rounded-lg hover:scale-90 overflow-hidden shadow-xl mb-4`;
 
   const handleButtonClick = () => {
     //changes status, backgroundColor and ButtonName based on the helprequest.status

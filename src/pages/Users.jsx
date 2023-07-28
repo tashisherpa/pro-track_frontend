@@ -26,13 +26,13 @@ function Users() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className = "bg-gray-700 h-screen">
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1 className="text-center mb-4 text-xl font-bold">
+      <div className="p-4 bg-gray-700 sm:ml-64">
+        <h1 className="text-center mb-4 text-xl text-white font-bold border-b-2 border-white">
           Instructional Staff
         </h1>
-        <div className="flex flex-wrap">
+        <div className="flex bg-gray-700  text-black flex-wrap">
           {allStaff.length > 0 ? (
             allStaff.map((staff) => <UserCard key={staff.id} user={staff} />)
           ) : (
@@ -41,8 +41,8 @@ function Users() {
             </p>
           )}
         </div>
-        <h1 className="text-center mb-4 mt-8 text-xl font-bold">Students</h1>
-        <div className="flex flex-wrap">
+        <h1 className="text-center  text-white mb-4 mt-8 text-xl font-bold border-b-2 border-white">Students</h1>
+        <div className="flex bg-gray-700  flex-wrap">
           {allStudents.length > 0 ? (
             allStudents.map((student) => (
               <UserCard key={student.id} user={student} />
