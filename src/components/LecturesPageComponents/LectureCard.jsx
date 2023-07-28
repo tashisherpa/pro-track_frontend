@@ -24,7 +24,7 @@ function LectureCard({ lecture }) {
   };
 
   return (
-    <div className="max-w-xs rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-xs bg-white  text-black rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <div className="px-6 py-4">
         <div className="font-bold text-3xl mb-2">{lecture.title}</div>
         <p className="text-gray-700 text-base">

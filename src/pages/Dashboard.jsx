@@ -43,8 +43,8 @@ function Dashboard() {
   return (
     <div>
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1 className="font-semibold text-3xl">Dashboard</h1>
+      <div className="p-4 bg-gray-700 h-full h-screen sm:ml-64">
+        <h1 className="font-semibold text-white text-3xl">Dashboard</h1>
         <ZoomInfo />
         {
           /*when the showAddAnnoucement is set to true then the PostAnnouncement component will show
