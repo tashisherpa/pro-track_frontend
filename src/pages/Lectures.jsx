@@ -39,7 +39,7 @@ function Lectures() {
   return (
     <div>
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
+      <div className="p-4 bg-gray-700 h-screen text-white sm:ml-64">
         <h1 className="text-2xl font-bold mb-4">Lectures</h1>
         <AddLectureBtn />
         <div className="flex flex-wrap">

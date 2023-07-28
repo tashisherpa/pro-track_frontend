@@ -29,7 +29,7 @@ function SingleAssignment() {
 
 
   return (
-    <div>
+    <div className= "text-white bg-gray-700 h-screen">
       <SideNavBar />
       <div className="p-4 sm:ml-64">
         {

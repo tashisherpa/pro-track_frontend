@@ -14,7 +14,7 @@ function DashboardStudentView({ post, user }) {
   };
 
   return (
-    <div className=" rounded-lg overflow-hidden shadow-md m-2">
+    <div className=" rounded-lg overflow-hidden bg-white shadow-md m-2">
       <div className="px-6 py-4">
         <div className="flex items-center space-x-4">
           <img
