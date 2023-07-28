@@ -13,7 +13,7 @@ function UserCard({ user }) {
   };
 
   return (
-    <div>
+    <div className = "bg-white ">
       <div className="max-w-xs rounded overflow-hidden shadow-lg mt-8 mr-8">
         <Link to={`./${user.id}`}>
           <img className="w-full object-fill" src={img_link} alt="user_img" />

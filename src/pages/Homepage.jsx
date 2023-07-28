@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
 import brooklynCollege from "../images/brooklyncollege.jpeg";
+import Typewriter from '../components/Typewriter/Typewriter';
 
 function Homepage() {
   return (
@@ -9,8 +10,9 @@ function Homepage() {
         <NavBar />
       </div>
       <div className="flex  bg-gray-800 h-screen flex-col items-center p-8">
-        <h1 className="text-center text-white text-4xl font-bold my-8">
-          The help you need to stay on track
+       
+        <h1 className="text-left font-serif text-white text-4xl font-bold my-8">
+        <Typewriter text = "The help you need to stay on track" delay = {100}/>
         </h1>
 
         <div className="space-y-6 text-white max-w-3xl">
