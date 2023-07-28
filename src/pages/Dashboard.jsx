@@ -7,7 +7,7 @@ import {
 } from "../components/DashboardPageComponents";
 import { fetchAllFeedThunk } from "../redux/feed/feed.action";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSocket } from "../redux/socket/socket.action";
+import { deleteSocket, fetchSocket } from "../redux/socket/socket.action";
 
 function Dashboard() {
   const user = useSelector((state) => state.users.authUser);
@@ -26,6 +26,10 @@ function Dashboard() {
     if (socket.on) {
       socket.on("addNewPost", (newFeed) => {
         dispatch(fetchSocket(newFeed));
+      });
+
+      socket.on("deletePost", (id) => {
+        dispatch(deleteSocket(id));
       });
     }
     fetchAllFeed();

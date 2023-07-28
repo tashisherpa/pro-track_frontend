@@ -50,11 +50,13 @@ export const deleteResource = (payload) => {
 };
 
 export const deleteResourceThunk = (id) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       await axios.delete(
         `${process.env.REACT_APP_BACKEND_URL}/api/resource/${id}`
       );
+      socket.emit("deleteResource", id);
       dispatch(deleteResource(id));
     } catch (error) {
       console.error(error);
