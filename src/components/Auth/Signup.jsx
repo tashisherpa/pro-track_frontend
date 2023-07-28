@@ -16,7 +16,7 @@ const Signup = ({ name, displayName }) => {
     const email = evt.target.email.value;
     const password = evt.target.password.value;
     dispatch(signupAuth(firstName, lastName, email, password));
-    navigate("/");
+    navigate("/login");
   };
 
   return (

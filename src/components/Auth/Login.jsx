@@ -19,7 +19,7 @@ const Login = ({ name, displayName }) => {
   useEffect(() => {
     if (user.id !== undefined) {
       console.log(location.pathname);
-      if (location.pathname === "/") navigate("/dashboard");
+      if (location.pathname === "/login") navigate("/dashboard");
       dispatch(fetchAuthUserThunk());
     } else {
       dispatch(fetchAuthUserThunk());
@@ -92,12 +92,11 @@ const Login = ({ name, displayName }) => {
               </a> */}
               <button
                 className="middle none center mr-4 rounded-lg text-black bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true" 
+                data-ripple-light="true"
               >
-                 <a
-                href="http://localhost:8080/auth/google/">
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google/`}>
+                  Sign in with Google
                 </a>
-                Sign in with Google
               </button>
             </div>
           </form>
