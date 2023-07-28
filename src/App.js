@@ -22,12 +22,13 @@ import EditAssignment from "./components/AssignmentPageComponents/EditAssignment
 import SingleAssignment from "./pages/SingleAssignment";
 import EditHelpRequest from "./components/HelpRequestPageComponents/EditHelpRequest";
 import EditZoomMeetingLink from "./components/DashboardPageComponents/EditZoomMeetingLink";
-import AdminSingleAssignment from "./components/AssignmentPageComponents/AdminSingleAssignmentCard";
+import Homepage from "./pages/Homepage";
 import { fetchAuthUserThunk } from "./redux/users/users.action";
 import { fetchSocket } from "./redux/socket/socket.action";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 function App() {
   const dispatch = useDispatch();
 
@@ -42,7 +43,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login name="login" displayName="Log In" />} />
+        <Route path="/" element={<Homepage />} />
+
+        <Route
+          path="/login"
+          element={<Login name="login" displayName="Log In" />}
+        />
         <Route
           path="/signup"
           element={<Signup name="signup" displayName="Sign Up" />}
@@ -50,6 +56,8 @@ function App() {
         {/*Protected Route:
             - has all the routes that shouldn't be access by someone who isn't a user/logged in
         */}
+
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           {/**Rahima */}
