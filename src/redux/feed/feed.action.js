@@ -33,9 +33,11 @@ export const deleteFeed = (payload) => {
 };
 
 export const deleteFeedThunk = (id) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/feed/${id}`);
+      socket.emit("deletePost", id);
       dispatch(deleteFeed(id));
     } catch (error) {
       console.error(error);
