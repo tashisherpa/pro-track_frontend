@@ -32,6 +32,9 @@ function LectureCard({ lecture }) {
         </p>
         <p className="text-gray-500 text-xs">{lecture.lecture_date}</p>
         <br></br>
+        <p className="text-gray-500 text-xs">
+          {lecture.description}
+        </p>
         <p className="text-gray-700 text-md">
           Recording Password: {lecture.password}
         </p>
