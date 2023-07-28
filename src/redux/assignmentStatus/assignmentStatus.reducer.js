@@ -4,6 +4,7 @@ export const INITIAL_ASSIGNMENTS_STATUS_STATE = {
   allAssignmentsStatus: [],
   singleAssignmentStatus: {},
   studentAssignmentsStatus: [],
+  createdAssignmentStatus: {},
 };
 
 //handle the action type
@@ -31,6 +32,7 @@ const assignmentsStatus = (state = INITIAL_ASSIGNMENTS_STATUS_STATE, action) => 
       return {
         ...state,
         allAssignmentsStatus: [...state.allAssignmentsStatus, action.payload],
+        createdAssignmentStatus: action.payload,
       };
     default:
       return state;

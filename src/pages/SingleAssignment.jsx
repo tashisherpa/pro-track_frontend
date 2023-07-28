@@ -19,11 +19,8 @@ function SingleAssignment() {
   console.log("id ", id);
 
   useEffect(() => {
-    const fetchSingleAssignment = () =>{
-        return dispatch(fetchSingleAssignmentThunk(id));
-    }
-    fetchSingleAssignment();
-  }, [dispatch]);
+      dispatch(fetchSingleAssignmentThunk(id));
+  }, [dispatch, id]);
 
   console.log("assignment: ", assignment);
 

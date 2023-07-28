@@ -26,7 +26,7 @@ function AddAssignment() {
     event.preventDefault();
     console.log("RUNNING DISPATCH FROM EDITUSERTHUNK");
 
-    dispatch(addAssignmentThunk({ ...form })).then(() => {
+    dispatch(addAssignmentThunk({...form, group: null, assigned: false,})).then(() => {
       navigate(`/assignments`);
     });
   };

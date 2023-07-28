@@ -40,7 +40,7 @@ function SingleAssignmentCard({ assignment }) {
     event.preventDefault();
 
     dispatch(
-      editAssignmentStatusThunk({...editForm, status:!assignmentStatus.status})
+      editAssignmentStatusThunk({...editForm, status:!assignmentStatus?.status})
     ).then(() => {
       navigate(`/assignments/${assignment.id}`);
     });
@@ -57,7 +57,7 @@ function SingleAssignmentCard({ assignment }) {
           <div className="flex justify-between w-full font-bold text-3xl text-left mb-2">
             {assignment.assignmentName}
             <div>
-              {assignmentStatus.status === true ? (
+              {assignmentStatus?.status === true ? (
                 <span className="bg-green-600 rounded-full px-2 py-2  text-sm font-semibold text-white mr-2 mb-12  ">
                   Completed
                 </span>
@@ -88,7 +88,7 @@ function SingleAssignmentCard({ assignment }) {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               name="submission"
-              value={editForm.submission || ""}
+              value={editForm?.submission || ""}
               onChange={handleChange}
               placeholder="GitHub Repo Link"
             />
@@ -97,7 +97,7 @@ function SingleAssignmentCard({ assignment }) {
               type="submit"
             >
               {
-                assignmentStatus.status?("Resubmit"):("Submit")
+                assignmentStatus?.status?("Resubmit"):("Submit")
               }
             </button>
           </form>
