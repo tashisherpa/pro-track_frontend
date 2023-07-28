@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Logout } from "./Logout";
+import logowhite from "../images/logowhite.png";
 
 function SideNavBar() {
   const user = useSelector((state) => state.users.authUser);
@@ -39,18 +40,13 @@ function SideNavBar() {
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <li>
-              <Link
-                 to="/"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                
+            <li>          
                 <img
                   className="w-20 mx-auto"
-                  src="./components/images/logo.png" // Replace with the actual path to your logo image
-                  alt="Logo"
+                  src={logowhite}
+                  alt="logowhite"
                 />
-               </Link>
+               {/* </Link> */}
             </li>
 
          {/* Dashboard link */}
