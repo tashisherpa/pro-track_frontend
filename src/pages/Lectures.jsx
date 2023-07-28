@@ -4,7 +4,7 @@ import LectureCard from "../components/LecturesPageComponents/LectureCard";
 import SideNavBar from "../components/SideNavBar";
 import { fetchAllLecturesThunk } from "../redux/lectures/lectures.action";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSocket } from "../redux/socket/socket.action";
+import { deleteSocket, fetchSocket } from "../redux/socket/socket.action";
 function Lectures() {
   const dispatch = useDispatch();
   const allLectures = useSelector((state) => state.lectures.allLectures);
@@ -28,6 +28,10 @@ function Lectures() {
       socket.on("editLecture", (updatedlecture) => {
         dispatch(fetchSocket(updatedlecture));
       });
+
+      socket.on("deleteLecture", (id) => {
+        dispatch(deleteSocket(id));
+      });
     }
     fetchAllLectures();
   }, [socket, dispatch]);
@@ -35,7 +39,7 @@ function Lectures() {
   return (
     <div>
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
+      <div className="p-4 bg-gray-700 h-screen text-white sm:ml-64">
         <h1 className="text-2xl font-bold mb-4">Lectures</h1>
         <AddLectureBtn />
         <div className="flex flex-wrap">

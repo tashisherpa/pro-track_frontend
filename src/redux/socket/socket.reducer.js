@@ -15,7 +15,14 @@ const socket = (state = INITIAL_USER_STATE, action) => {
     case SocketActionType.ADD_SOCKET:
       return {
         ...state,
-        socket: action.payload,
+        socket: [...state.socket, action.payload],
+      };
+    case SocketActionType.DELETE_SOCKET:
+      const { [action.payload]: deletedSocket, ...remainingSockets } =
+        state.socket;
+      return {
+        ...state,
+        socket: remainingSockets,
       };
     default:
       return state;

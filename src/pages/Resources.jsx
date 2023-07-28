@@ -7,7 +7,7 @@ import {
 import SideNavBar from "../components/SideNavBar";
 import { fetchAllResourcesThunk } from "../redux/resources/resources.action";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSocket } from "../redux/socket/socket.action";
+import { deleteSocket, fetchSocket } from "../redux/socket/socket.action";
 
 function Resources() {
   const dispatch = useDispatch();
@@ -23,6 +23,14 @@ function Resources() {
       socket.on("addNewResource", (newResource) => {
         dispatch(fetchSocket(newResource));
       });
+
+      socket.on("editResource", (updatedResource) => {
+        dispatch(fetchSocket(updatedResource));
+      });
+
+      socket.on("deleteResource", (id) => {
+        dispatch(deleteSocket(id));
+      });
     }
     fetchAllResources();
   }, [dispatch, socket]);
@@ -30,8 +38,8 @@ function Resources() {
   return (
     <div>
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4">Resources</h1>
+      <div className="p-4 bg-gray-700 h-screen sm:ml-64">
+        <h1 className="text-2xl text-white font-bold mb-4">Resources</h1>
         {user.userType !== "student" ? <AddResourceBtn /> : null}
         <div className="flex flex-wrap">
           {allResources.length > 0 ? (
@@ -39,7 +47,7 @@ function Resources() {
               <ResourceCard key={resource.id} resource={resource} />
             ))
           ) : (
-            <p style={{ textAlign: "center" }}>NO LECTURES FOR YOU !</p>
+            <p style={{ textAlign: "center" }}>NO RESOURCES HAVE BEEN POSTED FOR YOU !</p>
           )}
         </div>
       </div>

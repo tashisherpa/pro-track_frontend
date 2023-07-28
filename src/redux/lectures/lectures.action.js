@@ -49,11 +49,14 @@ export const deleteLecture = (payload) => {
 };
 
 export const deleteLectureThunk = (id) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { socket } = getState().socket;
       await axios.delete(
         `${process.env.REACT_APP_BACKEND_URL}/api/lecture/${id}`
       );
+      socket.emit("deleteLecture", id);
+      dispatch(deleteLecture(id));
     } catch (error) {
       console.error(error);
     }

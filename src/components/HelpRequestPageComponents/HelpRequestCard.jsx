@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { editHelpRequestThunk } from "../../redux/helprequest/helprequest.action";
+import {
+  deleteHelpRequestThunk,
+  editHelpRequestThunk,
+} from "../../redux/helprequest/helprequest.action";
 import { Link } from "react-router-dom";
 /**
  *
@@ -50,6 +53,10 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
     }
   };
 
+  const handleDelete = (event) => {
+    event.preventDefault();
+    return dispatch(deleteHelpRequestThunk(helpRequest.id));
+  };
   return (
     <div className={cardStyling}>
       <div className="px-6 py-4">
@@ -79,11 +86,19 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
           </div>
         ) : loggedInUser.id === helpRequest.student.id &&
           status === "Pending" ? (
-          <Link to={`/helprequests/editrequest/${helpRequest.id}`}>
-            <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1">
-              Edit
+          <div>
+            <Link to={`/helprequests/editrequest/${helpRequest.id}`}>
+              <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1">
+                Edit
+              </button>
+            </Link>
+            <button
+              className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1"
+              onClick={handleDelete}
+            >
+              Delete
             </button>
-          </Link>
+          </div>
         ) : null
       }
     </div>

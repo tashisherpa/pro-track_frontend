@@ -54,14 +54,16 @@ export const deleteHelpRequest = (payload) => {
 };
 
 export const deleteHelpRequestThunk = (id) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       //console.log("DELETEHELPREQUESTTHUNK IS FIRING");
+      const { socket } = getState().socket;
       await axios.delete(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/${id}`
       );
       //console.log("DELETEHELPREQUESTTHUNK COMPLETED");
       dispatch(deleteHelpRequest(id));
+      socket.emit("deleteRequest", id);
     } catch (error) {
       console.error(error);
     }
@@ -79,6 +81,7 @@ export const addHelpRequest = (payload) => {
 export const addHelpRequestThunk = (newRequest) => {
   return async (dispatch, getState) => {
     try {
+      console.log(getState().socket);
       const { socket } = getState().socket;
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/api/help-request/`,

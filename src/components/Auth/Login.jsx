@@ -5,6 +5,7 @@ import { loginAuth } from "../../redux/users/users.action";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import useAuth from "../../hooks/useAuth";
+import NavBar from "../NavBar/NavBar";
 
 /**
  * COMPONENT
@@ -18,7 +19,7 @@ const Login = ({ name, displayName }) => {
   useEffect(() => {
     if (user.id !== undefined) {
       console.log(location.pathname);
-      if (location.pathname === "/") navigate("/dashboard");
+      if (location.pathname === "/login") navigate("/dashboard");
       dispatch(fetchAuthUserThunk());
     } else {
       dispatch(fetchAuthUserThunk());
@@ -35,7 +36,8 @@ const Login = ({ name, displayName }) => {
 
   return (
     <div>
-      <div className="flex flex-col h-screen items-center justify-center">
+      <NavBar />
+      <div className="flex bg-gray-800 text-white flex-col h-screen items-center justify-center">
         <h1>{name}</h1>
         <div className="w-full max-w-xs">
           <form
@@ -76,18 +78,26 @@ const Login = ({ name, displayName }) => {
               >
                 {displayName}
               </button>
-              <Link
+              {/* <Link
                 to="/signup"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Sign Up
-              </Link>
-              <a
+              </Link> */}
+              {/* <a
                 className="button google"
                 href="http://localhost:8080/auth/google/"
               >
                 Sign in with Google
-              </a>
+              </a> */}
+              <button
+                className="middle none center mr-4 rounded-lg text-black bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-light="true"
+              >
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google/`}>
+                  Sign in with Google
+                </a>
+              </button>
             </div>
           </form>
         </div>

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import SideNavBar from "../components/SideNavBar";
 import { HelpRequestCard } from "../components/HelpRequestPageComponents";
 import { fetchAllHelpRequestsThunk } from "../redux/helprequest/helprequest.action";
-import { fetchSocket } from "../redux/socket/socket.action";
+import {
+  addSocket,
+  deleteSocket,
+  fetchSocket,
+} from "../redux/socket/socket.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -37,14 +41,18 @@ function HelpRequests() {
       socket.on("editRequest", (updatedRequest) => {
         dispatch(fetchSocket(updatedRequest));
       });
+
+      socket.on("deleteRequest", (id) => {
+        dispatch(deleteSocket(id));
+      });
     }
     fetchAllHelpRequets();
   }, [socket, dispatch]);
   return (
     <div>
       <SideNavBar />
-      <div className=" p-4 sm:ml-64">
-        <h1 className="text-lg font-bold mb-4">HELP REQUEST</h1>
+      <div className=" p-4 bg-gray-700 h-screen sm:ml-64">
+        <h1 className="text-lg font-bold text-white mb-4">HELP REQUEST</h1>
         {/**only allow the student to add request*/}
         {loggedInUser.userType === "student" ? (
           <Link to="/helprequests/addrequest">Add new request</Link>

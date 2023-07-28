@@ -52,7 +52,7 @@ function ProfileCard() {
   }, [dispatch, user]);
 
   return (
-    <div className="max-w-3xl rounded-lg overflow-hidden shadow-xl">
+    <div className="max-w-3xl bg-white rounded-lg overflow-hidden shadow-xl">
       <div className="px-6 py-4">
         <div className="flex items-center space-x-4">
           <img
