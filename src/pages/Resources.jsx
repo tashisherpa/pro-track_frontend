@@ -30,7 +30,7 @@ function Resources() {
   return (
     <div>
       <SideNavBar />
-      <div className="p-4 bg-gray-700 sm:ml-64">
+      <div className="p-4 bg-gray-700 h-screen sm:ml-64">
         <h1 className="text-2xl text-white font-bold mb-4">Resources</h1>
         {user.userType !== "student" ? <AddResourceBtn /> : null}
         <div className="flex flex-wrap">
