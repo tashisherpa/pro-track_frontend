@@ -78,7 +78,6 @@ export const addAssignmentStatusThunk = (newAssignmentStatus) => {
         `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/`,
         newAssignmentStatus
       );
-
       dispatch(addAssignmentStatus(response.data));
     } catch (error) {
       console.error(error);
@@ -97,7 +96,7 @@ export const editAssignmentStatusThunk = (assignmentStatus) => {
   return async (dispatch) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/${assignmentStatus.id}/${assignmentStatus.assignmentId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/assignment-status/${assignmentStatus.id}`,
         assignmentStatus
       );
 

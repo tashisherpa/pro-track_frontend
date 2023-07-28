@@ -7,15 +7,13 @@ export const INITIAL_GROUP_STATE = {
 const group = (state = INITIAL_GROUP_STATE, action) => {
   switch (action.type) {
     case GroupActionType.FETCH_ASSIGNMENT_GROUPS:
-      return { ...state, assignmentGroups: action.payload };
+      return { assignmentGroups: action.payload };
     case GroupActionType.ADD_GROUP:
       return {
-        ...state,
-        assignmentGroups: [...state.assignmentGroups, action.payload],
+        assignmentGroups: [...state.assignmentGroups, action.payload.groups],
       };
     case GroupActionType.REMOVE_GROUP_MEMBER:
       return {
-        ...state,
         assignmentGroups: state.assignmentGroups.filter(
           (group) => group.userId !== action.payload.userid && group.assignmentStatusId !== action.payload.assignmentstatusid
         ),
