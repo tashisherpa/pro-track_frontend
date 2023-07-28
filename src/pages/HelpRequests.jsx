@@ -52,7 +52,7 @@ function HelpRequests() {
     <div>
       <SideNavBar />
       <div className=" p-4 bg-gray-700 h-screen sm:ml-64">
-        <h1 className="text-lg font-bold text-white mb-4">HELP REQUEST</h1>
+        <h1 className="text-lg font-bold text-white mb-4 border-b-2 border-white">HELP REQUEST</h1>
         {/**only allow the student to add request*/}
         {loggedInUser.userType === "student" ? (
           <Link to="/helprequests/addrequest">Add new request</Link>
