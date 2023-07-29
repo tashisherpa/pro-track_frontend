@@ -31,7 +31,7 @@ function GroupCard({ group, users }) {
   console.log("updated group: ", updatedGroup);
 
   return (
-    <div className="max-w-xs bg-white hover:scale-110 text-black rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-sm bg-white hover:scale-110 text-black rounded-lg overflow-hidden shadow-xl mt-8 mr-12">
       <div className="px-6 py-4">
         <div className="flex text-black justify-between w-full  font-bold text-3xl text-left mb-2">
           Group {group[0].groupId}

@@ -21,7 +21,7 @@ function AddAssignmentBtn() {
       /*Only visible to Admins */
       user.userType==="admin" ? (
         <Link to={`/assignments/add`}>
-          <div className="flex justify-end mb-10">
+          <div className="flex justify-end mb-8">
             <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
               Add Assignment
             </button>

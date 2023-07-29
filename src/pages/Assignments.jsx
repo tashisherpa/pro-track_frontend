@@ -44,7 +44,7 @@ function Assignments() {
         {user.userType === "admin" ? (
           <div>
             <AddAssignmentBtn />
-            <div className="flex  flex-wrap">
+            <div className="flex flex-wrap">
               {allAssignments.length > 0 ? (
                 allAssignments.map((assignment) => (
                   <AssignmentCard key={assignment.id} assignment={assignment} />

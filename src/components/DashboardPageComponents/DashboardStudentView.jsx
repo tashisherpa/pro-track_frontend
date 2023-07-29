@@ -30,7 +30,7 @@ function DashboardStudentView({ post, user }) {
         </div>
         <div className="font-bold text-2xl mb-2">{post.title}</div>
         <p className="text-gray-500 text-xs">
-          {format(parseISO(post.createdAt), "yyyy-MM-dd")}
+          {format(parseISO(post.createdAt), "MM-dd-yyyy")}
         </p>
       </div>
       <div className="px-6 pt-4 pb-2">

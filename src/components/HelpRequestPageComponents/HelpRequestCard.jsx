@@ -75,7 +75,7 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
         /*Only visible to TA/Admins */
         loggedInUser.userType === "admin" ? (
           <div>
-            {status !== "Resolved" ? (
+            {status === "Done" ? null : status === "Pending" ? (
               <button
                 className="bg-blue-500 hover:bg-blue-700 hover:scale-110 text-white font-bold py-2 px-4 rounded-full"
                 onClick={handleButtonClick}
@@ -83,6 +83,14 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
                 {buttonName}
               </button>
             ) : null}
+            {/* {status !== "Resolved" ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 hover:scale-110 text-white font-bold py-2 px-4 rounded-full"
+                onClick={handleButtonClick}
+              >
+                {buttonName}
+              </button>
+            ) : null} */}
           </div>
         ) : loggedInUser.id === helpRequest.student.id &&
           status === "Pending" ? (

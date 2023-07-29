@@ -20,7 +20,6 @@ import GroupCard from "./GroupCard";
 import { fetchAllUsersThunk } from "../../redux/users/users.action";
 import AddGroupModel from "./AddGroupModel";
 import AssignButtonModal from "./AssignButtonModal";
-import GenerateSoloAssignments from "./GenerateSoloAssignments";
 
 function AdminSingleAssignmentCard({ assignment }) {
   const dispatch = useDispatch();
@@ -80,7 +79,7 @@ function AdminSingleAssignmentCard({ assignment }) {
   return (
     <div
       key={assignment.group}
-      className="max-w-4xl rounded overflow-hidden  mb-20 mt-8 mr-8 "
+      className="max-w-10xl rounded overflow-hidden  mb-20 mt-4 mr-8"
     >
       <div className="flex-col bg-white mb-20 rounded px-4 py-4">
         <div className="px-6 py-4">
@@ -98,7 +97,7 @@ function AdminSingleAssignmentCard({ assignment }) {
             )}
           </div>
           <div className="text-lg text-black text-left mb-2">
-            Due:  {assignment.due_date}
+            Due: {assignment.due_date?(format(parseISO(assignment.due_date), "MM-dd-yyyy")):null}
           </div>
           <div className="text-lg text-black text-left mb-2">
             Instruction: {assignment.instruction}
@@ -106,11 +105,11 @@ function AdminSingleAssignmentCard({ assignment }) {
           {/* <div className="text-lg text-left mb-2">
               Group: {assignment.group}
             </div> */}
-          <div className="flex justify-evenly flex-wrap w-full font-bold text-3xl text-left mb-2">
+          <div className="flex flex-col w-full font-bold text-3xl text-left mb-2">
             {isLoading ? (
               <p>Loading...</p> // Show loading state while data is being fetched
             ) : (
-              <div className = "flex ">
+              <div className="flex flex-wrap justify-evenly">
                 {assignmentGroups?.map((assignmentStatus) => {
                   const groups = {};
 
@@ -158,15 +157,17 @@ function AdminSingleAssignmentCard({ assignment }) {
                   }
                 })}
                 {console.log("assignment: ", assignment)}
-                {
-                  assignment.group === true ? (
-                    <AddGroupModel assignment={assignment}/>
-                  ) : (
-                    <></>
-                  )
-                }
               </div>
             )}
+            <div className="flex flex-col">
+              {assignment.group === true ? (
+                <div className="flex justify-center align-middle mt-16 mb-8">
+                  <AddGroupModel assignment={assignment} />
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
 
           <div>

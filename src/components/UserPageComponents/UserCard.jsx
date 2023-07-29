@@ -14,13 +14,15 @@ function UserCard({ user }) {
 
   return (
     <div className="bg-gray-700 justify-center flex hover:scale-110 ">
-      <div className="max-w-xs rounded w-36  h-50 bg-white  shadow-lg mt-4 mr-4">
+      <div className="max-w-xs rounded w-40  h-50 bg-white  shadow-lg mt-4 mr-4">
         <Link to={`./${user.id}`}>
-          <img
-            className="w-24 h-24 rounded-full"
-            src={img_link}
-            alt="user_img"
-          />
+          <div className="flex justify-center mt-4">
+            <img
+              className="w-24 h-24 rounded-full "
+              src={img_link}
+              alt="user_img"
+            />
+          </div>
           <div className="px-6 py-4">
             <div className="font-bold text-lg text-center mb-2">
               {user.firstName} {user.lastName}
@@ -33,4 +35,3 @@ function UserCard({ user }) {
 }
 
 export default UserCard;
-
