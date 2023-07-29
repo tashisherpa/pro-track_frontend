@@ -49,11 +49,13 @@ function HelpRequests() {
     fetchAllHelpRequets();
   }, [socket, dispatch]);
   return (
-    <div>
+    <div >
       <SideNavBar />
-      <div className=" p-4 bg-gray-700 h-screen sm:ml-64">
+      <div className =" bg-gray-700">
+      <div className=" p-4 sm:ml-64">
+       
         <h1 className="text-lg font-bold text-white mb-4 border-b-2 border-white">HELP REQUEST</h1>
-        {/**only allow the student to add request*/}
+        <div className ="bg-gray-700 ">
         {loggedInUser.userType === "student" ? (
           <Link to="/helprequests/addrequest">Add new request</Link>
         ) : null}
@@ -63,6 +65,7 @@ function HelpRequests() {
               key={helpRequest.id}
               helpRequest={helpRequest}
               loggedInUser={loggedInUser}
+              
             />
           ))
         ) : (
@@ -70,7 +73,8 @@ function HelpRequests() {
             There are no help request at the moment, enjoy while it lasts TAs
           </p>
         )}
-      </div>
+       </div>
+      </div></div>
     </div>
   );
 }

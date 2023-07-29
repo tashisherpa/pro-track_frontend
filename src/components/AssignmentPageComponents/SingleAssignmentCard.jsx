@@ -51,10 +51,11 @@ function SingleAssignmentCard({ assignment }) {
   console.log("assignmentStatus edit form: ", editForm);
 
   return (
-    <div className="max-w-4xl rounded overflow-hidden shadow-lg mt-8 mr-8 ">
-      <div className="flex-col px-4 py-4">
-        <div className="px-6 py-4">
-          <div className="flex justify-between w-full font-bold text-3xl text-left mb-2">
+   
+    <div className="max-w-4xl bg-white rounded overflow-hidden shadow-lg mt-8 mr-8 ">
+      <div className="flex-col bg-white  px-4 py-4">
+        <div className="px-6  py-4">
+          <div className="flex justify-between w-full  font-bold text-3xl text-left mb-2">
             {assignment.assignmentName}
             <div>
               {assignmentStatus?.status === true ? (
@@ -68,10 +69,10 @@ function SingleAssignmentCard({ assignment }) {
               )}
             </div>
           </div>
-          <div className="text-lg text-left mb-2">
+          <div className="text-lg text-black text-left mb-2">
             Due: {assignment.due_date}
           </div>
-          <div className="text-lg text-left mb-2">
+          <div className="text-lg text-black text-left mb-2">
             Instruction: {assignment.instruction}
           </div>
           <div className="text-lg text-left mb-2">

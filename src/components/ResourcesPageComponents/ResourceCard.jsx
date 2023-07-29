@@ -22,8 +22,9 @@ function ResourceCard({ resource }) {
   };
 
   return (
-    <div className="max-w-sm hover:scale-110 bg-white rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
-      <div className="px-6 py-4">
+    <div className = "bg-gray-700 ">
+    <div className="max-w-sm  bg-white hover:scale-110 rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+      <div className="px-6  py-4">
         {resource.image !== "image-url" ? (
           <img src={resource.image} alt="Link Preview" />
         ) : null}
@@ -62,7 +63,7 @@ function ResourceCard({ resource }) {
           </Link>
         ) : null}
       </div>
-    </div>
+    </div></div>
   );
 }
 

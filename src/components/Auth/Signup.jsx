@@ -20,11 +20,12 @@ const Signup = ({ name, displayName }) => {
   };
 
   return (
-    <div>
+    <div >
       <NavBar />
       <div className="flex flex-col bg-gray-800 text-white h-screen items-center justify-center">
-        <h1>{name}</h1>
-        <div className="w-full max-w-xs">
+        
+        <div className="w-full hover:scale-110 justify-center max-w-xs">
+          <h1 className = "justify-center flex text-bold  ">{name}</h1>
           <form
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             name={name}
@@ -72,7 +73,7 @@ const Signup = ({ name, displayName }) => {
                 Login
               </Link> */}
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:scale-110 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 {displayName}

@@ -37,12 +37,12 @@ function Lectures() {
   }, [socket, dispatch]);
 
   return (
-    <div>
+    <div className = "bg-gray-700">
       <SideNavBar />
-      <div className="p-4 bg-gray-700 h-screen text-white sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4 border-b-2 border-white">Lectures</h1>
+      <div className="p-4 bg-gray-700   text-white sm:ml-64">
+        <h1 className="text-2xl font-bold mb-8 border-b-2 border-white">Lectures</h1>
         <AddLectureBtn />
-        <div className="flex flex-wrap">
+        <div className="flex bg-gray-700 flex-wrap">
           {allLectures.length > 0 ? (
             allLectures.map((lecture) => (
               <LectureCard key={lecture.id} lecture={lecture} />
@@ -53,7 +53,8 @@ function Lectures() {
             </p>
           )}
         </div>
-      </div>
+        
+      </div >
     </div>
   );
 }

@@ -26,9 +26,10 @@ function SingleAssignment() {
 
 
   return (
-    <div className= "text-white bg-gray-700 h-screen">
+    <div className= "text-white bg-gray-700">
       <SideNavBar />
       <div className="p-4 sm:ml-64">
+        <div>
         {
           user.userType==="admin"?(<div>
             <AdminSingleAssignmentCard key={assignment.id} assignment={assignment}/>
@@ -36,7 +37,7 @@ function SingleAssignment() {
             <SingleAssignmentCard key={assignment.id} assignment={assignment}/>
             </div>)
         }
-      </div>
+      </div></div>
     </div>
   );
 }

@@ -36,10 +36,10 @@ function Assignments() {
   console.log("users assigns: ", userAssignments);
 
   return (
-    <div>
+    <div className ="bg-gray-700">
       <SideNavBar />
       <div className="p-4 sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4">Assignments</h1>
+        <h1 className="text-2xl font-bold mb-4 text-white border-b-2 border-white">Assignments</h1>
         {user.userType === "admin" ? (
           <div>
             <AddAssignmentBtn />

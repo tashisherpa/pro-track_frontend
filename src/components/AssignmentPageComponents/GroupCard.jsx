@@ -27,12 +27,12 @@ function GroupCard({group, users}) {
   console.log("updated group: ", updatedGroup);
 
   return (
-    <div className="max-w-md w-80 rounded overflow-hidden shadow-lg mt-8 mr-8 ">
-      <div className="flex-col px-4 py-4">
+    <div className="max-w-md w-80 rounded bg-gray-100 overflow-hidden shadow-lg mt-8 mr-8 ">
+      <div className="flex-col text-black flex px-4 py-4">
         <div className="">
-          <div className="flex justify-between w-full font-bold text-3xl text-left mb-2">
+          <div className="flex justify-between w-full bg-gray-100 font-bold text-3xl text-left mb-2">
             Group {group[0].groupId}
-              <div>
+              <div className = "bg-gray-100">
                 {group[0].assignment_status.status === true ? (
                   <span className="bg-green-600 rounded-full px-2 py-2  text-sm font-semibold text-white mr-2 mb-12  ">
                     Completed

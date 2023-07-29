@@ -7,6 +7,7 @@ import { fetchAuthUserThunk } from "../../redux/users/users.action";
 import useAuth from "../../hooks/useAuth";
 import NavBar from "../NavBar/NavBar";
 
+
 /**
  * COMPONENT
  */
@@ -35,11 +36,13 @@ const Login = ({ name, displayName }) => {
   };
 
   return (
-    <div>
+    <div >
       <NavBar />
       <div className="flex bg-gray-800 text-white flex-col h-screen items-center justify-center">
-        <h1>{name}</h1>
-        <div className="w-full max-w-xs">
+        
+       
+        <div className="w-full hover:scale-110 max-w-xs"> 
+        <h1 className = "justify-center flex text-bold">{name}</h1>
           <form
             className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             name={name}
@@ -73,7 +76,7 @@ const Login = ({ name, displayName }) => {
             </div>
             <div className="flex items-center justify-center space-x-10">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:scale-110 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 {displayName}
@@ -91,7 +94,7 @@ const Login = ({ name, displayName }) => {
                 Sign in with Google
               </a> */}
               <button
-                className="middle none center mr-4 rounded-lg text-black bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                className="middle hover:scale-110 none center mr-4 rounded-lg text-black bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 data-ripple-light="true"
               >
                 <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google/`}>

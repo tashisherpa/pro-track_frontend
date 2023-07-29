@@ -24,7 +24,7 @@ const NavBar = () => {
           onClick={handleLogo}
           src={logowhite}
           alt="logo"
-          className="h-15 w-20"
+          className="h-15 hover:scale-110 w-20"
         />
       </div>
 
@@ -32,13 +32,13 @@ const NavBar = () => {
       <div className="flex right-0 ml-auto items-center space-x-4">
         <button
           onClick={handleSignup}
-          className="bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1"
+          className="bg-gray-200 dark:bg-gray-700 hover:scale-110 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1"
         >
           Sign Up
         </button>
         <button
           onClick={handleLogin}
-          className="bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 right-0 text-sm font-semibold text-white mr-1"
+          className="bg-gray-200 hover:scale-110 dark:bg-gray-700 rounded-full px-3 py-1 right-0 text-sm font-semibold text-white mr-1"
         >
           Login
         </button>
