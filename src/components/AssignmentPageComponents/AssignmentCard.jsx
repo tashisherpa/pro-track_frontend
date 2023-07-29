@@ -9,7 +9,7 @@ import { deleteAssignmentThunk } from "../../redux/assignment/assignments.action
 
 function AssignmentCard({ assignment }) {
   //const [isAdmin, setIsAdmin] = useState(true);
-
+  const maxInstructionLength = 100; 
   const user = useSelector((state) => state.users.authUser);
   const dispatch = useDispatch();
 
@@ -29,19 +29,23 @@ function AssignmentCard({ assignment }) {
   console.log("assignment passed in: ", assignment)
 
   return (
-    <div className="max-w-md w-80 rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-md w-80 rounded-lg bg-white overflow-hidden shadow-xl mt-8 mr-8">
       <Link to={`./${assignment.id}`}>
         <div className="px-6 py-4">
           <div className="font-bold text-3xl mb-2">
             {assignment.assignmentName}
           </div>
 
-          <p className="text-gray-500 text-xs">{assignment.instruction}</p>
+          <p className="text-gray-600 mt-2">
+        {assignment.instruction.length > maxInstructionLength
+          ? `${assignment.instruction.substring(0, maxInstructionLength)}...`
+          : assignment.instruction}
+      </p>
           <br></br>
           <p className="text-gray-500 text-xs">{assignment.group?("Group Project"):("Solo Project")}</p>
           <br></br>
-          <p className="text-gray-500 text-xs">Assigned Date: {format(parseISO(assignment.assignment_date), "yyyy-MM-dd")}</p>
-          <p className="text-gray-500 text-xs">Due Date: {format(parseISO(assignment.due_date), "yyyy-MM-dd")}</p>
+          <p className="text-gray-500 text-xs">Assigned Date: {assignment.assignment_date}</p>
+          <p className="text-gray-500 text-xs">Due Date: {assignment.due_date}</p>
           <br></br>
         </div>
         <div className="flex justify-start px-6 pt-4 pb-2">

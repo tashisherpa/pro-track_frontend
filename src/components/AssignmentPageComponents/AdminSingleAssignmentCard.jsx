@@ -80,11 +80,11 @@ function AdminSingleAssignmentCard({ assignment }) {
   return (
     <div
       key={assignment.group}
-      className="max-w-4xl rounded overflow-hidden shadow-lg mt-8 mr-8 "
+      className="max-w-4xl rounded overflow-hidden  mb-20 mt-8 mr-8 "
     >
-      <div className="flex-col px-4 py-4">
+      <div className="flex-col bg-white mb-20 rounded px-4 py-4">
         <div className="px-6 py-4">
-          <div className="flex justify-between w-full font-bold text-3xl text-left mb-2">
+          <div className="flex justify-between w-full text-black font-bold text-3xl text-left mb-2">
             {assignment.assignmentName}
             {assignment.assigned === false ? (
               <div>
@@ -97,10 +97,10 @@ function AdminSingleAssignmentCard({ assignment }) {
               <div></div>
             )}
           </div>
-          <div className="text-lg text-left mb-2">
-            Due: {assignment.due_date}
+          <div className="text-lg text-black text-left mb-2">
+            Due:  {assignment.due_date}
           </div>
-          <div className="text-lg text-left mb-2">
+          <div className="text-lg text-black text-left mb-2">
             Instruction: {assignment.instruction}
           </div>
           {/* <div className="text-lg text-left mb-2">
@@ -110,7 +110,7 @@ function AdminSingleAssignmentCard({ assignment }) {
             {isLoading ? (
               <p>Loading...</p> // Show loading state while data is being fetched
             ) : (
-              <div>
+              <div className = "flex ">
                 {assignmentGroups?.map((assignmentStatus) => {
                   const groups = {};
 
