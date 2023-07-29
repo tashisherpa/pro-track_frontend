@@ -8,11 +8,13 @@ import {
   editAssignmentStatusThunk,
 } from "../../redux/assignmentStatus/assignmentStatus.action";
 
-function AddGroupModel({ assignment}) {
+function AddGroupModel({ assignment }) {
   const [groupModel, setGroupModel] = useState(false);
 
   const users = useSelector((state) => state.users.allUsers);
-  const createdAssignmentStatus = useSelector((state) => state.assignmentsStatus.createdAssignmentStatus);
+  const createdAssignmentStatus = useSelector(
+    (state) => state.assignmentsStatus.createdAssignmentStatus
+  );
   const [student, setStudent] = useState(0);
   const [newAssignmentStatus, setNewAssignmentStatus] = useState({});
   const [isVisible, setIsVisible] = useState(true);
@@ -71,18 +73,22 @@ function AddGroupModel({ assignment}) {
 
   const handleModelAddGroup = () => {
     setGroupModel(!groupModel);
-    const newGroupMember = { userIds: group, groupId, assignmentStatusId: createdAssignmentStatus.id, };
+    const newGroupMember = {
+      userIds: group,
+      groupId,
+      assignmentStatusId: createdAssignmentStatus.id,
+    };
     dispatch(addGroupThunk(newGroupMember));
     console.log("Group being added: ", newGroupMember);
   };
 
-    console.log("group array: ", group);
-    console.log("new assignment status: ", createdAssignmentStatus);
+  console.log("group array: ", group);
+  console.log("new assignment status: ", createdAssignmentStatus);
 
   return (
-    <div>
+    <div className="block items-center">
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded-full m-2"
+        className="bg-blue-500 hover:bg-blue-700 text-sm text-white font-extrabold py-2 px-4 rounded-full m-2 max-w-md max-h-24"
         onClick={handleAddGroup}
       >
         Add Group
@@ -93,7 +99,7 @@ function AddGroupModel({ assignment}) {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-black opacity-50 fixed inset-0"></div>
             <div className="bg-white p-8 rounded-lg z-10 w-full max-w-4xl m-8">
-              <p className="text-lg">Create New Group Form</p>
+              <p className="text-black text-lg">Create New Group Form</p>
               {isVisible && (
                 <button
                   className=" bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-4 rounded-full"

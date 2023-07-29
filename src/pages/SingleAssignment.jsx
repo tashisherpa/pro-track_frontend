@@ -28,7 +28,7 @@ function SingleAssignment() {
   return (
     <div className= "text-white bg-gray-700">
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
+      <div className="p-4 sm:ml-64 flex justify-center">
         <div>
         {
           user.userType==="admin"?(<div>

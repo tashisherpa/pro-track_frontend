@@ -56,7 +56,7 @@ function AssignButtonModal({ assignment, students}) {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-black opacity-50 fixed inset-0"></div>
           <div className="bg-white p-8 rounded-lg z-10 w-full max-w-4xl m-8">
-            <p className="text-lg">Is this a group or solo assignment?</p>
+            <p className="text-black text-lg">Is this a group or solo assignment?</p>
             <div className="my-4">
               <label className="inline-flex items-center">
                 <input
