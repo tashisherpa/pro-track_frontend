@@ -44,8 +44,8 @@ function AssignmentCard({ assignment }) {
           <br></br>
           <p className="text-gray-500 text-xs">{assignment.group?("Group Project"):("Solo Project")}</p>
           <br></br>
-          <p className="text-gray-500 text-xs">Assigned Date: {format(parseISO(assignment.assignment_date), "yyyy-MM-dd")}</p>
-          <p className="text-gray-500 text-xs">Due Date: {format(parseISO(assignment.due_date), "yyyy-MM-dd")}</p>
+          <p className="text-gray-500 text-xs">Assigned Date: {assignment.assignment_date}</p>
+          <p className="text-gray-500 text-xs">Due Date: {assignment.due_date}</p>
           <br></br>
         </div>
         <div className="flex justify-start px-6 pt-4 pb-2">

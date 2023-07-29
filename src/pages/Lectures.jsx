@@ -37,7 +37,7 @@ function Lectures() {
   }, [socket, dispatch]);
 
   return (
-    <div className = "bg-gray-700">
+    <div className = "bg-gray-700 h-screen ">
       <SideNavBar />
       <div className="p-4 bg-gray-700   text-white sm:ml-64">
         <h1 className="text-2xl font-bold mb-8 border-b-2 border-white">Lectures</h1>

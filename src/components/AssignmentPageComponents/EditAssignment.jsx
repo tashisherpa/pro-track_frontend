@@ -47,10 +47,11 @@ function EditAssignment() {
   };
 
   return (
-    <div>
-      <div className="w-full max-w-xs">
+<div className="bg-gray-700 px-10 flex items-center justify-center h-screen">
+  <div className="w-4/5 max-w-screen-lg px-8 pt-10 pb-8 mb-4 bg-white p-8 rounded-md shadow-md">
+    
         <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-white shadow-md h-screen  rounded px-8 pt-10 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -67,14 +68,14 @@ function EditAssignment() {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Instruction
           </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          <textarea
+            className="shadow appearance-none  h-1/2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="instrution"
             value={editForm.instruction || ""}
             placeholder="Instruction"
             onChange={handleInputChange}
-          />
+            ></textarea>
 
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Date

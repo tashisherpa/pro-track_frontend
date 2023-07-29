@@ -98,7 +98,7 @@ function AdminSingleAssignmentCard({ assignment }) {
             )}
           </div>
           <div className="text-lg text-black text-left mb-2">
-            Due: {assignment.due_date}
+            Due:  {assignment.due_date}
           </div>
           <div className="text-lg text-black text-left mb-2">
             Instruction: {assignment.instruction}
@@ -110,7 +110,7 @@ function AdminSingleAssignmentCard({ assignment }) {
             {isLoading ? (
               <p>Loading...</p> // Show loading state while data is being fetched
             ) : (
-              <div>
+              <div className = "flex ">
                 {assignmentGroups?.map((assignmentStatus) => {
                   const groups = {};
 

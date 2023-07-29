@@ -82,7 +82,7 @@ function AddGroupModel({ assignment}) {
   return (
     <div>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-2"
+        className="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded-full m-2"
         onClick={handleAddGroup}
       >
         Add Group
@@ -146,7 +146,7 @@ function AddGroupModel({ assignment}) {
                   Close
                 </button>
                 <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-full"
+                  className="bg-blue-500 flex max-xs hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 rounded-full"
                   onClick={handleModelAddGroup}
                 >
                   Add Group
