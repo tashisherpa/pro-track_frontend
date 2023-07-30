@@ -84,6 +84,7 @@ function Assignments() {
                     <AssignmentCard
                       key={row.id}
                       assignment={row.assignment_status.assignment}
+                      groupId={row.groupId}
                     />
                   ))
                 ) : (

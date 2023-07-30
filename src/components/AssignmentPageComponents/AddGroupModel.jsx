@@ -20,7 +20,7 @@ function AddGroupModel({ assignment }) {
   const [isVisible, setIsVisible] = useState(true);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [group, setGroup] = useState([]);
-  let groupId = 1;
+  const [groupId, setGroupId] = useState("");
   const dispatch = useDispatch();
   let realid = 0;
 
@@ -52,7 +52,6 @@ function AddGroupModel({ assignment }) {
     // dispatch(addGroupThunk(newGroupMember));
     setGroup([...group, userId]);
     // console.log("group array: ", group);
-    groupId = groupId + 1;
     // dispatch(editAssignmentStatusThunk({...newAssignmentStatus, userId: userId, id: createdAssignmentStatus.id}));
     // console.log("added member: ", newGroupMember);
   };
@@ -62,12 +61,12 @@ function AddGroupModel({ assignment }) {
   };
 
   const realId = (userid) => {
-    realid = userid-1;
-  }
+    realid = userid - 1;
+  };
 
   const realIdSet = () => {
     realid = 0;
-  }
+  };
 
   useEffect(() => {
     const fetchAllUsers = () => {
@@ -82,22 +81,27 @@ function AddGroupModel({ assignment }) {
     setGroupModel(!groupModel);
   };
 
-  const handleModelAddGroup = () => {
+  const handleModelAddGroup = (event) => {
+    event.preventDefault();
     setGroupModel(!groupModel);
     const newGroupMember = {
       userIds: group,
-      groupId,
+      groupId: groupId,
       assignmentStatusId: createdAssignmentStatus.id,
     };
     dispatch(addGroupThunk(newGroupMember));
-    localStorage.setItem('scrollPosition', window.scrollY);
+    localStorage.setItem("scrollPosition", window.scrollY);
     window.location.reload();
   };
 
-//   console.log("group array: ", group);
-//   console.log("new assignment status: ", createdAssignmentStatus);
-//   console.log("student array check: ", students);
-//   console.log("users: ", users);
+  const handleInputChange = (event) => {
+    setGroupId(event.target.value);
+  };
+
+  //   console.log("group array: ", group);
+  //   console.log("new assignment status: ", createdAssignmentStatus);
+  //   console.log("student array check: ", students);
+  //   console.log("users: ", users);
 
   return (
     <div className="block items-center">
@@ -123,56 +127,77 @@ function AddGroupModel({ assignment }) {
                   Create Assignment
                 </button>
               )}
-              {dropdownVisible ? (
-                <div>
-                  <label className="block text-gray-700 font-bold mb-2 text-base">
-                    Students
-                  </label>
-                  <select
-                    id="students"
-                    onChange={(e) => handleChange(e.target.value)}
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm font-normal rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
-                  >
-                    <option selected>Students...</option>
-                    {students.map((student) => (
-                      <option key={student.id} value={student.id}>
-                        {student?.firstName} {student?.lastName}
-                      </option>
-                    ))}
-                  </select>
-                  <button
-                    className=" bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-full mb-2"
-                    type="button"
-                    onClick={() => handleAddStudent(student)}
-                  >
-                    Add Student
-                  </button>
-                  <div className="flex flex-col mt-4">
-                    <h4 className="text-black text-base font-bold mb-2">Selected Users:</h4>
-                    {group?.map((userid) => (
-                      <span key={userid} className="text-black text-sm font-normal mb-8">
-                        {realId(userid)}
-                        {users[realid]?.firstName} {users[realid]?.lastName}
-                        {realIdSet()}
-                      </span>
-                    ))}
+              <form onSubmit={handleModelAddGroup}>
+                {dropdownVisible ? (
+                  <div>
+                    <label className="block text-gray-700 font-bold mb-2 text-base">
+                      Group Name
+                    </label>
+                    <input
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm font-normal rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
+                      type="text"
+                      name="groupId"
+                      value={groupId ||""}
+                      placeholder="Group name..."
+                      onChange={handleInputChange}
+                    />
+                    <label className="block text-gray-700 font-bold mb-2 text-base">
+                      Students
+                    </label>
+                    <select
+                      id="students"
+                      onChange={(e) => handleChange(e.target.value)}
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm font-normal rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
+                    >
+                      <option selected>Students...</option>
+                      {students.map((student) => (
+                        <option key={student.id} value={student.id}>
+                          {student?.firstName} {student?.lastName}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      className=" bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded-full mb-2"
+                      type="button"
+                      onClick={() => handleAddStudent(student)}
+                    >
+                      Add Student
+                    </button>
+                    <div className="flex flex-col mt-4">
+                      <h4 className="text-black text-base font-bold mb-2">
+                        Selected Users:
+                      </h4>
+                      {group?.map((userid) => (
+                        <span
+                          key={userid}
+                          className="text-black text-sm font-normal mb-8"
+                        >
+                          {realId(userid)}
+                          {users[realid]?.firstName} {users[realid]?.lastName}
+                          {realIdSet()}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                ) : null}
+                <div className="flex justify-start align-middle w-56 h-10">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-extrabold py-2 px-4 rounded-full max-w-lg mr-4"
+                    onClick={() => {
+                      setGroupModel(false);
+                    }} // Fix: Wrap in arrow function
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-extrabold py-2 px-4 rounded-full w-fit"
+                    type="submit"
+                    //   onClick={handleModelAddGroup}
+                  >
+                    Add Group
+                  </button>
                 </div>
-              ) : null}
-              <div className="flex justify-start align-middle w-56 h-10">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-extrabold py-2 px-4 rounded-full max-w-lg mr-4"
-                  onClick={() => {setGroupModel(false)}} // Fix: Wrap in arrow function
-                >
-                  Close
-                </button>
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-extrabold py-2 px-4 rounded-full w-fit"
-                  onClick={handleModelAddGroup}
-                >
-                  Add Group
-                </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
