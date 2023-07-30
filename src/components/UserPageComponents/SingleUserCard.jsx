@@ -15,13 +15,53 @@ function SingleUserCard({ user }) {
     dispatch(deleteUserThunk(user.id));
   };
   return (
-    <div className="flex max-w-4xl rounded overflow-hidden h-screen shadow-lg bg-white mt-8 mr-8 ">
-      <img className="h-full object-fill" src={img_link} alt="user_img" />
+    <div className="h-screen">
+      <div className="max-w-3xl bg-white rounded-lg overflow-hidden shadow-xl ">
+        <div className="px-6 py-4">
+          <div className="flex items-center space-x-4">
+            <img
+              className="w-24 h-24 rounded-full"
+              src={img_link}
+              alt="Rounded avatar"
+            />
+            <div className="font-medium text-black">
+              <div className="font-bold text-2xl mb-2">
+                {user.firstName} {user.lastName}
+              </div>
+            </div>
+          </div>
+          <div className="text-lg text-left mb-2">{user.userType}</div>
+          <div className="text-lg text-left mb-2">Email: {user.email}</div>
+          <div className="text-lg text-left mb-2">
+            Cohort Year: {user.cohort_year}
+          </div>
+          <div>
+            <Link to={`/users/editUser/${user.id}`}>
+              <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-2">
+                Edit
+              </button>
+            </Link>
+            <button
+              className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-2"
+              onClick={handleDelete}
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default SingleUserCard;
+/*
+ <div className="max-w-xs rounded w-40  h-50 bg-white  shadow-lg mt-4 mr-4">
+      <div className="flex justify-center mt-4">
+      <img className="w-24 h-24 rounded-full " src={img_link} alt="user_img" />
       <div className="flex-col px-4 py-4">
         <div className="px-6 py-4">
-          <div className="font-bold text-3xl text-left mb-2">
-            {user.firstName} {user.lastName}
-          </div>
+          
           <div className="text-lg text-left mb-2">
             {user.userType}
           </div>
@@ -44,10 +84,7 @@ function SingleUserCard({ user }) {
           >
             Remove
           </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+        </div></div>
+      </div></div>
 
-export default SingleUserCard;
+*/
