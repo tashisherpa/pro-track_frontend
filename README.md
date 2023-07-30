@@ -27,7 +27,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/TashiXD/pro-track_frontend/assets/77645810/125dde88-618b-48c1-a515-9d6d77775351">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
