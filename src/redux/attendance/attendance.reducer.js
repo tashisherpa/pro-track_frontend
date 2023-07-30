@@ -28,6 +28,11 @@ const attendance = (state = INITIAL_ATTENDANCE_STATE, action) => {
         ),
         userAttendance: action.payload,
       };
+    case AttendanceActionType.CLEAR_ATTENDANCE:
+      return {
+        ...state,
+        attendances: [],
+      };
     default:
       return state;
   }
