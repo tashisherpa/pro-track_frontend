@@ -82,12 +82,30 @@ export const editStudentAttendance = (payload) => {
 export const editStudentAttendanceThunk = (update) => {
   return async (dispatch) => {
     try {
-      console.log("Attendance status:", update);
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/api/attendance/`,
         update
       );
       dispatch(editStudentAttendance(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const clearAttendance = () => {
+  return {
+    type: AttendanceActionType.CLEAR_ATTENDANCE,
+  };
+};
+
+export const clearAttendanceThunk = () => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/attendance/`
+      );
+      dispatch(clearAttendance());
     } catch (error) {
       console.error(error);
     }

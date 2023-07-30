@@ -17,25 +17,26 @@ function ZoomInfo() {
   const user = useSelector((state) => state.users.authUser);
   const [currentDay, setCurrentDay] = useState("");
 
-  const handleClickZoomBtn = () => {
-    setShowModal(true);
-    //creating an object to pass in the editAttendanceThunk as the api route
-    // uses {userId, day, status} to update the attendance status of a student
-    const attendanceStatus = {
-      userId: user.id,
-      day: currentDay.toLowerCase(), // Converting day to lowercase as per the expected format.
-      status: "P", //"P" is for Present
-    };
-    // Filter the attendance array to check if the user is already present
-    const userOnAttendance = !attendances.some(
-      (attendance) => attendance.userId === user.id
-    );
-    console.log("IS User on attendance)", userOnAttendance);
-    if (userOnAttendance) {
-      dispatch(addStudentToAttendanceThunk({ userId: user.id }));
-      dispatch(editStudentAttendanceThunk(attendanceStatus));
-    } else {
-      dispatch(editStudentAttendanceThunk(attendanceStatus));
+  const handleAttendance = () => {
+    if (user.userType === "student") {
+      //creating an object to pass in the editAttendanceThunk as the api route
+      // uses {userId, day, status} to update the attendance status of a student
+      const attendanceStatus = {
+        userId: user.id,
+        day: currentDay.toLowerCase(), // Converting day to lowercase as per the expected format.
+        status: "P", //"P" is for Present
+      };
+      // Filter the attendance array to check if the user is already present
+      const userOnAttendance = !attendances.some(
+        (attendance) => attendance.userId === user.id
+      );
+      console.log("IS User on attendance)", userOnAttendance);
+      if (userOnAttendance) {
+        dispatch(addStudentToAttendanceThunk({ userId: user.id }));
+        dispatch(editStudentAttendanceThunk(attendanceStatus));
+      } else {
+        dispatch(editStudentAttendanceThunk(attendanceStatus));
+      }
     }
   };
 
@@ -68,7 +69,7 @@ function ZoomInfo() {
         <button
           className="bg-blue-500 hover:scale-110 rounded-lg text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
           type="button"
-          onClick={handleClickZoomBtn}
+          onClick={() => setShowModal(true)}
         >
           Zoom Link
         </button>
@@ -105,13 +106,14 @@ function ZoomInfo() {
                 <div className="relative p-6 flex-auto">
                   <p>
                     Join By{" "}
-                    <a
+                    <button
                       className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full"
-                      href={zoomMeetingLink.link}
-                      target="blank"
+                      onClick={handleAttendance}
                     >
-                      Zoom Meeting Link
-                    </a>
+                      <a href={zoomMeetingLink.link} target="blank">
+                        Zoom Meeting Link
+                      </a>
+                    </button>
                   </p>
                   <br />
                 </div>
