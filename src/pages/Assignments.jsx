@@ -36,10 +36,11 @@ function Assignments() {
   console.log("users assigns: ", userAssignments);
 
   return (
-    <div>
+    <div className ="bg-gray-700 ">
+    <div className ="h-screen ">
       <SideNavBar />
-      <div className="p-4 sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4">Assignments</h1>
+      <div className="p-4 bg-gray-700 sm:ml-64">
+        <h1 className="text-2xl font-bold mb-4 text-white border-b-2 border-white">Assignments</h1>
         {user.userType === "admin" ? (
           <div>
             <AddAssignmentBtn />
@@ -49,7 +50,7 @@ function Assignments() {
                   <AssignmentCard key={assignment.id} assignment={assignment} />
                 ))
               ) : (
-                <p style={{ textAlign: "center" }}>No Assignments</p>
+                <p style={{ textAlign: "center"  }}>No Assignments</p>
               )}
             </div>
           </div>
@@ -70,7 +71,7 @@ function Assignments() {
           </div>
         )}
       </div>
-    </div>
+    </div></div>
   );
 }
 

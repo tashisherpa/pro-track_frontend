@@ -13,29 +13,22 @@ function UserCard({ user }) {
   };
 
   return (
-    <div className = "bg-white ">
-      <div className="max-w-xs rounded overflow-hidden shadow-lg mt-8 mr-8">
+    <div className="bg-gray-700 justify-center flex hover:scale-110 ">
+      <div className="max-w-xs rounded w-40  h-50 bg-white  shadow-lg mt-4 mr-4">
         <Link to={`./${user.id}`}>
-          <img className="w-full object-fill" src={img_link} alt="user_img" />
+          <div className="flex justify-center mt-4">
+            <img
+              className="w-24 h-24 rounded-full "
+              src={img_link}
+              alt="user_img"
+            />
+          </div>
           <div className="px-6 py-4">
             <div className="font-bold text-lg text-center mb-2">
               {user.firstName} {user.lastName}
             </div>
           </div>
         </Link>
-        <div>
-          <Link to={`/users/editUser/${user.id}`}>
-            <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-              Edit
-            </button>
-          </Link>
-          <button
-            className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-            onClick={handleDelete}
-          >
-            Remove
-          </button>
-        </div>
       </div>
     </div>
   );

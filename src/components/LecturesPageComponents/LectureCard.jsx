@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { parseISO, format } from "date-fns";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,13 +25,13 @@ function LectureCard({ lecture }) {
   };
 
   return (
-    <div className="max-w-xs bg-white  text-black rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-xs bg-white hover:scale-110 text-black rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <div className="px-6 py-4">
         <div className="font-bold text-3xl mb-2">{lecture.title}</div>
         <p className="text-gray-700 text-base">
           {lecture.user.firstName} {lecture.user.lastName}
         </p>
-        <p className="text-gray-500 text-xs">{lecture.lecture_date}</p>
+        <p className="text-gray-500 text-xs">{format(parseISO(lecture.lecture_date), "MM-dd-yyyy")}</p>
         <br></br>
         <p className="text-gray-500 text-xs">
           {lecture.description}
@@ -39,7 +40,7 @@ function LectureCard({ lecture }) {
           Recording Password: {lecture.password}
         </p>
       </div>
-      <div className="flex justify-start px-6 pt-4 pb-2">
+      <div className="flex justify-between px-6 pt-4 pb-2">
         <a href={lecture.recordings} target="blank">
           <button className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-1 mb-2">
             Recording
@@ -60,7 +61,7 @@ function LectureCard({ lecture }) {
                 </button>
               </Link>
               <button
-                className=" bg-gray-200 dark:bg-gray-700 rounded-full py-1 text-sm font-semibold text-white px-2"
+                className=" bg-gray-200 dark:bg-gray-700 rounded-full py-1 text-sm font-semibold text-white px-2 mr-1"
                 onClick={handleDelete}
               >
                 Delete

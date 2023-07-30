@@ -26,7 +26,7 @@ function SingleUser() {
 
 
   return (
-    <div>
+    <div className = " bg-gray-700 ">
       <SideNavBar />
       <div className="p-4 sm:ml-64">
         <SingleUserCard key={user.id} user={user}/>

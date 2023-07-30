@@ -2,7 +2,7 @@ import React from 'react'
 
 function SoloCard({user}) {
   return (
-    <div className="max-w-md w-80 rounded overflow-hidden shadow-lg mt-8 mr-8 ">
+    <div className="max-w-md text-black w-80 min-h-20 max-h-40  rounded overflow-hidden shadow-lg mt-8 mr-8 ">
       <div className="flex-col px-4 py-4">
         <div className="">
           <div className="flex justify-between w-full font-bold text-3xl text-left mb-2">

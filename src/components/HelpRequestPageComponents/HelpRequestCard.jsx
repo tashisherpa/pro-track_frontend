@@ -25,7 +25,7 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
       : "bg-green-300"
   );
 
-  const cardStyling = `${backgroundColor} rounded-lg overflow-hidden shadow-xl mb-4`;
+  const cardStyling = `${backgroundColor} rounded-lg  overflow-hidden shadow-xl mb-4`;
 
   const handleButtonClick = () => {
     //changes status, backgroundColor and ButtonName based on the helprequest.status
@@ -75,14 +75,22 @@ function HelpRequestCard({ helpRequest, loggedInUser }) {
         /*Only visible to TA/Admins */
         loggedInUser.userType === "admin" ? (
           <div>
-            {status !== "Resolved" ? (
+            {status === "Done" ? null : status === "Pending" ? (
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-blue-500 hover:bg-blue-700 hover:scale-110 text-white font-bold py-2 px-4 rounded-full"
                 onClick={handleButtonClick}
               >
                 {buttonName}
               </button>
             ) : null}
+            {/* {status !== "Resolved" ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 hover:scale-110 text-white font-bold py-2 px-4 rounded-full"
+                onClick={handleButtonClick}
+              >
+                {buttonName}
+              </button>
+            ) : null} */}
           </div>
         ) : loggedInUser.id === helpRequest.student.id &&
           status === "Pending" ? (

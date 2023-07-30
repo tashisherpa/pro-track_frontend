@@ -15,7 +15,7 @@ function SingleUserCard({ user }) {
     dispatch(deleteUserThunk(user.id));
   };
   return (
-    <div className="flex max-w-4xl rounded overflow-hidden shadow-lg bg-white mt-8 mr-8 ">
+    <div className="flex max-w-4xl rounded overflow-hidden h-screen shadow-lg bg-white mt-8 mr-8 ">
       <img className="h-full object-fill" src={img_link} alt="user_img" />
       <div className="flex-col px-4 py-4">
         <div className="px-6 py-4">
