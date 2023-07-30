@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import {
   addStudentToAttendanceThunk,
   editStudentAttendanceThunk,
+  fetchAttendanceThunk,
 } from "../../redux/attendance/attendance.action";
 
 function ZoomInfo() {
@@ -57,6 +58,7 @@ function ZoomInfo() {
       return daysOfWeek[dayIndex];
     };
     setCurrentDay(getCurrentDay());
+    dispatch(fetchAttendanceThunk());
     fetchZoomMeetingLink();
   }, [dispatch]);
 
@@ -71,12 +73,12 @@ function ZoomInfo() {
           Zoom Link
         </button>
         <Link to={`/dashboard/zoomlink`}>
-        <button
-          className="bg-blue-500 hover:scale-110 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          Edit Zoom Link
-        </button>
+          <button
+            className="bg-blue-500 hover:scale-110 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            Edit Zoom Link
+          </button>
         </Link>
       </div>
 
