@@ -21,6 +21,26 @@ export const fetchAssignmentGroupsThunk = (assignmentId) => {
   };
 };
 
+export const fetchUserAssignments = (payload) => {
+    return {
+      type: GroupActionType.FETCH_USER_ASSIGNMENTS,
+      payload: payload,
+    };
+  };
+  
+  export const fetchUserAssignmentsThunk = (userId) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/api/group/student/${userId}`
+        );
+        dispatch(fetchUserAssignments(response.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  };
+
 export const addGroup = (payload) => {
   return {
     type: GroupActionType.ADD_GROUP,

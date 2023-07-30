@@ -16,7 +16,8 @@ function GroupCard({ group, users }) {
       assignmentStatusId: group[0].assignment_status.id,
     };
     dispatch(addGroupThunk(newGroupMember));
-    console.log("added member: ", newGroupMember);
+    localStorage.setItem('scrollPosition', window.scrollY);
+    window.location.reload();
   };
 
   //   useEffect(() => {
