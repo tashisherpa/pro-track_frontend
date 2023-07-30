@@ -4,10 +4,10 @@ function AttendanceRow({ userAttendance }) {
   return (
     <tr className="text-gray-700">
       <td className="firtName px-4 py-3 text-ms font-semibold border">
-        {userAttendance.user.firstName}
+        {userAttendance?.user?.firstName}
       </td>
       <td className="firtName px-4 py-3 text-ms font-semibold border">
-        {userAttendance.user.lastName}
+        {userAttendance?.user?.lastName}
       </td>
       <td className="M px-4 py-3 text-sm border">{userAttendance.monday}</td>
       <td className="T px-4 py-3 text-sm border">{userAttendance.tuesday}</td>

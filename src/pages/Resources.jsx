@@ -36,23 +36,25 @@ function Resources() {
   }, [dispatch, socket]);
 
   return (
-    <div className = "relative h-screen overflow-hidden ">
+    <div className=" bg-gray-700 relative h-screen overflow-hidden ">
       <SideNavBar />
-      <div className = "bg-gray-700">
       <div className="p-4  sm:ml-64">
-        <h1 className="text-2xl text-white  font-bold mb-4 border-b-2 border-white">Resources</h1>
+        <h1 className="text-2xl text-white  font-bold mb-4 border-b-2 border-white">
+          Resources
+        </h1>
         {user.userType !== "student" ? <AddResourceBtn /> : null}
         <div className="flex flex-wrap">
-         
           {allResources.length > 0 ? (
             allResources.map((resource) => (
               <ResourceCard key={resource.id} resource={resource} />
             ))
           ) : (
-            <p style={{ textAlign: "center" }}>NO RESOURCES HAVE BEEN POSTED FOR YOU !</p>
+            <p style={{ textAlign: "center" }}>
+              NO RESOURCES HAVE BEEN POSTED FOR YOU !
+            </p>
           )}
         </div>
-      </div></div>
+      </div>
     </div>
   );
 }
