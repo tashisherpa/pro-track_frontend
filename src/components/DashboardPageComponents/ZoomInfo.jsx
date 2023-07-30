@@ -1,18 +1,62 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { fetchZoomMeetingLinkThunk } from "../../redux/zoom/zoom.action";
 import { Link } from "react-router-dom";
+import {
+  addStudentToAttendanceThunk,
+  editStudentAttendanceThunk,
+} from "../../redux/attendance/attendance.action";
 
 function ZoomInfo() {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const zoomMeetingLink = useSelector((state) => state.zoom.zoomMeetingLink);
-  const dispatch = useDispatch();
+  const attendances = useSelector((state) => state.attendance.attendances);
+  const user = useSelector((state) => state.users.authUser);
+  const [currentDay, setCurrentDay] = useState("");
+
+  const handleClickZoomBtn = () => {
+    setShowModal(true);
+    //creating an object to pass in the editAttendanceThunk as the api route
+    // uses {userId, day, status} to update the attendance status of a student
+    const attendanceStatus = {
+      userId: user.id,
+      day: currentDay.toLowerCase(), // Converting day to lowercase as per the expected format.
+      status: "P", //"P" is for Present
+    };
+    // Filter the attendance array to check if the user is already present
+    const userOnAttendance = !attendances.some(
+      (attendance) => attendance.userId === user.id
+    );
+    console.log("IS User on attendance)", userOnAttendance);
+    if (userOnAttendance) {
+      dispatch(addStudentToAttendanceThunk({ userId: user.id }));
+      dispatch(editStudentAttendanceThunk(attendanceStatus));
+    } else {
+      dispatch(editStudentAttendanceThunk(attendanceStatus));
+    }
+  };
 
   useEffect(() => {
     const fetchZoomMeetingLink = () => {
       return dispatch(fetchZoomMeetingLinkThunk());
     };
+    const getCurrentDay = () => {
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const currentDate = new Date();
+      const dayIndex = currentDate.getDay();
+      return daysOfWeek[dayIndex];
+    };
+    setCurrentDay(getCurrentDay());
     fetchZoomMeetingLink();
   }, [dispatch]);
 
@@ -22,7 +66,7 @@ function ZoomInfo() {
         <button
           className="bg-blue-500 hover:scale-110 rounded-lg text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
           type="button"
-          onClick={() => setShowModal(true)}
+          onClick={handleClickZoomBtn}
         >
           Zoom Link
         </button>
