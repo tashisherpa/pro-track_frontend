@@ -36,13 +36,13 @@ function GroupCard({ group, users }) {
       <div className="px-6 py-4">
         <div className="flex text-black justify-between w-full  font-bold text-3xl text-left mb-2">
           Group {group[0].groupId}
-          <div className=" text-black ">
+          <div className=" text-white ">
             {group[0].assignment_status.status === true ? (
               <span className="bg-green-600 rounded-full px-2 py-2  text-sm font-semibold text-white mr-2 mb-12  ">
                 Completed
               </span>
             ) : (
-              <span className="bg-red-600 rounded-full   px-2 py-2  text-sm font-semibold text-black mr-2 mb-12  ">
+              <span className="bg-red-600 rounded-full   px-2 py-2  text-sm font-semibold text-white mr-2 mb-12  ">
                 Incomplete
               </span>
             )}
