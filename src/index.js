@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const scrollPosition = parseInt(localStorage.getItem('scrollPosition')) || 0;
+window.scrollTo(0, scrollPosition);
+localStorage.removeItem('scrollPosition');
 root.render(
   <Provider store = {store}>
   <React.StrictMode>

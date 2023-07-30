@@ -31,6 +31,7 @@ function AdminSingleAssignmentCard({ assignment }) {
   );
   const loggedInUser = useSelector((state) => state.users.authUser);
   const assignmentGroups = useSelector((state) => state.group.assignmentGroups);
+  const [groups, setGroups] = useState([]);
   const users = useSelector((state) => state.users.allUsers);
   const user = useSelector((state) => state.users.authUser);
 
@@ -63,7 +64,7 @@ function AdminSingleAssignmentCard({ assignment }) {
   useEffect(() => {
     const fetchAssignmentGroups = () => {
       return dispatch(fetchAssignmentGroupsThunk(id)).then(() => {
-        setIsLoading(false); // Set loading state to false when fetching is done
+        setIsLoading(false);
       });
     };
     fetchAssignmentGroups();

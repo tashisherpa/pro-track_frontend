@@ -2,12 +2,15 @@ import GroupActionType from "./group.types";
 
 export const INITIAL_GROUP_STATE = {
   assignmentGroups: [],
+  userAssignments: [],
 };
 
 const group = (state = INITIAL_GROUP_STATE, action) => {
   switch (action.type) {
     case GroupActionType.FETCH_ASSIGNMENT_GROUPS:
       return { assignmentGroups: action.payload };
+    case GroupActionType.FETCH_USER_ASSIGNMENTS:
+      return { userAssignments: action.payload };
     case GroupActionType.ADD_GROUP:
       return {
         assignmentGroups: [...state.assignmentGroups, action.payload.groups],

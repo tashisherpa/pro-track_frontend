@@ -9,6 +9,7 @@ import {
   AddAssignmentBtn,
   AssignmentCard,
 } from "../components/AssignmentPageComponents";
+import { fetchUserAssignmentsThunk } from "../redux/group/group.action";
 
 function Assignments() {
   const dispatch = useDispatch();
@@ -19,6 +20,14 @@ function Assignments() {
   const allAssignmentStatus = useSelector(
     (state) => state.assignmentsStatus.allAssignmentsStatus
   );
+  const groupAssignments = useSelector((state) => state.group.userAssignments);
+
+  useEffect(() => {
+    const fetchUserAssignments = () => {
+      return dispatch(fetchUserAssignmentsThunk(user.id));
+    };
+    fetchUserAssignments();
+  }, [dispatch, user]);
 
   useEffect(() => {
     dispatch(fetchAllAssignmentsThunk());
@@ -36,42 +45,56 @@ function Assignments() {
   console.log("users assigns: ", userAssignments);
 
   return (
-    <div className ="bg-gray-700 ">
-    <div className ="h-screen ">
-      <SideNavBar />
-      <div className="p-4 bg-gray-700 sm:ml-64">
-        <h1 className="text-2xl font-bold mb-4 text-white border-b-2 border-white">Assignments</h1>
-        {user.userType === "admin" ? (
-          <div>
-            <AddAssignmentBtn />
-            <div className="flex flex-wrap">
-              {allAssignments.length > 0 ? (
-                allAssignments.map((assignment) => (
-                  <AssignmentCard key={assignment.id} assignment={assignment} />
-                ))
-              ) : (
-                <p style={{ textAlign: "center"  }}>No Assignments</p>
-              )}
+    <div className="bg-gray-700 ">
+      <div className="h-screen ">
+        <SideNavBar />
+        <div className="p-4 bg-gray-700 sm:ml-64">
+          <h1 className="text-2xl font-bold mb-4 text-white border-b-2 border-white">
+            Assignments
+          </h1>
+          {user.userType === "admin" ? (
+            <div>
+              <AddAssignmentBtn />
+              <div className="flex flex-wrap">
+                {allAssignments.length > 0
+                  ? allAssignments.map((assignment) => (
+                      <AssignmentCard
+                        key={assignment.id}
+                        assignment={assignment}
+                      />
+                    ))
+                  : null}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div>
-            <div className="flex flex-wrap">
-              {userAssignments.length > 0 ? (
-                userAssignments.map((assignment) => (
-                  <AssignmentCard
-                    key={assignment.id}
-                    assignment={assignment.assignment}
-                  />
-                ))
-              ) : (
-                <p style={{ textAlign: "center" }}>No Assignments</p>
-              )}
+          ) : (
+            <div>
+              <div className="flex flex-wrap">
+                {userAssignments.length > 0 ? (
+                  userAssignments.map((assignment) => (
+                    <AssignmentCard
+                      key={assignment.id}
+                      assignment={assignment.assignment}
+                    />
+                  ))
+                ) : (
+                  <p style={{ textAlign: "center" }}>No Assignments</p>
+                )}
+                {groupAssignments.length > 0 ? (
+                  groupAssignments.map((row) => (
+                    <AssignmentCard
+                      key={row.id}
+                      assignment={row.assignment_status.assignment}
+                    />
+                  ))
+                ) : (
+                  <p style={{ textAlign: "center" }}>No Assignments</p>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div></div>
+    </div>
   );
 }
 
