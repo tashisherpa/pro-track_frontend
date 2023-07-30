@@ -29,6 +29,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import Attendance from "./components/Attendance/Attendance";
 function App() {
   const dispatch = useDispatch();
 
@@ -85,6 +86,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/users/editUser/:id" element={<EditUser />} />
           <Route path="/users/:id" element={<SingleUser />} />
+          <Route path="/users/attendance" element={<Attendance />} />
           <Route path="/profile" element={<Profile />} />
           {/**Sabina */}
         </Route>
