@@ -44,35 +44,40 @@ function EditZoomMeetingLink() {
     navigate("/dashboard");
   };
   return (
-    <div>
-      <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={handleSubmit}
-      >
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          New Zoom Link
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          name="link"
-          value={editForm.link || ""}
-          placeholder="New Link"
-          onChange={handleInputChange}
-        />
-        <button
-          className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          type="submit"
+    <div className="flex justify-center m-16">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-gray-800 text-center text-2xl font-bold mb-4">Edit Zoom Link</h1>
+        <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
         >
-          Save
-        </button>
-        <button
-          className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-      </form>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            New Zoom Link
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-8"
+            type="text"
+            name="link"
+            value={editForm.link || ""}
+            placeholder="New Link"
+            onChange={handleInputChange}
+          />
+          <div className="flex justify-evenly">
+          <button
+            className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            type="submit"
+          >
+            Save
+          </button>
+          <button
+            className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

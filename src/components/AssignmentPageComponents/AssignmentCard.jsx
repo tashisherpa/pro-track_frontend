@@ -46,7 +46,7 @@ function AssignmentCard({ assignment }) {
           </p>
           <br />
           <p className="text-gray-500 text-xs">
-            {assignment.group ? "Group Project" : "Solo Project"}
+            {assignment.group===true ? "Group Project" :assignment.group===false?"Solo Project":null}
           </p>
           <br />
           <p className="text-gray-500 text-xs">
