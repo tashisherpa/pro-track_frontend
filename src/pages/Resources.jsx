@@ -36,8 +36,8 @@ function Resources() {
   }, [dispatch, socket]);
 
   return (
-    <div className = " bg-gray-700 ">
-    <div className="h-screen">
+    <div className = "h-full bg-gray-700 ">
+    <div className="">
       <SideNavBar />
       <div className="p-4  sm:ml-64">
         <h1 className="text-2xl text-white  font-bold mb-4 border-b-2 border-white">

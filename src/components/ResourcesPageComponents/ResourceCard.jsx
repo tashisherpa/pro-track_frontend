@@ -39,7 +39,7 @@ function ResourceCard({ resource }) {
         <br></br>
         {/* {resource.image && <img src={resource.image} alt="Link Preview" />} */}
       </div>
-      <div className="flex justify-start px-6 pt-4 pb-2">
+      <div className="flex justify-evenly px-6 pt-4 pb-2">
         <a href={resource.link} target="_blank" rel="noopener noreferrer">
           <button className="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white ml-2 mr-2 mb-2">
             Link
@@ -48,7 +48,7 @@ function ResourceCard({ resource }) {
         {user.userType === "admin" ? (
           <a>
             <button
-              className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16"
+              className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
               onClick={handleDelete}
             >
               DELETE
@@ -57,7 +57,7 @@ function ResourceCard({ resource }) {
         ) : null}
         {user.userType === "admin" ? (
           <Link to={`/resources/edit/${resource.id}`}>
-            <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 ml-16">
+            <button className=" bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
               Edit
             </button>
           </Link>
