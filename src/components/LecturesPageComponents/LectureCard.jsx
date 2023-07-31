@@ -29,7 +29,7 @@ function LectureCard({ lecture }) {
       <div className="px-6 py-4">
         <div className="font-bold text-3xl mb-2">{lecture.title}</div>
         <p className="text-gray-700 text-base">
-          {lecture.user.firstName} {lecture.user.lastName}
+          {lecture?.user?.firstName} {lecture?.user?.lastName}
         </p>
         <p className="text-gray-500 text-xs">{format(parseISO(lecture.lecture_date), "MM-dd-yyyy")}</p>
         <br></br>
