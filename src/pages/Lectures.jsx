@@ -43,8 +43,8 @@ function Lectures() {
         <h1 className="text-2xl font-bold mb-8 border-b-2 border-white">Lectures</h1>
         <AddLectureBtn />
         <div className="flex bg-gray-700 flex-wrap">
-          {allLectures.length > 0 ? (
-            allLectures.map((lecture) => (
+          {allLectures?.length > 0 ? (
+            allLectures?.map((lecture) => (
               <LectureCard key={lecture.id} lecture={lecture} />
             ))
           ) : (

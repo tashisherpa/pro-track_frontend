@@ -39,9 +39,9 @@ function ProfileCard() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(editUserThunk(profileForm)).then(() => {
-      navigate(`/profile`);
-    });
+    dispatch(editUserThunk(profileForm));
+    localStorage.setItem("scrollPosition", window.scrollY);
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -94,15 +94,15 @@ function ProfileCard() {
             onChange={handleInputChange}
           />
           <label className="block text-gray-700 text-sm font-bold mb-2 mt-2">
-            Email
+            PFP
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
+            id="imageUrl"
             type="text"
-            name="email"
-            value={profileForm.email || ""}
-            placeholder="Email"
+            name="imageUrl"
+            value={profileForm.imageUrl || ""}
+            placeholder="PFP"
             onChange={handleInputChange}
           />
           <div className="flex items-center justify-center mt-4">

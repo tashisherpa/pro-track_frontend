@@ -32,19 +32,21 @@ function AddHelpRequest() {
     navigate("/helprequests");
   };
   return (
-    <div>
+    <div className="flex justify-center m-16">
       <div className="w-full max-w-xs">
+      <h1 className="text-gray-800 text-center text-2xl font-bold mb-4">Add Help Request</h1>
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-8"
             type="text"
             placeholder="Request"
             name="request"
             onChange={handleInputChange}
           />
+          <div className="flex justify-evenly">
           <button
             className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             type="submit"
@@ -57,6 +59,7 @@ function AddHelpRequest() {
           >
             Cancel
           </button>
+          </div>
         </form>
       </div>
     </div>

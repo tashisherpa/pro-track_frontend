@@ -47,18 +47,20 @@ function EditAssignment() {
   };
 
   return (
-<div className="bg-gray-700 px-10 flex items-center justify-center h-screen">
-  <div className="w-4/5 max-w-screen-lg px-8 pt-10 pb-8 mb-4 bg-white p-8 rounded-md shadow-md">
-    
+    <div className="bg-gray-700 px-10 flex items-center justify-center h-screen">
+      <div className="w-4/5 max-w-screen-lg px-8 pt-10 pb-8 mb-4 bg-white p-8 rounded-md shadow-md">
+        <h1 className="text-gray-800 text-center text-2xl font-bold mb-4">
+          Edit Assignment
+        </h1>
         <form
-          className="bg-white shadow-md h-screen  rounded px-8 pt-10 pb-8 mb-4"
+          className="bg-white shadow-md rounded px-8 pt-10 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Assignment Title
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
             type="text"
             name="assignmentName"
             value={editForm.assignmentName || ""}
@@ -69,19 +71,19 @@ function EditAssignment() {
             Instruction
           </label>
           <textarea
-            className="shadow appearance-none  h-1/2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none  h-48 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
             type="text"
             name="instrution"
             value={editForm.instruction || ""}
             placeholder="Instruction"
             onChange={handleInputChange}
-            ></textarea>
+          ></textarea>
 
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Date
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
             type="date"
             name="assignment_date"
             value={editForm.assignment_date || ""}
@@ -92,13 +94,14 @@ function EditAssignment() {
             due_date
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-8"
             type="date"
             name="due_date"
             value={editForm.due_date || ""}
             placeholder="due Date"
             onChange={handleInputChange}
           />
+          <div className="flex justify-evenly">
           <button
             className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
             type="submit"
@@ -111,6 +114,7 @@ function EditAssignment() {
           >
             Cancel
           </button>
+          </div>
         </form>
       </div>
     </div>
