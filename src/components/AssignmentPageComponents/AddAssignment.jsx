@@ -32,11 +32,13 @@ function AddAssignment() {
   };
 
   return (
-    <div className="flex justify-center m-16">
-      <div className="w-full max-w-xs">
+    
+    <div className="bg-gray-700 px-10 flex items-center justify-center h-screen">
+    <div className="w-4/5 max-w-screen-lg flex justify-center px-8 pt-10 pb-8 mb-4 bg-white p-8 rounded-md shadow-md">
+      <div className="w-full max-w-xl">
         <h1 className="text-gray-800 text-center text-2xl font-bold mb-4">Add Assignment</h1>
         <form
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-white shadow-md rounded w-xl px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -53,7 +55,7 @@ function AddAssignment() {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Instruction
           </label>
-          <input
+          <textarea
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
             type="text"
             name="instruction"
@@ -110,7 +112,7 @@ function AddAssignment() {
           </div>
         </form>
       </div>
-    </div>
+    </div></div>
   );
 }
 
