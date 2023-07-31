@@ -49,7 +49,7 @@ function Users() {
   };
 
   return (
-    <div className="bg-gray-700 h-screen">
+    <div className="bg-gray-700 h-full">
       <SideNavBar />
       <div className="p-4 sm:ml-64">
         <button
