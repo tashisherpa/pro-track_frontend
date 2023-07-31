@@ -73,14 +73,21 @@ function ZoomInfo() {
         >
           Zoom Link
         </button>
-        <Link to={`/dashboard/zoomlink`}>
-          <button
-            className="bg-blue-500 hover:scale-110 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-            type="button"
-          >
-            Edit Zoom Link
-          </button>
-        </Link>
+          {
+            /*Only visible to TA/Admins */
+            user.userType === "admin"? (
+              <div className="flex justify-end mb-10">
+                <Link to={`/dashboard/zoomlink`}>
+                  <button
+                    className="bg-blue-500 hover:scale-110 text-white hover:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="button"
+                  >
+                    Edit Zoom Link
+                  </button>
+                </Link>
+              </div>
+            ) : null
+          }
       </div>
 
       <br />
