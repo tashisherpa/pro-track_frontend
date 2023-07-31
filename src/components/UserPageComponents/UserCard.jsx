@@ -19,7 +19,7 @@ function UserCard({ user }) {
           <div className="flex justify-center mt-4">
             <img
               className="w-24 h-24 rounded-full "
-              src={img_link}
+              src={user.imageUrl}
               alt="user_img"
             />
           </div>
