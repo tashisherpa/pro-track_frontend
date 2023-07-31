@@ -41,7 +41,7 @@ function Homepage() {
           {/* <img src={dashboard} alt="logo"  className="absolute top-1/2 left-1/2    h-100 w-1500 " /> */}
           <div className="absolute top-[-200px] text-lg left-[-10px] left-1/2 transform -translate-x-2/20 -translate-y-6/4">
             <Typewriter
-              text="Experience the future of learning with our ProTrack. Elevate your educational journey with real-time progress tracking, personalized study tools, and dynamic collaboration features. Unleash your full potential and embark on a seamless quest for excellence today <span className='text-lg'>ProTrack</span>."
+              text="Experience the future of learning with our ProTrack. Elevate your educational journey with real-time progress tracking, personalized study tools, and dynamic collaboration features. Unleash your full potential and embark on a seamless quest for excellence today ."
               delay={20}
             />
          
