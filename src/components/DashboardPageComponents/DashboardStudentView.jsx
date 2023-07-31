@@ -24,7 +24,7 @@ function DashboardStudentView({ post, user }) {
           />
           <div className="font-medium text-zinc-700">
             <div className="text-lg mb-2">
-              {post.user.firstName} {post.user.lastName}
+              {post?.user?.firstName} {post?.user?.lastName}
             </div>
           </div>
         </div>
