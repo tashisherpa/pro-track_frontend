@@ -57,7 +57,7 @@ function ProfileCard() {
         <div className="flex items-center space-x-4">
           <img
             className="w-24 h-24 rounded-full"
-            src={img_link}
+            src={userInfo.imageUrl}
             alt="Rounded avatar"
           />
           <div className="font-medium text-black">
