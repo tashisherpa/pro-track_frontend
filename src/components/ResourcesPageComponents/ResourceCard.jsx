@@ -23,10 +23,10 @@ function ResourceCard({ resource }) {
 
   return (
     <div className = "bg-gray-700 ">
-    <div className="max-w-sm  bg-white hover:scale-110 rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
+    <div className="max-w-xs min-h-60  bg-white hover:scale-110 rounded-lg overflow-hidden shadow-xl mt-8 mr-8">
       <div className="px-6  py-4">
         {resource.image !== "image-url" ? (
-          <img src={resource.image} alt="Link Preview" />
+          <img src={resource.image}/>
         ) : null}
 
         <div className="font-bold text-3xl mb-2">{resource.title}</div>

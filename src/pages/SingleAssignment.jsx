@@ -27,6 +27,7 @@ function SingleAssignment() {
 
   return (
     <div className= "text-white bg-gray-700">
+      <div className = " h-screen">
       <SideNavBar />
       <div className="p-4 sm:ml-64 flex justify-center">
         <div>
@@ -38,6 +39,7 @@ function SingleAssignment() {
             </div>)
         }
       </div></div>
+      </div>
     </div>
   );
 }

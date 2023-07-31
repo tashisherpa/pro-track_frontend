@@ -49,32 +49,38 @@ function HelpRequests() {
     fetchAllHelpRequets();
   }, [socket, dispatch]);
   return (
-    <div >
+    <div>
       <SideNavBar />
-      <div className =" bg-gray-700">
-      <div className=" p-4 sm:ml-64">
-       
-        <h1 className="text-lg font-bold text-white mb-4 border-b-2 border-white">HELP REQUEST</h1>
-        <div className ="bg-gray-700 ">
-        {loggedInUser.userType === "student" ? (
-          <Link to="/helprequests/addrequest">Add new request</Link>
-        ) : null}
-        {sortedHelpRequests.length > 0 ? (
-          sortedHelpRequests.map((helpRequest) => (
-            <HelpRequestCard
-              key={helpRequest.id}
-              helpRequest={helpRequest}
-              loggedInUser={loggedInUser}
-              
-            />
-          ))
-        ) : (
-          <p className="text-center">
-            There are no help request at the moment, enjoy while it lasts TAs
-          </p>
-        )}
-       </div>
-      </div></div>
+      <div className=" bg-gray-700">
+        <div className=" p-4 sm:ml-64">
+          <h1 className="text-lg font-bold text-white mb-4 border-b-2 border-white">
+            HELP REQUEST
+          </h1>
+          <div className="bg-gray-700 ">
+            {loggedInUser.userType === "student" ? (
+              <Link to="/helprequests/addrequest">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full items-center m-2 py-2 px-4 max-w-fit">
+                  Add new request
+                </button>
+              </Link>
+            ) : null}
+            {sortedHelpRequests.length > 0 ? (
+              sortedHelpRequests.map((helpRequest) => (
+                <HelpRequestCard
+                  key={helpRequest.id}
+                  helpRequest={helpRequest}
+                  loggedInUser={loggedInUser}
+                />
+              ))
+            ) : (
+              <p className="text-center">
+                There are no help request at the moment, enjoy while it lasts
+                TAs
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
