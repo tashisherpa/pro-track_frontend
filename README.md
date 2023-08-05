@@ -26,7 +26,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="/src/images/logowhite.png" alt="Logo" width="200" height="200">
+    <img src="/src/images/logo.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Pro-Track</h3>
